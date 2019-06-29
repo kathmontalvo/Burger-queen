@@ -82,8 +82,8 @@ costo total.
 ![out](https://user-images.githubusercontent.com/110297/45984241-b8b51c00-c025-11e8-8fa4-a390016bee9d.gif)
 
 Además la clienta nos ha dado un [link a la documentación](https://laboratoria.github.io/burger-queen-api/)
-que especifica el comportamiento esperado de la API que deberás consumir
-HTTP. Ahí puedes encontrar todos los detalles de los _endpoints_, como por ejemplo
+que especifica el comportamiento esperado de la API HTTP que deberás consumir. Ahí puedes encontrar todos los
+detalles de los _endpoints_, como por ejemplo
 qué parámetros esperan, qué deben responder, etc.
 
 ## Objetivos de aprendizaje
