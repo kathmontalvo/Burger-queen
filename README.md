@@ -124,7 +124,7 @@ En este proyecto Sí está permitido usar librerías o frameworks
 
 La aplicación debe ser un _Single Page App_. Los pedidos los tomaremos desde una
 _tablet_, pero **no queremos una app nativa**, sino una web app que sea
-**responsive**.
+**mobile-first**.
 
 Necesitamos pensar bien en el aspecto UX de de quienes van a tomar los pedidos,
  el tamaño y aspecto de los botones, la visibilidad del estado actual del
