@@ -97,7 +97,7 @@ ir reflejando en la interfaz (por ejemplo, cada vez que agregamos un _producto_
 a un _pedido_, la interfaz debe actualizar la lista del pedido y el total).
 
 2. Como objetivo secundario, deberás seguir las recomendaciones para PWAs
-(_Progressive Web Apps_), lo cual incluye conceptos como **offline**. Para
+(_Progressive Web Apps_). Para
 guiarte con respecto a este tema te recomendamos usar [Lighthouse](https://developers.google.com/web/tools/lighthouse/?hl=es),
 que es una herramienta de Google que nos ayuda a asegurar que nuestras web apps
 sigan "buenas prácticas". De hecho, usaremos Lighthouse a la hora de evaluar el
@@ -106,7 +106,7 @@ proyecto.
 3. Finalmente, la interfaz debe estar diseñada específicamente para correr en
 **tablets**.
 
-Tópicos: _react_, _angular_, _pwa_, _offline-first_, _service-worker_.
+Tópicos: _react_, _angular_, _pwa_, _service-worker_.
 
 ## Consideraciones
 
@@ -124,7 +124,7 @@ En este proyecto Sí está permitido usar librerías o frameworks
 
 La aplicación debe ser un _Single Page App_. Los pedidos los tomaremos desde una
 _tablet_, pero **no queremos una app nativa**, sino una web app que sea
-**responsive** y pueda funcionar **offline**.
+**responsive**.
 
 Necesitamos pensar bien en el aspecto UX de de quienes van a tomar los pedidos,
  el tamaño y aspecto de los botones, la visibilidad del estado actual del
@@ -228,7 +228,4 @@ rápidamente a los clientes que las hicieron.
 
 * [Tu primera Progressive Web App - Google developers](https://developers.google.com/web/fundamentals/codelabs/your-first-pwapp/?hl=es)
 * [Progressive Web Apps - codigofacilito.com](https://codigofacilito.com/articulos/progressive-apps)
-* [offlinefirst.org](http://offlinefirst.org/)
 * [Usando Service Workers - MDN](https://developer.mozilla.org/es/docs/Web/API/Service_Worker_API/Using_Service_Workers)
-* [Cómo habilitar datos sin conexión - Firebase Docs](https://firebase.google.com/docs/firestore/manage-data/enable-offline?hl=es-419)
-
