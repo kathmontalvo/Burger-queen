@@ -151,13 +151,32 @@ los _tests_ y el _setup_ necesario para ejecutarlos, serán hechos por ti.
 El [_Product Owner_](https://www.youtube.com/watch?v=r2hU7MVIzxs&t=202s) nos presenta este _backlog_ que es el resultado de su trabajo con el cliente hasta hoy.
 
 ---------------------
-#### [Historia de usuario 1] Mesero/a debe poder tomar pedido de cliente
+#### [Historia de usuario 1] Mesero/a debe poder loggearse si el admin ya le ha asignado credenciales
+Yo como meserx quiero poder ingresar al sistema de pedidos.
+
+##### Criterios de aceptación
+Lo que debe ocurrir para que se satisfagan las necesidades del usuario.
+  * Acceder a una pantalla de login.
+  * Ingresar email y contraseña.
+  * Recibir mensajes de error comprensibles, dependiendo de cuál es el error con la información ingresada.
+  * Ingresar al sistema de pedidos si las crendenciales son correctas.
+
+##### Definición de terminado
+Lo acordado que debe ocurrir para decir que la historia está terminada.
+  * Debes haber recibido _code review_ de al menos una compañera.
+  * Haces _test_ unitarios y, además, has testeado tu producto manualmente.
+  * Hiciste _tests_ de usabilidad e incorporaste el _feedback_ del usuario.
+  * Desplegaste tu aplicación y has etiquetado tu versión (git tag).
+
+---------------------
+#### [Historia de usuario 2] Mesero/a debe poder tomar pedido de cliente
 Yo como meserx quiero tomar el pedido de un cliente para no depender de mi mala
 memoria, para saber cuánto cobrar, y enviarlo a la cocina para evitar errores y
 que se puedan ir preparando en orden.
 
 ##### Criterios de aceptación
-Lo que debe ocurrir para que se satisfagan las necesidades del usuario)
+Lo que debe ocurrir para que se satisfagan las necesidades del usuario
+  * Anotar nombre de cliente.
   * Agregar productos al pedido.
   * Eliminar productos.
   * Ver resumen y el total de la compra.
@@ -174,7 +193,7 @@ Lo acordado que debe ocurrir para decir que la historia está terminada.
 
 ---------------------
 
-#### [Historia de usuario 2] Jefe de cocina debe ver los pedidos
+#### [Historia de usuario 3] Jefe de cocina debe ver los pedidos
 Yo como jefx de cocina quiero ver los pedidos de los clientes en orden y
 marcar cuáles están listos para saber qué se debe cocinar y avisar a lxs meserxs
 que un pedido está listo para servirlo a un cliente.
@@ -193,7 +212,7 @@ que un pedido está listo para servirlo a un cliente.
 
 ---------------------
 
-#### [Historia de usuario 3] Meserx debe ver pedidos listos para servir
+#### [Historia de usuario 4] Meserx debe ver pedidos listos para servir
 Yo como meserx quiero ver los pedidos que están preparados para entregarlos
 rápidamente a los clientes que las hicieron.
 
