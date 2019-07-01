@@ -151,7 +151,7 @@ los _tests_ y el _setup_ necesario para ejecutarlos, serán hechos por ti.
 El [_Product Owner_](https://www.youtube.com/watch?v=r2hU7MVIzxs&t=202s) nos presenta este _backlog_ que es el resultado de su trabajo con el cliente hasta hoy.
 
 ---------------------
-#### [Historia de usuario 1] Mesero/a debe poder loggearse si el admin ya le ha asignado credenciales
+#### [Historia de usuario 1] Mesero/a debe poder ingresar al sistema, si el admin ya le ha asignado credenciales
 Yo como meserx quiero poder ingresar al sistema de pedidos.
 
 ##### Criterios de aceptación
