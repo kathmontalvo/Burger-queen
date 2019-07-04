@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-const Login = () => {
+const Login = ({button, title, bottomText, bottomTextanchor}) => {
 
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
@@ -16,8 +16,8 @@ const Login = () => {
             <div>
                 <img src="" alt="burger-queen-logo"></img>
             </div>
-            <form onSub>
-                <h2>Login</h2>
+            <form >
+                <h2>{title}</h2>
                 <input 
                     id="admin" 
                     value="admin" 
@@ -46,8 +46,8 @@ const Login = () => {
                     onChange={updatePassword} 
                     type="password" 
                     placeholder="Ingresar contraseña" />
-                <button type="submit">Ingresar</button>
-                <p>Si no tienes una cuenta<a href="#">Regístarte</a></p>
+                <button type="submit">{button}</button>
+                <p>{bottomText}<a href="#">{bottomTextanchor}</a></p>
             </form>
         </div>
     )
