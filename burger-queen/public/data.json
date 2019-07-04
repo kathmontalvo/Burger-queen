@@ -1,0 +1,18 @@
+{
+    "user": {
+        "user1": {
+            "_id": "123456",
+            "email": {
+                "correo": "amy@gmail.com"
+            },
+            "roles": {
+                "admin": false
+            }
+        }
+    },
+    "keys": [
+        "key1",
+        "key2",
+        "key3"
+    ]
+}
