@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import '../css/App.css';
-import LoginComponent from './Login';
+import Login from './Login';
 import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
 
 class App extends Component {
@@ -9,7 +9,7 @@ class App extends Component {
       <Router>
         <div className="container-fluid">
           <Link to="/Login"> Login </Link>
-          <Route exact path="/Login" component={LoginComponent} />
+          <Route exact path="/Login" component={Login} />
         </div>
       </Router >
     )
