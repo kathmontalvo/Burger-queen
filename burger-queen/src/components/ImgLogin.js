@@ -1,9 +1,9 @@
 import React from 'react';
 
-const ImgLogin = ({ imgSrc }) => {
+const ImgLogin = ({ imgSrc, cssClass }) => {
   return (
-    <div>
-      <img src={imgSrc} alt="" />
+    <div className={cssClass}>
+      <img src={imgSrc} alt="img" className = "img-fluid" />
     </div>
   )
 }
