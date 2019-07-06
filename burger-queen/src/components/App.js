@@ -6,9 +6,9 @@ class App extends Component {
   render() {
     return (
       <>
-      <div className="container-fluid d-flex justify-content-center align-items-center column fill-available">
-      <Routes />
-      </div>
+        <div className="container-fluid d-flex justify-content-center align-items-center column fill-available">
+          <Routes />
+        </div>
       </>
     )
   }
