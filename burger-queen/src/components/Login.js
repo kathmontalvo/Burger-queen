@@ -6,20 +6,24 @@ import logo from '../images/renderforest-logo2.jpg'
 
 const Login = () => {
   return (
-    // <div className=" h-100 d-flex align-items-center">
     <>
-      {/* <div className="col-12 logo"> */}
-        <ImgLogin imgSrc={logo} cssClass='col-12 logo'/>
-      {/* </div> */}
-
+      <ImgLogin
+        imgSrc={logo}
+        cssClass='col-12 text-center align-self-start'
+        imgClass="img-fluid logo"
+      />
       <div className='container col-12 d-flex align-items-center main-box'>
-        <ImgLogin imgSrc={img} cssClass="col-lg-6 justify-content-center main-img"/>
-        <div className="col-lg-6 py-3 d-flex align-items-center form-height">
+        <ImgLogin
+          imgSrc={img}
+          cssClass="col-lg-6 justify-content-center main-img"
+          imgClass="img-fluid"
+        />
+        <div
+          className="col-lg-6 py-3 d-flex align-items-center form-style flex-column">
           <Form />
         </div>
       </div>
-      </>
-    // </div>
+    </>
   )
 }
 export default Login
