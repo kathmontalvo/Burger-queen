@@ -2,6 +2,8 @@ import React, { useState } from 'react'
 // eslint-disable-next-line
 import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
 import Inputs from './Input'
+import MyFetch from './fetch';
+
 
 const Form = () => {
   const [email, setEmail] = useState("");
@@ -15,10 +17,12 @@ const Form = () => {
   }
 
   const submitInfo = (e) => {
+    console.log('hi')
     e.preventDefault()
+    MyFetch('users', 'GET', {"Authorization": "Bearer kndcbukwe12"})
   }
   return (
-    <form onSubmit={submitInfo} className="col-12 flex-column d-flex form-group">
+    <form  className="col-12 flex-column d-flex form-group">
       <h3 className="py-5">Iniciar sesión</h3>
       <Inputs
         type='email'
@@ -33,7 +37,7 @@ const Form = () => {
         placeholder='Password'
         icon='fas fa-lock'
       />
-      <Link to='/home' className='btn btn-color'>Ingresar</Link>
+      <Link to='/home' onClick={submitInfo} className='btn btn-color'>Ingresar</Link>
     </form>
   )
 }
