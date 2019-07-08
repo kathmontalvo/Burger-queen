@@ -1,7 +1,8 @@
 import React, { useState } from 'react'
 // eslint-disable-next-line
-import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
+import { Router, Route, Link } from 'react-router-dom';
 import Inputs from './Input'
+import {createBrowserHistory} from 'history'
 
 const Form = () => {
   const [email, setEmail] = useState("");
@@ -16,6 +17,8 @@ const Form = () => {
 
   const submitInfo = (e) => {
     e.preventDefault()
+    console.log(createBrowserHistory)
+    createBrowserHistory.push('/home')
   }
   return (
     <form onSubmit={submitInfo} className="col-12 flex-column d-flex form-group">
@@ -33,7 +36,10 @@ const Form = () => {
         placeholder='Password'
         icon='fas fa-lock'
       />
-      <Link to='/home' className='btn btn-color'>Ingresar</Link>
+      <button type="submit">
+      {/* <Link to='/home' className='btn btn-color'>Ingresar</Link> */}
+      ingresar
+      </button>
     </form>
   )
 }

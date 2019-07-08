@@ -30,6 +30,7 @@
     ]
   },
   "devDependencies": {
+    "history": "^4.9.0",
     "json-server": "^0.15.0",
     "react-router-dom": "^5.0.1"
   }
