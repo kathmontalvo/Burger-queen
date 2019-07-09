@@ -25,9 +25,11 @@ const Form = () => {
     //     setErr('Error: Necesitas ser administrador')
     //   }
     // })
+    
      MyFetch('users/401', 'GET', { "Authorization": "Bearer kndcbukwe12" }, (e) => {
       if(e){
-        setErr(<p className="alert alert-danger">Error: No existe autenticación</p>)
+        console.log(e)
+        setErr(<p>{e.message}</p>)
       }
     })
   }
@@ -48,10 +50,8 @@ const Form = () => {
         placeholder='Password'
         icon='fas fa-lock'
       />
-      <button type="submit">
-        <Link to='/home' className='btn btn-color'>
-          Ingresar
-        </Link>
+      <button type="submit">    
+      <Link to='/home' className='btn btn-color'>Ingresa</Link>
       </button>
       {err}
     </form>

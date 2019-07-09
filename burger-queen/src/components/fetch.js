@@ -5,7 +5,7 @@ const MyFetch = (endpoint, method, token, callback) => {
       method: `${method}`,
       headers: token,
     })
-    .then(resp => resp.json()).then(console.log)
-    .catch(callback);
+    .then(resp => resp.json())
+    .then(callback);
 }
 export default MyFetch
