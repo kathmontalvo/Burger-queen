@@ -34,7 +34,7 @@ const Form = () => {
 
   return (
     <form onSubmit={submitInfo} className="col-12 flex-column d-flex form-group">
-      <h3 className="py-5">Iniciar sesión</h3>
+      <h3 className="medium">Iniciar sesión</h3>
       <Inputs
         type='email'
         value={email}

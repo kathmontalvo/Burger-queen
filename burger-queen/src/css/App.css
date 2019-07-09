@@ -6,7 +6,11 @@
 /* .fill-available{
   height: -webkit-fill-available;
 } */
-
+.medium{
+  font-size: large;
+  text-align: center;
+  color: #6c757d;
+}
 .btn-color {
   background-color: #F5585C;
   color: white;
@@ -27,7 +31,7 @@
 
 .logo {
   text-align: center;
-  max-width: 200px;
+  max-width: 100%;
   /* position: absolute;
   top: 20px; */
 }
@@ -43,7 +47,7 @@
 
 .main-img {
   max-width: 60%;
-  padding-bottom: 8%; 
+  padding-top: 8%; 
 }
 
 .form-style {

@@ -1,15 +1,15 @@
 import React from 'react';
 import Form from './Form';
 import ImgLogin from './ImgLogin';
-import img from '../images/burger.png'
-import logo from '../images/renderforest-logo2.jpg'
+import img from '../images/bq.png'
+import logo from '../images/burger queen.png'
 
 const Login = () => {
   return (
     <>
       <ImgLogin
         imgSrc={logo}
-        cssClass='col-12 text-center align-self-start'
+        cssClass='col-12 text-center align-self-start mb-10'
         imgClass="img-fluid logo"
       />
       <div className='container col-12 d-flex align-items-center main-box'>
