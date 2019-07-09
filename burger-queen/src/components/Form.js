@@ -4,6 +4,15 @@ import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
 import Inputs from './Input'
 import MyFetch from './fetch';
 
+MyFetch('auth',
+  {
+    'method': 'POST',
+    'body': JSON.stringify({ 'email': 'kate@gmail.com', 'password': 'abc123QW' })
+  }, (res) => {
+    localStorage.setItem('token', res.token)
+    console.log(localStorage.getItem('token'))
+  }
+)
 
 const Form = () => {
   const [email, setEmail] = useState("");
@@ -25,13 +34,16 @@ const Form = () => {
     //     setErr('Error: Necesitas ser administrador')
     //   }
     // })
-    
-     MyFetch('users/401', 'GET', { "Authorization": "Bearer kndcbukwe12" }, (e) => {
-      if(e){
-        console.log(e)
-        setErr(<p>{e.message}</p>)
-      }
-    })
+    MyFetch('users/401',
+      {
+        method: 'GET',
+        headers: { "Authorization": "Bearer kndcbukwe12" }
+      }, (e) => {
+        if (e) {
+          console.log(e)
+          setErr(<p>{e.message}</p>)
+        }
+      })
   }
 
   return (
@@ -50,8 +62,8 @@ const Form = () => {
         placeholder='Password'
         icon='fas fa-lock'
       />
-      <button type="submit">    
-      <Link to='/home' className='btn btn-color'>Ingresa</Link>
+      <button type="submit">
+        <Link to='/home' className='btn btn-color'>Ingresa</Link>
       </button>
       {err}
     </form>
