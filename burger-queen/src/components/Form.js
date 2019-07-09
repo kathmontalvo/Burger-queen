@@ -1,23 +1,47 @@
 import React, { useState } from 'react'
 // eslint-disable-next-line
-import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Link, Redirect } from 'react-router-dom';
 import Inputs from './Input'
 import MyFetch from './fetch';
-
-MyFetch('auth',
-  {
-    'method': 'POST',
-    'body': JSON.stringify({ 'email': 'kate@gmail.com', 'password': 'abc123QW' })
-  }, (res) => {
-    localStorage.setItem('token', res.token)
-    console.log(localStorage.getItem('token'))
-  }
-)
 
 const Form = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [err, setErr] = useState("")
+  const [referrer, setReferrer] = useState(false);
+
+  const fakeAuth = {
+    isAuthenticated: false,
+    authenticate(cb) {
+      this.isAuthenticated = true;
+      cb()
+    },
+  };
+
+  const login = (e) => {
+    e.preventDefault()
+    fetch('http://localhost:5000/auth', {
+      method: 'POST',
+      body: JSON.stringify({ 'email': 'kate@gmail.com', 'password': 'abc123QW' })
+    }).then(res => res.json())
+      .then((res) => {
+        if (res.token) {
+          fakeAuth.authenticate(() => {
+            setReferrer(true)
+          });
+          localStorage.setItem('token', res.token)
+          console.log(localStorage.getItem('token'))
+        }
+      }).catch(err => {
+        if (err) {
+          setErr(<p> {err.message} </p>)
+        }
+      })
+  };
+
+  let { from } = { from: { pathname: "/home" } };
+
+  if (referrer) return <Redirect to={from} />;
 
   const updateEmail = (e) => {
     setEmail(e.target.value)
@@ -26,32 +50,14 @@ const Form = () => {
     setPassword(e.target.value)
   }
 
-  const submitInfo = (e) => {
-    console.log('hi')
-    e.preventDefault()
-    const formelem = e.target.closest('form')
-    const email = formelem.querySelector('.emailValue').value;
-    const password = formelem.querySelector('.passwordValue').value;
-    console.log(email, password)
-    // MyFetch('users/403', 'GET', { "Authorization": "Bearer kndcbukwe12" }, (e) => {
-    //   if(e){
-    //     setErr('Error: Necesitas ser administrador')
-    //   }
-    // })
-    MyFetch('users/401',
-      {
-        method: 'GET',
-        headers: { "Authorization": "Bearer kndcbukwe12" }
-      }, (e) => {
-        if (e) {
-          console.log(e)
-          setErr(<p>{e.message}</p>)
-        }
-      })
-  }
+  // MyFetch('users/403', 'GET', { "Authorization": "Bearer kndcbukwe12" }, (e) => {
+  //   if(e){
+  //     setErr('Error: Necesitas ser administrador')
+  //   }
+  // })
 
   return (
-    <form onSubmit={submitInfo} className="col-12 flex-column d-flex form-group">
+    <form onSubmit={login} className="col-12 flex-column d-flex form-group">
       <h3 className="medium">Iniciar sesión</h3>
       <Inputs
         type='email'
