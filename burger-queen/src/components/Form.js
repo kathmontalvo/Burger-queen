@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 // eslint-disable-next-line
 import { BrowserRouter as Router, Route, Link, Redirect } from 'react-router-dom';
 import Inputs from './Input'
-import MyFetch from './fetch';
+// import MyFetch from './fetch';
 
 const Form = () => {
   const [email, setEmail] = useState("");
@@ -34,7 +34,7 @@ const Form = () => {
         }
       }).catch(err => {
         if (err) {
-          setErr(<p> {err.message} </p>)
+          setErr(<p className='pt-3 text-danger'> *{err.message} </p>)
         }
       })
   };
@@ -74,9 +74,7 @@ const Form = () => {
         icon='fas fa-lock'
         classValue='passwordValue form-control'
       />
-      <button type="submit">
-        <Link to='/home' className='btn btn-color'>Ingresa</Link>
-      </button>
+      <button type="submit" className='btn btn-color'>Ingresar</button>
       {err}
     </form>
   )
