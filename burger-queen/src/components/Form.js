@@ -29,7 +29,7 @@ const Form = () => {
      MyFetch('users/401', 'GET', { "Authorization": "Bearer kndcbukwe12" }, (e) => {
       if(e){
         console.log(e)
-        setErr(<p>{e.message}</p>)
+        setErr(<p className="alert alert-danger">Error: No existe autenticación</p>)
       }
     })
   }
