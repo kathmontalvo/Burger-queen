@@ -29,6 +29,10 @@ const Form = () => {
   const submitInfo = (e) => {
     console.log('hi')
     e.preventDefault()
+    const formelem = e.target.closest('form')
+    const email = formelem.querySelector('.emailValue').value;
+    const password = formelem.querySelector('.passwordValue').value;
+    console.log(email, password)
     // MyFetch('users/403', 'GET', { "Authorization": "Bearer kndcbukwe12" }, (e) => {
     //   if(e){
     //     setErr('Error: Necesitas ser administrador')
@@ -54,13 +58,15 @@ const Form = () => {
         value={email}
         update={updateEmail}
         placeholder='Email'
-        icon='fas fa-user' />
+        icon='fas fa-user'
+        classValue='emailValue form-control' />
       <Inputs
         type='password'
         value={password}
         update={updatePassword}
         placeholder='Password'
         icon='fas fa-lock'
+        classValue='passwordValue form-control'
       />
       <button type="submit">
         <Link to='/home' className='btn btn-color'>Ingresa</Link>
