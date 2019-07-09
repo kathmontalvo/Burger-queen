@@ -1,10 +1,6 @@
 
-const MyFetch = (endpoint, method, token, callback) => {
-  return fetch(`http://localhost:5000/${endpoint}`,
-    {
-      method: `${method}`,
-      headers: token,
-    })
+const MyFetch = (endpoint, config, callback) => {
+  return fetch(`http://localhost:5000/${endpoint}`, config)
     .then(resp => resp.json())
     .then(callback);
 }
