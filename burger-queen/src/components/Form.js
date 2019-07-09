@@ -8,6 +8,7 @@ import MyFetch from './fetch';
 const Form = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [err, setErr] = useState("")
 
   const updateEmail = (e) => {
     setEmail(e.target.value)
@@ -19,7 +20,16 @@ const Form = () => {
   const submitInfo = (e) => {
     console.log('hi')
     e.preventDefault()
-    MyFetch('users', 'GET', { "Authorization": "Bearer kndcbukwe12" })
+    // MyFetch('users/403', 'GET', { "Authorization": "Bearer kndcbukwe12" }, (e) => {
+    //   if(e){
+    //     setErr('Error: Necesitas ser administrador')
+    //   }
+    // })
+     MyFetch('users/401', 'GET', { "Authorization": "Bearer kndcbukwe12" }, (e) => {
+      if(e){
+        setErr(<p className="alert alert-danger">Error: No existe autenticación</p>)
+      }
+    })
   }
 
   return (
@@ -39,10 +49,11 @@ const Form = () => {
         icon='fas fa-lock'
       />
       <button type="submit">
-        {/* <Link to='/home' className='btn btn-color'> */}
+        <Link to='/home' className='btn btn-color'>
           Ingresar
-        {/* </Link> */}
+        </Link>
       </button>
+      {err}
     </form>
   )
 }
