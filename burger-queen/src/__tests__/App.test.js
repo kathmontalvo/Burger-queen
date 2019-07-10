@@ -1,4 +1,3 @@
-
 import React from 'react';
 import ReactDOM from 'react-dom';
 import App from '../components/App';
@@ -7,8 +6,8 @@ import MyFetch from '../components/fetch'
 
 //global.fetch = require('nock')
 nock('http://localhost:5000')
-  .post('/auth', { email: 'user1@mail.com', password: 'password000' })
-  .reply(200, { token: 'kndcbukwe124984bjkg13uy' })
+  .post('/auth', { email: 'user1@gmail.com', password: 'password000' })
+  .reply(200, { token: 'asldkjaskldmaslkd123123ssladñs' })
   .persist()
 
 jest.spyOn(global, 'fetch').mockImplementation(require('node-fetch'))
@@ -21,11 +20,11 @@ describe('submit form', () => {
       headers: {
         'Content-Type': 'application/json'
       },
-      body: JSON.stringify({ 'email': 'user1@mail.com', 'password': 'password000' })
+      body: JSON.stringify({ 'email': 'user1@gmail.com', 'password': 'password000' })
     })
       .then(resp => resp.json())
       .then((res) => {
-        expect(res.token).toBe('kndcbukwe124984bjkg13uy')
+        expect(res.token).toBe('asldkjaskldmaslkd123123ssladñs')
         done()
       })
   });
