@@ -2,7 +2,10 @@
   flex-direction: column;
   /* overflow: hidden; */
 }
-
+.icon-color{
+  border: solid 1px #ced4da;
+  color:  #9ea3a8;
+}
 /* .fill-available{
   height: -webkit-fill-available;
 } */
@@ -12,8 +15,9 @@
   color: #6c757d;
 }
 .btn-color {
-  background-color: #F5585C;
-  color: white;
+  background-color: #BD4355;
+  color:white;
+  font-weight: bolder;
   border-radius: 20px;
   margin-top: 15px;
 }

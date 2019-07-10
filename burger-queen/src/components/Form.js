@@ -62,6 +62,7 @@ const Form = () => {
       <Inputs
         type='email'
         value={email}
+        label='Email'
         update={updateEmail}
         placeholder='Email'
         icon='fas fa-user'
@@ -69,10 +70,11 @@ const Form = () => {
       <Inputs
         type='password'
         value={password}
+        label='Password'
         update={updatePassword}
         placeholder='Password'
         icon='fas fa-lock'
-        classValue='passwordValue form-control'
+        classValue='passwordValue form-control '
       />
       <button type="submit" className='btn btn-color'>Ingresar</button>
       {err}
