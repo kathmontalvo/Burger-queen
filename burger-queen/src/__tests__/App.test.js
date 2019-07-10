@@ -6,16 +6,15 @@ import nock from 'nock';
 import MyFetch from '../components/fetch'
 
 //global.fetch = require('nock')
- nock('http://localhost:5000')
-.post('/auth', { email: 'user1@mail.com', password: 'password000' })
-.reply(200, { token: 'asdfghASDFGH12312asdQWE' })
-.persist()
+nock('http://localhost:5000')
+  .post('/auth', { email: 'user1@mail.com', password: 'password000' })
+  .reply(200, { token: 'kndcbukwe124984bjkg13uy' })
+  .persist()
 
 jest.spyOn(global, 'fetch').mockImplementation(require('node-fetch'))
 
 
 describe('submit form', () => {
-
   it('fetch', (done) => {
     fetch('http://localhost:5000/auth', {
       method: 'POST',
@@ -26,7 +25,7 @@ describe('submit form', () => {
     })
       .then(resp => resp.json())
       .then((res) => {
-        expect(res.token).toBe('asdfghASDFGH12312asdQWE')
+        expect(res.token).toBe('kndcbukwe124984bjkg13uy')
         done()
       })
   });
