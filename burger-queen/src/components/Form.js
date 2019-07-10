@@ -19,10 +19,10 @@ const Form = () => {
   };
 
   const login = (e) => {
+    e.preventDefault()
     const form = e.target.closest('form')
     const email = form.querySelector('.emailValue').value
     const password = form.querySelector('.passwordValue').value
-    e.preventDefault()
     return MyFetch('auth', {
       method: 'POST',
       body: JSON.stringify({ 'email': email, 'password': password })
@@ -35,10 +35,10 @@ const Form = () => {
         console.log(localStorage.getItem('token'))
       }
     }, (err) => {
-        if (err) {
-          setErr(<p className='pt-3 text-danger'> *{err.message} </p>)
-        }
-      })
+      if (err) {
+        setErr(<p className='pt-3 text-danger'> *{err.message} </p>)
+      }
+    })
   };
 
   let { from } = { from: { pathname: "/home" } };
