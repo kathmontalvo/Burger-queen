@@ -23,7 +23,7 @@ const Form = () => {
     const form = e.target.closest('form')
     const email = form.querySelector('.emailValue').value
     const password = form.querySelector('.passwordValue').value
-    MyFetch('auth', {
+    return MyFetch('auth', {
       method: 'POST',
       body: JSON.stringify({ 'email': email, 'password': password })
     }, (res) => {
@@ -34,7 +34,7 @@ const Form = () => {
         localStorage.setItem('token', res.token)
         console.log(localStorage.getItem('token'))
       }
-    }, err => {
+    }, (err) => {
       if (err) {
         setErr(<p className='pt-3 text-danger'> *{err.message} </p>)
       }
