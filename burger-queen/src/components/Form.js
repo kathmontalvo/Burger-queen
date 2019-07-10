@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 // eslint-disable-next-line
 import { BrowserRouter as Router, Route, Link, Redirect } from 'react-router-dom';
 import Inputs from './Input'
-// import MyFetch from './fetch';
+import MyFetch from './fetch';
 
 const Form = () => {
   const [email, setEmail] = useState("");
@@ -19,20 +19,22 @@ const Form = () => {
   };
 
   const login = (e) => {
+    const form = e.target.closest('form')
+    const email = form.querySelector('.emailValue').value
+    const password = form.querySelector('.passwordValue').value
     e.preventDefault()
-    fetch('http://localhost:5000/auth', {
+    return MyFetch('auth', {
       method: 'POST',
-      body: JSON.stringify({ 'email': 'kate@gmail.com', 'password': 'abc123QW' })
-    }).then(res => res.json())
-      .then((res) => {
-        if (res.token) {
-          fakeAuth.authenticate(() => {
-            setReferrer(true)
-          });
-          localStorage.setItem('token', res.token)
-          console.log(localStorage.getItem('token'))
-        }
-      }).catch(err => {
+      body: JSON.stringify({ 'email': email, 'password': password })
+    }, (res) => {
+      if (res.token) {
+        fakeAuth.authenticate(() => {
+          setReferrer(true)
+        });
+        localStorage.setItem('token', res.token)
+        console.log(localStorage.getItem('token'))
+      }
+    }, (err) => {
         if (err) {
           setErr(<p className='pt-3 text-danger'> *{err.message} </p>)
         }
@@ -49,12 +51,6 @@ const Form = () => {
   const updatePassword = (e) => {
     setPassword(e.target.value)
   }
-
-  // MyFetch('users/403', 'GET', { "Authorization": "Bearer kndcbukwe12" }, (e) => {
-  //   if(e){
-  //     setErr('Error: Necesitas ser administrador')
-  //   }
-  // })
 
   return (
     <form onSubmit={login} className="col-12 flex-column d-flex form-group">
