@@ -2,48 +2,15 @@ import React, { useState } from 'react'
 // eslint-disable-next-line
 import { BrowserRouter as Router, Route, Link, Redirect } from 'react-router-dom';
 import Inputs from './Input'
-import MyFetch from './fetch';
 
-const Form = () => {
+const Form = ({onSubmit}) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [err, setErr] = useState("")
   const [referrer, setReferrer] = useState(false);
 
-  const fakeAuth = {
-    isAuthenticated: false,
-    authenticate(cb) {
-      this.isAuthenticated = true;
-      cb()
-    },
-  };
-
-  const login = (e) => {
-    e.preventDefault()
-    const form = e.target.closest('form')
-    const email = form.querySelector('.emailValue').value
-    const password = form.querySelector('.passwordValue').value
-    return MyFetch('auth', {
-      method: 'POST',
-      body: JSON.stringify({ 'email': email, 'password': password })
-    }, (res) => {
-      if (res.token) {
-        fakeAuth.authenticate(() => {
-          setReferrer(true)
-        });
-        localStorage.setItem('token', res.token)
-        console.log(localStorage.getItem('token'))
-      }
-    }, (err) => {
-      if (err) {
-        setErr(<p className='pt-3 text-danger'> *{err.message} </p>)
-      }
-    })
-  };
-
   let { from } = { from: { pathname: "/home" } };
-
-  if (referrer) return <Redirect to={from} />;
+  if (referrer) return <Router><Redirect to={from} /></Router>
 
   const updateEmail = (e) => {
     setEmail(e.target.value)
@@ -52,14 +19,21 @@ const Form = () => {
     setPassword(e.target.value)
   }
 
-  // MyFetch('users/403', 'GET', { "Authorization": "Bearer kndcbukwe12" }, (e) => {
-  //   if(e){
-  //     setErr('Error: Necesitas ser administrador')
-  //   }
-  // })
-
   return (
-    <form onSubmit={login} className="col-12 flex-column d-flex form-group">
+    <form onSubmit={e => {
+      e.preventDefault()
+      const form = e.target.closest('form')
+      const email = form.querySelector('.emailValue').value
+      const password = form.querySelector('.passwordValue').value
+      onSubmit({
+        email: email,
+        password: password,
+        setReferrer: setReferrer(true),
+        error: setErr(<p className='pt-3 text-danger'> *{err.message} </p>),
+      }) 
+    }
+
+    } className="col-12 flex-column d-flex form-group" data-testid="form">
       <h3 className="medium">Iniciar sesión</h3>
       <Inputs
         type='email'
@@ -78,7 +52,7 @@ const Form = () => {
         icon='fas fa-lock'
         classValue='passwordValue form-control '
       />
-      <button type="submit" className='btn btn-color'>Ingresar</button>
+      <button data-testid='login' type="submit" className='btn btn-color'>Ingresar</button>
       {err}
     </form>
   )
