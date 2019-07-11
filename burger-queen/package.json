@@ -30,6 +30,7 @@
   },
   "devDependencies": {
     "@testing-library/react": "^8.0.4",
+    "history": "^4.9.0",
     "nock": "^10.0.6",
     "node-fetch": "^2.6.0",
     "react-router-dom": "^5.0.1"

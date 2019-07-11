@@ -10,7 +10,7 @@ const Form = ({onSubmit}) => {
   const [referrer, setReferrer] = useState(false);
 
   let { from } = { from: { pathname: "/home" } };
-  if (referrer) return <Router><Redirect to={from} /></Router>
+  if (referrer) return <Redirect to={from} />;
 
   const updateEmail = (e) => {
     setEmail(e.target.value)
