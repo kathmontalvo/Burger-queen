@@ -22,3 +22,19 @@ it('submit event ', () => {
   fireEvent.submit(getByTestId("form"));
   expect(onSubmit).toHaveBeenCalled();
 })
+
+it('changes state of inputs ', () => {
+  const fakeUser = {email: 'emily@gmail.com', password: '1234AbcD'}
+  const onSubmit = jest.fn()
+  const { getByPlaceholderText, getByText } = renderWithRouter(<Form onSubmit={onSubmit}/>);
+
+  const email = getByPlaceholderText('Email');
+  const password = getByPlaceholderText('Password');
+  const submitBtn = getByText('Ingresar')
+
+  email.value = fakeUser.email
+  password.value = fakeUser.password
+  fireEvent.click(submitBtn)
+
+  expect(onSubmit).toHaveBeenCalledWith(fakeUser);
+})

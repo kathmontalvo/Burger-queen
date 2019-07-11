@@ -6,7 +6,7 @@ const Home = () => {
   return (
     <div>
       Home
-        {withRouter(<Link to="/">Cerrar sesión</Link>)}
+        <Link to="/">Cerrar sesión</Link>
     </div>
   )
 }
