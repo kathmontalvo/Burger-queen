@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 // eslint-disable-next-line
-import { BrowserRouter as Router, Route, Link, Redirect } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Link, Redirect, withRouter } from 'react-router-dom';
 import Inputs from './Input'
 
 const Form = ({onSubmit}) => {
@@ -10,7 +10,7 @@ const Form = ({onSubmit}) => {
   const [referrer, setReferrer] = useState(false);
 
   let { from } = { from: { pathname: "/home" } };
-  if (referrer) return <Router><Redirect to={from} /></Router>
+  if (referrer) return <Redirect to={from} />
 
   const updateEmail = (e) => {
     setEmail(e.target.value)
