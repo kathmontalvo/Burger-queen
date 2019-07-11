@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import App from '../components/App';
 import nock from 'nock';
-import MyFetch from '../components/fetch'
+
 
 //global.fetch = require('nock')
 nock('http://localhost:5000')
