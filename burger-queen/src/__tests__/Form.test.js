@@ -26,7 +26,7 @@ it('submit event ', () => {
 
 it('changes state of inputs ', () => {
   const fakeUser = {email: 'emily@gmail.com', password: '1234AbcD'}
-  const onSubmit = jest.fn()
+  const onSubmit = jest.fn(() => {})
   const { getByPlaceholderText, getByText } = renderWithRouter(<Form onSubmit={onSubmit}/>);
 
   const email = getByPlaceholderText('Email');
@@ -41,14 +41,14 @@ it('changes state of inputs ', () => {
   expect(onSubmit).toHaveBeenCalledWith(fakeUser);
 })
 
-nock('http://localhost:5000')
+nock('http://localhost:6000')
   .post('/auth', { email: 'user1@gmail.com', password: 'password000' })
   .reply(200, { token: 'asldkjaskldmaslkd123123ssladñs' })
   .persist()
 
 jest.spyOn(global, 'fetch').mockImplementation(require('node-fetch'))
 
-const fetches=()=>{  fetch('http://localhost:5000/auth', {
+const fetches = (done) => () => {  fetch('http://localhost:6000/auth', {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json'
@@ -58,11 +58,13 @@ const fetches=()=>{  fetch('http://localhost:5000/auth', {
     .then(resp => resp.json())
     .then((res) => {
       expect(res.token).toBe('asldkjaskldmaslkd123123ssladñs')
+      done();
+
     })
 }
 
-it('submit event ', () => {
-  const onSubmit = fetches
+it('submit event ', (done) => {
+  const onSubmit = fetches(done)
   const { container, getByText } = renderWithRouter(<Form onSubmit={onSubmit} />);
   const { getByTestId } = renderWithRouter(<Home />);
   expect(container.innerHTML).toMatch('Iniciar sesión')
