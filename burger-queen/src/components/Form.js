@@ -3,7 +3,7 @@ import React, { useState } from 'react'
 import { BrowserRouter as Router, Route, Link, Redirect, withRouter } from 'react-router-dom';
 import Inputs from './Input'
 
-const Form = ({onSubmit}) => {
+const Form = ({ onSubmit }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [err, setErr] = useState("")
@@ -25,12 +25,14 @@ const Form = ({onSubmit}) => {
       const form = e.target.closest('form')
       const email = form.querySelector('.emailValue').value
       const password = form.querySelector('.passwordValue').value
-      onSubmit({
-        email: email,
-        password: password,
-        setReferrer: setReferrer(true),
-        error: setErr(<p className='pt-3 text-danger'> *{err.message} </p>),
-      }) 
+      onSubmit(email,password,() => {
+          return setReferrer(true)
+        },(err) => {
+          if (err) {
+            return setErr(<p className='pt-3 text-danger'> *{err.message} </p>)
+          }
+        },
+      )
     }
 
     } className="col-12 flex-column d-flex form-group" data-testid="form">

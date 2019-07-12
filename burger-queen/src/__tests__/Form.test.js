@@ -3,7 +3,6 @@ import Form from '../components/Form';
 import { Router } from 'react-router-dom';
 import { createMemoryHistory } from 'history'
 import { render, fireEvent, cleanup } from '@testing-library/react';
-import Home from '../components/Home'
 import nock from 'nock';
 afterEach(cleanup);
 
@@ -36,8 +35,6 @@ it('changes state of inputs ', () => {
   email.value = fakeUser.email
   password.value = fakeUser.password
   fireEvent.click(submitBtn)
-
-
   expect(onSubmit).toHaveBeenCalledWith(fakeUser);
 })
 
@@ -48,7 +45,7 @@ nock('http://localhost:6000')
 
 jest.spyOn(global, 'fetch').mockImplementation(require('node-fetch'))
 
-const fetches = (done) => () => {  fetch('http://localhost:6000/auth', {
+const getToken = (done) => () => {  fetch('http://localhost:6000/auth', {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json'
@@ -64,11 +61,21 @@ const fetches = (done) => () => {  fetch('http://localhost:6000/auth', {
 }
 
 it('submit event ', (done) => {
-  const onSubmit = fetches(done)
-  const { container, getByText } = renderWithRouter(<Form onSubmit={onSubmit} />);
-  const { getByTestId } = renderWithRouter(<Home />);
-  expect(container.innerHTML).toMatch('Iniciar sesión')
-  const leftClick = {button: 0}
-  fireEvent.click(getByText('Ingresar'), leftClick)
-  expect(getByTestId('home').textContent).toMatch('Home')
+  const history = createMemoryHistory({ initialEntries: ["/"] })
+  const renderWithRouter = (ui) => {
+    return render(<Router history={history}>{ui}</Router>)
+  }
+  const onSubmit = getToken(done)
+  const { getByPlaceholderText, getByText } = renderWithRouter(<Form onSubmit={onSubmit} />);
+  
+  const fakeUser = { email: 'emily@gmail.com', password: '1234AbcD' }
+  fakeUser.email = getByPlaceholderText('Email').value;
+  fakeUser.password = getByPlaceholderText('Password').value;
+  const submitBtn = getByText('Ingresar');
+  
+  expect(history.location.pathname).toBe("/");
+
+  fireEvent.submit(submitBtn)
+
+  expect(history.location.pathname).toBe("/home");
 })
