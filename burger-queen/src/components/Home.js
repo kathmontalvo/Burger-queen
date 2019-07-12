@@ -4,7 +4,7 @@ import { BrowserRouter as Router, Route, Link, withRouter} from 'react-router-do
 
 const Home = () => {
   return (
-    <div>
+    <div data-testid='home'>
       Home
         <Link to="/">Cerrar sesión</Link>
     </div>
