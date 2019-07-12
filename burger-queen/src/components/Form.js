@@ -29,7 +29,7 @@ const Form = ({onSubmit}) => {
         email: email,
         password: password,
         setReferrer: setReferrer(true),
-        error: setErr(<p className='pt-3 text-danger'> *{err.message} </p>),
+        setErr: setErr(<p className='pt-3 text-danger'>*{err.message} </p>) ,
       }) 
     }
 
