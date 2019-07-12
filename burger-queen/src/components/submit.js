@@ -6,7 +6,7 @@ const fakeAuth = {
   },
 };
 
-const GetToken = (email, password, setReferrer, error) => {
+const GetToken = (email, password, cbSetRef, error) => {
 
   fetch('http://localhost:5000/auth', {
     method: 'POST',
@@ -17,17 +17,11 @@ const GetToken = (email, password, setReferrer, error) => {
   }).then(resp => resp.json())
     .then((res) => {
       if (res.token) {
-        fakeAuth.authenticate(() => {
-          return setReferrer
-        });
+        fakeAuth.authenticate(cbSetRef);
         localStorage.setItem('token', res.token)
         console.log(localStorage.getItem('token'))
       }
-    }).catch((err) => {
-      if (err) {
-        return error
-      }
-    })
+    }).catch(error)
 };
 
 export default GetToken
