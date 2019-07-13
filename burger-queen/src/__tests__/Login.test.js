@@ -20,6 +20,11 @@ it("router validation", () => {
   expect(history.location.pathname).toBe("/");
 
   fireEvent.submit(submitBtn)
-
-  expect(history.location.pathname).toBe("/home");
+  waitForElementToBeRemoved(() =>
+  document.querySelector('div.getOuttaHere')
+).
+  setTimeout(() => {
+    
+    expect(history.location.pathname).toBe("/home");
+  }, 2000);
 });
