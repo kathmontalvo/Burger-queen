@@ -35,7 +35,7 @@ it('submit event ', () => {
 //   email.value = fakeUser.email
 //   password.value = fakeUser.password
 //   fireEvent.click(submitBtn)
-//   expect(onSubmit).toHaveBeenCalledWith(fakeUser);
+//   expect(onSubmit).toHaveBeenCalledWith({email: 'emily@gmail.com', password: '1234AbcD'});
 // })
 
 nock('http://localhost:6000')
@@ -66,16 +66,17 @@ it('submit event ', (done) => {
     return render(<Router history={history}>{ui}</Router>)
   }
   const onSubmit = getToken(done)
-  const { getByPlaceholderText, getByText } = renderWithRouter(<Form onSubmit={onSubmit} />);
+  const { getByText } = renderWithRouter(<Form onSubmit={onSubmit} />);
   
-  const fakeUser = { email: 'emily@gmail.com', password: '1234AbcD' }
-  fakeUser.email = getByPlaceholderText('Email').value;
-  fakeUser.password = getByPlaceholderText('Password').value;
+  // const fakeUser = { email: 'emily@gmail.com', password: '1234AbcD' }
+  // fakeUser.email = getByPlaceholderText('Email').value;
+  // fakeUser.password = getByPlaceholderText('Password').value;
   const submitBtn = getByText('Ingresar');
   
   expect(history.location.pathname).toBe("/");
 
   fireEvent.submit(submitBtn)
-
-  expect(history.location.pathname).toBe("/home");
+  setTimeout(()=>{
+    expect(history.location.pathname).toBe("/home");
+  }, 2000)
 })
