@@ -9,6 +9,15 @@
 /* .fill-available{
   height: -webkit-fill-available;
 } */
+.hidden{
+  display: none;
+}
+.padding-10{
+  padding: 2px 10px;
+}
+.mt-0{
+  margin-top: 0;
+}
 .medium{
   font-size: large;
   text-align: center;

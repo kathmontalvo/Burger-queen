@@ -38,21 +38,25 @@ const Form = ({ onSubmit }) => {
     } className="col-12 flex-column d-flex form-group" data-testid="form">
       <h3 className="medium">Iniciar sesión</h3>
       <Inputs
+        divInput="input-group form-group "
         type='email'
         value={email}
         label='Email'
         update={updateEmail}
         placeholder='Email'
         icon='fas fa-user'
-        classValue='emailValue form-control' />
+        classValue='emailValue form-control'
+        visibility="input-group-append"/>
       <Inputs
+        divInput="input-group form-group "
         type='password'
         value={password}
         label='Password'
         update={updatePassword}
         placeholder='Password'
         icon='fas fa-lock'
-        classValue='passwordValue form-control '
+        classValue='passwordValue form-control'
+        visibility="input-group-append"
       />
       <button data-testid='login' type="submit" className='btn btn-color'>Ingresar</button>
       {err}
