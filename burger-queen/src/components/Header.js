@@ -8,7 +8,7 @@ const Header = () => {
   return (
     <div className="container-fluid d-flex justify-content-around">
       <ImgLogin
-        imgSrc={logo}
+        
         cssClass="col-12 text-center align-self-start mb-4"
         imgClass="img-fluid logo"
       />
