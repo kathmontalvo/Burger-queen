@@ -9,6 +9,18 @@
 /* .fill-available{
   height: -webkit-fill-available;
 } */
+<<<<<<< HEAD
+=======
+.hidden{
+  display: none;
+}
+.padding-10{
+  padding: 2px 10px;
+}
+.mt-0{
+  margin-top: 0;
+}
+>>>>>>> 477f07ecbf46075cf47f0dbcbafabfcccaccbcd8
 .medium{
   font-size: large;
   text-align: center;
