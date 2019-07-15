@@ -8,7 +8,6 @@ const Inputs = ({type, value, label, update, placeholder, icon, classValue}) => 
           <div className="btn btn-outline-secondary icon-color" disabled><i className={icon}></i></div>
         </div>
     </div>
-
       )
 }
 
