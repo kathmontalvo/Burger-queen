@@ -1,9 +1,9 @@
 import React from 'react'
 
-const MenuOpts = ({ name }) => {
+const MenuOpts = ({ name, classOpt, click }) => {
   return (
     <>
-      <button>{name}</button>
+      <button onClick={click} className={classOpt}>{name}</button>
     </>
   )
 }
