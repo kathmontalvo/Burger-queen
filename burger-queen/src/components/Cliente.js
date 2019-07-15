@@ -12,9 +12,11 @@ const Clientname = () => {
     e.preventDefault()
     const div = e.target.closest('div')
     const name = div.querySelector('.nameValue')
+    const btn = div.querySelector('.checkBtn')
     const width = div.querySelector('.input-group')
     let staticName = div.querySelector('.pValue')
     name.className="hidden"
+    btn.className="hidden"
     width.className="hidden"
     staticName.textContent = name.value
   }
@@ -32,7 +34,7 @@ const Clientname = () => {
         classValue='nameValue form-control'
         visibility='hidden'/>
         <p className="pValue"></p>
-        <button onClick={onSubmit} className="chcekBtn ml-3 btn btn-color padding-10 mb-3 mt-0"><i className="fas fa-check"></i></button>
+        <button onClick={onSubmit} className="checkBtn ml-3 btn btn-color padding-10 mb-3 mt-0"><i className="fas fa-check"></i></button>
     </div>
     )
 }

@@ -2,7 +2,7 @@ import React from 'react';
 import Form from './Form';
 import ImgLogin from './ImgLogin';
 import img from '../images/bq.png'
-import logo from '../images/burgequeen.png'
+import logo from '../images/burgerqueen.png'
 import GetToken from './submit'
 
 const Login = () => {

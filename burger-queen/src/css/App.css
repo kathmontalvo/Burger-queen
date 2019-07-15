@@ -9,8 +9,6 @@
 /* .fill-available{
   height: -webkit-fill-available;
 } */
-<<<<<<< HEAD
-=======
 .hidden{
   display: none;
 }
@@ -20,14 +18,13 @@
 .mt-0{
   margin-top: 0;
 }
->>>>>>> 477f07ecbf46075cf47f0dbcbafabfcccaccbcd8
 .medium{
   font-size: large;
   text-align: center;
   color: #6c757d;
 }
 .btn-color {
-  background-color: #BD4355;
+  background-color: #3594cc;
   color:white;
   font-weight: bolder;
   border-radius: 20px;
