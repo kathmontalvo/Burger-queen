@@ -1,14 +1,33 @@
 import React from 'react';
-
-import Header from '../components/Header'
-import CLientname from '../components/Cliente'
+import ReactDOM from 'react-dom'
+import Header from '../components/Header';
+import CLientname from '../components/Cliente';
+import Opts from '../components/Menu-opt';
+import Lunch from '../images/lunch-menu.jpg';
+import Breakfast from '../images/breakfast-menu.jpg';
+import Products from '../components/Products';
 
 const Home = () => {
+  const changeComp = () => {
+    const element = (
+      <div>
+        <Products name="Café americano " price="S/. 5.00" />
+        <Products name="Café con leche" price="S/. 7.00" />
+        <Products name="Sandwich de jamón y queso" price="S/. 10.00" />
+        <Products name="Jugo de frutas natural" price="S/. 7.00" />
+      </div> 
+    );
+    ReactDOM.render(element, document.querySelector('#home-menu'));
+  }
   return (
-    <div data-testid='home'>
+    <>
       <Header />
       <CLientname />
-    </div>
+      <div id="home-menu" className="container-fluid d-flex flex-wrap align-content-around">
+        <Opts click={changeComp} name="DESAYUNO" imgMenu={Breakfast} />
+        <Opts name="ALMUERZO" imgMenu={Lunch} />
+      </div>
+    </>
   )
 }
 
