@@ -10,7 +10,7 @@ const Clientname = () => {
   }
   const onSubmit = (e) => {
     e.preventDefault()
-    const div = e.target.closest('div')
+    const div = e.target.closest('form')
     const name = div.querySelector('.nameValue')
     const btn = div.querySelector('.checkBtn')
     const width = div.querySelector('.input-group')
@@ -33,7 +33,7 @@ const Clientname = () => {
         placeholder='Nombre'
         classValue='nameValue form-control'
         visibility='hidden'/>
-        <p className="pValue"></p>
+        <p className="pValue my-0"></p>
         <div onClick={onSubmit} className="checkBtn ml-3 btn btn-color padding-10 mt-0"><i className="fas fa-check"></i></div>
     </form>
     )
