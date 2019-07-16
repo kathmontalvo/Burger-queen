@@ -1,10 +1,11 @@
 import React from 'react'
 
-const MenuOpts = ({ name, classOpt, click }) => {
+const MenuOpts = ({ name, click, imgMenu }) => {
   return (
-    <>
-      <button onClick={click} className={classOpt}>{name}</button>
-    </>
+    <div className="container-menu" onClick={click} >
+      <img src={imgMenu} alt="Menu" className="img-fluid mb-4 px-2 filter-img"/>
+      <div className="menu-opts">{name}</div>
+    </div>
   )
 }
 
