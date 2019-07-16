@@ -1,6 +1,6 @@
 import React from 'react';
 import ImgLogin from '../components/ImgLogin'
-import logo from '../images/burgerqueen.png'
+
 // eslint-disable-next-line
 import { BrowserRouter as Router, Route, Link, withRouter} from 'react-router-dom';
 
@@ -17,7 +17,7 @@ const Header = () => {
         <i className="fas fa-bars"></i>
         </button>
         <div className="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuButton">
-        <Link to="/">Cerrar sesión</Link>
+        {/* <Link to="/">Cerrar sesión</Link> */}
         </div>
       </div>
     </div>
