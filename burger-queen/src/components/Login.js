@@ -13,7 +13,7 @@ const Login = () => {
         cssClass='col-12 text-center align-self-start mb-4'
         imgClass="img-fluid logo"
       /> */}
-      <div className='container d-flex align-items-center'>
+      <div className='container d-flex fill-available justify-content-center align-items-center'>
         <ImgLogin
           imgSrc={img}
           cssClass="col-lg-6 justify-content-center text-align"
