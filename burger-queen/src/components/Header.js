@@ -17,7 +17,7 @@ const Header = () => {
         <i className="fas fa-bars"></i>
         </button>
         <div className="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuButton">
-        {/* <Link to="/">Cerrar sesión</Link> */}
+        <Link to="/">Cerrar sesión</Link>
         </div>
       </div>
     </div>

@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom'
 import Header from '../components/Header';
-import CLientname from '../components/Cliente';
+import Clientname from '../components/Cliente';
 import Opts from '../components/Menu-opt';
 import Lunch from '../images/lunch-menu.jpg';
 import Breakfast from '../images/breakfast-menu.jpg';
@@ -21,8 +21,8 @@ const Home = () => {
   }
   return (
     <>
-      <Header />
-      <CLientname />
+      <Header/>
+      <Clientname/>
       <div id="home-menu" className="container-fluid d-flex flex-wrap align-content-around">
         <Opts click={changeComp} name="DESAYUNO" imgMenu={Breakfast} />
         <Opts name="ALMUERZO" imgMenu={Lunch} />
