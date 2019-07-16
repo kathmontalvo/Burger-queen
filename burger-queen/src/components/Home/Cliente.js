@@ -22,10 +22,10 @@ const Clientname = () => {
   }
 
   return (
-    <div className="d-flex align-items-center" data-test-id="div">
-        <p className="mr-3">Cliente: </p>
+    <form className="d-flex align-items-center my-4" data-test-id="div">
+        <p className="my-0 mr-2">Cliente: </p>
         <Inputs 
-        divInput="input-group form-group "
+        divInput="input-group"
         type='text'
         value={name}
         label='Nombre'
@@ -34,8 +34,8 @@ const Clientname = () => {
         classValue='nameValue form-control'
         visibility='hidden'/>
         <p className="pValue"></p>
-        <button onClick={onSubmit} className="checkBtn ml-3 btn btn-color padding-10 mb-3 mt-0"><i className="fas fa-check"></i></button>
-    </div>
+        <div onClick={onSubmit} className="checkBtn ml-3 btn btn-color padding-10 mt-0"><i className="fas fa-check"></i></div>
+    </form>
     )
 }
 

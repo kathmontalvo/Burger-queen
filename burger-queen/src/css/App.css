@@ -4,7 +4,17 @@
 .container {
   flex-direction: column;
 }
-
+.dropdown-color{
+  color: #6c757da6;
+  font-size: x-large;
+}
+.bars{
+  position: absolute;
+  right:0;
+}
+.height-60{
+  max-height: 60px;
+}
 .width-100{
   width:100%;
 }

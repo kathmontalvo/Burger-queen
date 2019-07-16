@@ -6,21 +6,24 @@ import { BrowserRouter as Router, Route, Link, withRouter} from 'react-router-do
 
 const Header = () => {
   return (
-    <div className="width-100 mt-2 d-flex justify-content-center">
-      <ImgLogin
-        imgSrc={burger}
-        cssClass="text-center align-self-start mb-4"
-        imgClass="img-fluid logo max-50"
-      />
-      <div className="dropdown">
-        <button className="btn btn-sm btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-        <i className="fas fa-bars"></i>
-        </button>
-        <div className="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuButton">
-        <Link to="/">Cerrar sesión</Link>
-        </div>
-      </div>
-    </div>
+    <header className="width-100 mt-2 d-flex height-60">
+      <ul className="width-100 nav nav-tabs justify-content-center">
+        <li className="nav-item">
+            <ImgLogin
+            imgSrc={burger}
+            cssClass="text-center align-self-start mb-4"
+            imgClass="img-fluid max-50"
+          />
+        </li>
+        <li className="nav-item dropdown bars">
+          <div className="nav-link dropdown-toggle dropdown-color" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i className='fas fa-bars'></i></div>
+          <div className="dropdown-menu dropdown-menu-right">
+          <Link to="/">Cerrar sesión</Link>
+          </div>
+        </li>
+      </ul>
+
+    </header>
   )
 }
 

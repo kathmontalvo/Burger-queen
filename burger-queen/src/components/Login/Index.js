@@ -13,7 +13,7 @@ const Login = () => {
         cssClass='col-12 text-center align-self-start mb-4'
         imgClass="img-fluid logo"
       /> */}
-      <div className='container d-flex fill-available justify-content-center align-items-center'>
+      <main className='container d-flex fill-available justify-content-center align-items-center'>
         <ImgLogin
           imgSrc={img}
           cssClass="col-lg-6 justify-content-center text-align"
@@ -23,7 +23,7 @@ const Login = () => {
           className="col-lg-6 py-3 d-flex align-items-center form-style flex-column">
           <Form onSubmit={GetToken}/>
         </div>
-      </div>
+      </main>
     </>
   )
 }

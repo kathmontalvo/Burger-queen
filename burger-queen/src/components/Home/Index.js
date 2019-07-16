@@ -22,11 +22,11 @@ const Home = () => {
   return (
     <>
       <Header />
-      <Clientname />
-      <div id="home-menu" className="container-fluid d-flex flex-wrap align-content-around">
+      <main id="home-menu" className="container-fluid d-flex flex-wrap align-content-around">
+        <Clientname />
         <Opts click={changeComp} name="DESAYUNO" imgMenu={Breakfast} />
         <Opts name="ALMUERZO" imgMenu={Lunch} />
-      </div>
+      </main>
     </>
   )
 }
