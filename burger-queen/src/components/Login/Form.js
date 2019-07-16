@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 // eslint-disable-next-line
 import { BrowserRouter as Router, Route, Link, Redirect, withRouter } from 'react-router-dom';
-import Inputs from './Input'
+import Inputs from '../Input'
 
 const Form = ({ onSubmit }) => {
   const [email, setEmail] = useState("");

@@ -1,11 +1,11 @@
 import React from 'react';
 import ReactDOM from 'react-dom'
-import Header from '../components/Header';
-import CLientname from '../components/Cliente';
-import Opts from '../components/Menu-opt';
-import Lunch from '../images/lunch-menu.jpg';
-import Breakfast from '../images/breakfast-menu.jpg';
-import Products from '../components/Products';
+import Header from './Header';
+import Clientname from './Cliente';
+import Opts from './Menu-opt';
+import Lunch from '../../images/lunch-menu.jpg';
+import Breakfast from '../../images/breakfast-menu.jpg';
+import Products from './Products';
 
 const Home = () => {
   const changeComp = () => {
@@ -22,7 +22,7 @@ const Home = () => {
   return (
     <>
       <Header />
-      <CLientname />
+      <Clientname />
       <div id="home-menu" className="container-fluid d-flex flex-wrap align-content-around">
         <Opts click={changeComp} name="DESAYUNO" imgMenu={Breakfast} />
         <Opts name="ALMUERZO" imgMenu={Lunch} />

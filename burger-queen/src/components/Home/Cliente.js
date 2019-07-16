@@ -1,5 +1,5 @@
 import React, {useState} from 'react'
-import Inputs from './Input';
+import Inputs from '../Input';
 
 
 const Clientname = () => {

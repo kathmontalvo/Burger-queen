@@ -1,7 +1,7 @@
 import React from 'react'
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
-import Home from './Home'
-import Login from './Login'
+import Home from './Home/Index'
+import Login from './Login/Index'
 
 const Routes = () => {
   return (
