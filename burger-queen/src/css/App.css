@@ -141,6 +141,10 @@
   height: 50%;
 }
 
+.form-val{
+  width: 100%;
+}
+
 @media (min-width: 768px) {
   /* .main-box {
     padding-left: 70px;

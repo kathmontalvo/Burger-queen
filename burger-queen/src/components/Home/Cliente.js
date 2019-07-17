@@ -11,7 +11,7 @@ const Clientname = () => {
   const onSubmit = (e) => {
     e.preventDefault()
     const div = e.target.closest('form')
-    const name = div.querySelector('.nameValue')
+    const name = div.querySelector('.name-value')
     const btn = div.querySelector('.checkBtn')
     const width = div.querySelector('.input-group')
     let staticName = div.querySelector('.pValue')
@@ -22,7 +22,7 @@ const Clientname = () => {
   }
 
   return (
-    <form className="d-flex align-items-center my-4" data-test-id="div">
+    <form className="d-flex align-items-center form-val my-4" data-test-id="div">
         <p className="my-0 mr-2">Cliente: </p>
         <Inputs 
         divInput="input-group"
@@ -31,7 +31,7 @@ const Clientname = () => {
         label='Nombre'
         update={updateName}
         placeholder='Nombre'
-        classValue='nameValue form-control'
+        classValue='name-value form-control'
         visibility='hidden'/>
         <p className="pValue my-0"></p>
         <div onClick={onSubmit} className="checkBtn ml-3 btn btn-color padding-10 mt-0"><i className="fas fa-check"></i></div>
