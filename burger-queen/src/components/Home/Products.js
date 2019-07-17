@@ -8,11 +8,11 @@ const Product = ({ data, menu }) => {
 
   return product.map(product => (
 
-    <div className="card my-3" >
-      <img className="card-img-top" src={product.image} alt={product.name} />
+    <div className="card my-3" key={product._id} >
+      <img className="card-img-top"  src={product.image} alt={product.name} />
       <div className="card-body">
         <h5 className="card-title">{product.name}</h5>
-        <a href="#" className="card-link">{product.price}</a>
+        <a href="#" className="card-link" >{product.price}</a>
       </div>
     </div>
   ))
