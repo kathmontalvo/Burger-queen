@@ -5,7 +5,7 @@ import Opts from './Menu-opt';
 import Lunch from '../../images/lunch-menu.png';
 import Breakfast from '../../images/breakfast-menu.jpg';
 import Products from './Products';
-
+import Pedido from './Pedido'
 const Home = () => {
 
 
@@ -40,6 +40,10 @@ const Home = () => {
           < Products data={prodData} menu={"Almuerzo"} />
         )}
       </div>
+      <Pedido 
+      name='Cafe'
+      quantity='2'
+      price='7'/>
     </>
   )
 }

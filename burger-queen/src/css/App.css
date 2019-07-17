@@ -15,6 +15,10 @@
 .height-60{
   max-height: 60px;
 }
+.height-100{
+  max-height: 200px;
+  max-width: 100%;
+}
 .width-100{
   width:100%;
 }
@@ -50,7 +54,17 @@
 .mt-0{
   margin-top: 0;
 }
-
+.border-bottom{
+  border-bottom: 1px solid lightslategray;
+}
+.border-top{
+  border-top: 1px solid lightslategray;
+}
+.right{text-align: right;}
+.checkout{
+  background-color: #f3f3f3;
+  color: #6c757d99;
+}
 .medium {
   font-size: large;
   text-align: center;
@@ -83,6 +97,9 @@
 .img-w{
   max-width: 500px;
 }
+.price{
+  color: #3594cc;
+}
 .btn-color {
   background-color: #3594cc;
   color: white;
@@ -109,14 +126,11 @@
 .max-50{
   max-width: 50px;
 }
-/* .main-box {
-  border: solid #00000000;
-  padding: 10px;
-  border-radius: 15px;
-  box-shadow: yellow;
+.main-box {
+
   box-shadow: 1px 1px 20px 4px #9c9a9a54;
-  margin-bottom: 10%;
-} */
+  width:100%;
+}
 
 .main-img {
   max-width: 60%;

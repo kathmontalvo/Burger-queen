@@ -8,7 +8,7 @@ const Product = ({ data, menu }) => {
 
   return product.map(product => (
 
-    <div className="card my-3" key={product._id} >
+    <div className="card my-3 " key={product._id} >
       <img className="card-img-top"  src={product.image} alt={product.name} />
       <div className="card-body">
         <h5 className="card-title">{product.name}</h5>
@@ -18,4 +18,4 @@ const Product = ({ data, menu }) => {
   ))
 }
 
-export default Product
+export default Product;
