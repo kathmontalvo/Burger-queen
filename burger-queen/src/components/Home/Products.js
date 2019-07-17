@@ -1,16 +1,21 @@
 import React from 'react';
 
-const Product = ({name, price, productImg}) => {
+const Product = ({ data, menu }) => {
 
-  return (
-  <div className="card my-3" >
-  <img className="card-img-top" src={productImg} alt={name}/>
-  <div className="card-body">
-    <h5 className="card-title">{name}</h5>
-    <a href="#" className="card-link">{price}</a>
-  </div>
-</div>
-  )
+  const product = data.filter(prod => {
+    return prod.type === menu
+  })
+
+  return product.map(product => (
+
+    <div className="card my-3" >
+      <img className="card-img-top" src={product.image} alt={product.name} />
+      <div className="card-body">
+        <h5 className="card-title">{product.name}</h5>
+        <a href="#" className="card-link">{product.price}</a>
+      </div>
+    </div>
+  ))
 }
 
 export default Product

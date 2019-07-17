@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import ReactDOM from 'react-dom'
 import Header from './Header';
 import Clientname from './Cliente';
@@ -23,32 +23,37 @@ const Home = () => {
     ReactDOM.render(element, document.querySelector('#home-menu'));
   }
 
-  const getProds = (e) => {
-    e.persist()
-    fetch('http://localhost:5000/products', {
-      method: 'GET',
-      headers: {
-        'Content-Type': 'application/json',
-        'Authorization': 'Bearer' + localStorage.getItem('token')
-      },
-    }).then(resp => resp.json())
-      .then(data => {
-        const newData = data.filter(prod => {
-          return prod.type === e.target.name 
-        })
-        console.log(newData)
-        return newData
-      })
-  }
+  const [type, setType] = useState('Desayuno');
+  const [prodData, setProdData] = useState([])
+
+  fetch('http://localhost:5000/products', {
+    method: 'GET',
+    headers: {
+      'Content-Type': 'application/json',
+      'Authorization': 'Bearer' + localStorage.getItem('token')
+    },
+  }).then(resp => resp.json())
+    .then(data => {
+      setProdData(data)
+    })
+
 
   return (
     <>
       <Header />
       <Clientname />
       <main id="home-menu" className="container-fluid d-flex flex-wrap align-content-around justify-content-center">
-        <Opts click={getProds} name="Desayuno" imgMenu={Breakfast} />
-        <Opts click={getProds} name="Almuerzo" imgMenu={Lunch} />
+        <Opts click={() => setType('Desayuno')} name="Desayuno" imgMenu={Breakfast} />
+        <Opts click={() => setType('Almuerzo')} name="Almuerzo" imgMenu={Lunch} />
       </main>
+      <div>
+        {type === 'Desayuno' && (
+          < Products data={prodData} menu={"Desayuno"} />
+        )}
+        {type === 'Almuerzo' && (
+          < Products data={prodData} menu={"Almuerzo"} />
+        )}
+      </div>
     </>
   )
 }
