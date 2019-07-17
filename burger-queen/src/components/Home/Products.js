@@ -1,6 +1,7 @@
 import React from 'react';
 
 const Product = ({name, price, productImg}) => {
+
   return (
   <div className="card my-3" >
   <img className="card-img-top" src={productImg} alt={name}/>
