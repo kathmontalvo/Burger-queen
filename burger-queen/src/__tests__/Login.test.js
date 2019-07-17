@@ -5,7 +5,7 @@ import { Router } from 'react-router-dom';
 import { createMemoryHistory } from 'history'
 import { render, fireEvent, waitForElementToBeRemoved, act, getByTestId, waitForElement, queryByTestId } from '@testing-library/react';
 
-import submit from '../components/submit';
+import submit from '../controller/Login';
 
 /*import nock from 'nock';
 nock('http://localhost:6000')
@@ -16,7 +16,7 @@ nock('http://localhost:6000')
 jest.spyOn(global, 'fetch').mockImplementation(require('node-fetch'))
 */
 
-jest.mock('../components/submit')
+jest.mock('../controller/Login')
 
 it("router validation", async() => {
   const history = createMemoryHistory({ initialEntries: ["/"] })
