@@ -14,6 +14,7 @@ const Home = () => {
   const changeComp = () => {
     const element = (
       <div>
+        
         <Products name="Café americano " price="S/. 5.00" productImg={cafea}/>
         <Products name="Café con leche" price="S/. 7.00" productImg={cafel}/>
         <Products name="Sandwich de jamón y queso" price="S/. 10.00" productImg={sandwich}/>
