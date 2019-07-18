@@ -1,20 +1,11 @@
 import React from 'react';
 import Form from '../components/Login/Form';
-import { Router } from 'react-router-dom';
-import { createMemoryHistory } from 'history'
-import { render, fireEvent, cleanup } from '@testing-library/react';
+import { fireEvent, cleanup } from '@testing-library/react';
 import nock from 'nock';
-afterEach(cleanup);
 
-const renderWithRouter = (ui, {
-  route = '/',
-  history = createMemoryHistory({ initialEntries: [route] }),
-} = {}) => {
-  return {
-    ...render(<Router history={history}>{ui}</Router>),
-    history,
-  }
-}
+import { renderWithRouter, history } from './utils';
+
+afterEach(cleanup);
 
 it('submit event ', () => {
   const onSubmit = jest.fn()
@@ -61,10 +52,6 @@ const getToken = (done) => () => {  fetch('http://localhost:6000/auth', {
 }
 
 it('submit event ', (done) => {
-  const history = createMemoryHistory({ initialEntries: ["/"] })
-  const renderWithRouter = (ui) => {
-    return render(<Router history={history}>{ui}</Router>)
-  }
   const onSubmit = getToken(done)
   const { getByText } = renderWithRouter(<Form onSubmit={onSubmit} />);
   

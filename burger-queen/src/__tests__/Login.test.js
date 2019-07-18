@@ -1,9 +1,9 @@
 import React from 'react';
 import Login from '../components/Login';
 import Home from '../components/Home';
-import { withRouter } from 'react-router';
-import { createMemoryHistory } from 'history'
-import { render, fireEvent, act } from '@testing-library/react';
+import { fireEvent, act } from '@testing-library/react';
+
+import { renderWithRouter, history } from './utils';
 
 import submit from '../controller/Login';
 
@@ -19,17 +19,10 @@ jest.spyOn(global, 'fetch').mockImplementation(require('node-fetch'))
 jest.mock('../controller/Login')
 
 it("router validation", async() => {
-  const history = createMemoryHistory({ initialEntries: ["/"] })
-  const renderWithRouter = (ui) => {
-    return render(withRouter(ui))
-  }
-
-  const { getByPlaceholderText, getByText, queryByText, getByTestId, ...rest } = renderWithRouter(<Login />);
-
-  console.log(rest)
+  const { getByPlaceholderText, getByText } = renderWithRouter(<Login />);
   
   const fakeUser = { email: 'emily@gmail.com', password: '1234AbcffffffffffD' }
-  getByTestId('Email').value = fakeUser.email;
+  getByPlaceholderText('Email').value = fakeUser.email;
   getByPlaceholderText('Password').value = fakeUser.password;
   const submitBtn = getByText('Ingresar');
   

@@ -23,6 +23,7 @@ const Home = () => {
       setProdData(data)
     })
 
+    
 
   return (
     <>
@@ -36,14 +37,14 @@ const Home = () => {
 
         <div className="card-columns">
           {type === 'Desayuno' && (
-            < Products data={prodData} menu={"Desayuno"} />
+            < Products data={prodData} menu={"Desayuno"}  />
           )}
           {type === 'Almuerzo' && (
             < Products data={prodData} menu={"Almuerzo"} />
           )}
         </div>
       </main>
-      <Pedido 
+<Pedido 
       name='Cafe'
       quantity='2'
       price='7'/>
