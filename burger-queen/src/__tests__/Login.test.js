@@ -1,6 +1,7 @@
 import React from 'react';
-import Login from '../components/Login/Index';
-import { Router } from 'react-router-dom';
+import Login from '../components/Login';
+import Home from '../components/Home';
+import { withRouter } from 'react-router';
 import { createMemoryHistory } from 'history'
 import { render, fireEvent, act } from '@testing-library/react';
 
@@ -20,13 +21,15 @@ jest.mock('../controller/Login')
 it("router validation", async() => {
   const history = createMemoryHistory({ initialEntries: ["/"] })
   const renderWithRouter = (ui) => {
-    return render(<Router history={history}>{ui}</Router>)
+    return render(withRouter(ui))
   }
 
-  const { getByPlaceholderText, getByText, queryByText } = renderWithRouter(<Login />);
+  const { getByPlaceholderText, getByText, queryByText, getByTestId, ...rest } = renderWithRouter(<Login />);
+
+  console.log(rest)
   
   const fakeUser = { email: 'emily@gmail.com', password: '1234AbcffffffffffD' }
-  getByPlaceholderText('Email').value = fakeUser.email;
+  getByTestId('Email').value = fakeUser.email;
   getByPlaceholderText('Password').value = fakeUser.password;
   const submitBtn = getByText('Ingresar');
   

@@ -5,6 +5,8 @@
   "dependencies": {
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
+    "react-router": "^5.0.1",
+    "react-router-dom": "5.0.1",
     "react-scripts": "3.0.1"
   },
   "scripts": {
@@ -32,8 +34,7 @@
     "@testing-library/react": "^8.0.4",
     "history": "^4.9.0",
     "nock": "^10.0.6",
-    "node-fetch": "^2.6.0",
-    "react-router-dom": "^5.0.1"
+    "node-fetch": "^2.6.0"
   },
   "jest": {
     "collectCoverageFrom": [

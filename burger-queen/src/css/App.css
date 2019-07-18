@@ -1,6 +1,7 @@
 *{
   box-sizing: border-box;
 }
+
 .container {
   flex-direction: column;
 }
@@ -58,12 +59,17 @@
   border-bottom: 1px solid lightslategray;
 }
 .border-top{
-  border-top: 1px solid lightslategray;
+  background-color: rgba(0,0,0,.03);
+  border-top: 1px solid rgba(0,0,0,.125)
 }
 .right{text-align: right;}
-.checkout{
+
+.background-gray{
   background-color: #f3f3f3;
   color: #6c757d99;
+}
+.text-gray{
+  color: #6c757d;
 }
 .medium {
   font-size: large;
@@ -109,7 +115,7 @@
 }
 
 .btn-color:hover {
-  background-color: rgb(248, 71, 77);
+  background-color: #4aaae2;
   color: white;
 }
 
