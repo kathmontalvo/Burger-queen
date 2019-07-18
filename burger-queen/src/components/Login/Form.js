@@ -26,10 +26,11 @@ const Form = ({ onSubmit }) => {
       const email = form.querySelector('.emailValue').value
       const password = form.querySelector('.passwordValue').value
       onSubmit(email,password,() => {
+          setErr('')
           return setReferrer(true)
         },(err) => {
           if (err) {
-            return setErr(<p className='pt-3 text-danger'> *{err.message} </p>)
+            return setErr(err.message)
           }
         },
       )
@@ -59,7 +60,7 @@ const Form = ({ onSubmit }) => {
         visibility="input-group-append border-none radius-50"
       />
       <button data-testid='login' type="submit" className='btn btn-color'>Ingresar</button>
-      {err}
+      {err && <p className='pt-3 text-danger'> *{err} </p>}
     </form>
   )
 }
