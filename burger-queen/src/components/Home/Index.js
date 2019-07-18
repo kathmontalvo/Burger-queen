@@ -43,10 +43,10 @@ const Home = () => {
           )}
         </div>
       </main>
-      {/* <Pedido 
+      <Pedido 
       name='Cafe'
       quantity='2'
-      price='7'/>*/}
+      price='7'/>
     </> 
   )
 };

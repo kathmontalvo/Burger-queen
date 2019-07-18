@@ -9,6 +9,7 @@ const Pedido = ({ name, price, quantity }) => {
         <p className='col-4 my-1'>QTY</p>
         <p className='col-4 my-1'>Price</p>
       </div>
+
       <div className='d-flex width-100 text-align border-bottom my-2'>
         <button><i className="fas fa-trash-alt text-gray"></i></button>
         <p className='my-0 col-3 text-gray'>{name}</p>
@@ -17,33 +18,15 @@ const Pedido = ({ name, price, quantity }) => {
           <span className='text-gray'>{quantity}</span>
           <button><i className="fas fa-plus-circle price"></i></button>
         </div>
-<<<<<<< HEAD
-        <div className='d-flex width-100 text-align border-bottom'>
-        <button><i className="fas fa-trash-alt"></i></button>
-            <p className='my-0 col-3'>{name}</p>
-            <div className='d-flex col-5 justify-content-center'>
-                <button><i className="fas fa-minus-circle price"></i></button>
-                <span>{quantity}</span>
-                <button><i className="fas fa-plus-circle price"></i></button>
-            </div>
-            <p className='my-0 col-3'>${price}.00</p>
-        </div>
-        <div className='d-flex border-top checkout width-100 mt-5'>
-            <h4 className='col-6'>Total</h4>
-            <p className='my-0 col-6 right price'>${price}.00</p>
-        </div>
-        </div>
-    )
-=======
         <p className='my-0 col-3 text-gray'>${price}.00</p>
       </div>
+
       <div className='d-flex border-top width-100 mt-5'>
         <h4 className='col-6'>Total</h4>
         <p className='my-0 col-6 right price'>${price}.00</p>
       </div>
     </div>
   )
->>>>>>> a67aa8dd623a1dca4aa4c9a4c363f2d39b7fcca6
 }
 
 export default Pedido
