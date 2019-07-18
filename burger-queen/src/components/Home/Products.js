@@ -18,6 +18,6 @@ const Product = ({ data, menu }) => {
       </div>
     </div>
   ))
-}
+};
 
 export default Product;

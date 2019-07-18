@@ -49,6 +49,6 @@ const Home = () => {
       price='7'/>
     </>
   )
-}
+};
 
-export default Home
+export default Home;

@@ -7,6 +7,6 @@ const MenuOpts = ({ name, click, imgMenu }) => {
       <div className="menu-opts">{name}</div>
     </div>
   )
-}
+};
 
-export default MenuOpts
+export default MenuOpts;

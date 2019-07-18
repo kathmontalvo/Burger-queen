@@ -10,12 +10,12 @@ const Pedido = ({name, price, quantity }) => {
             <p className='col-4'>Price</p>
         </div>
         <div className='d-flex width-100 text-align border-bottom'>
-        <button><i class="fas fa-trash-alt"></i></button>
+        <button><i className="fas fa-trash-alt"></i></button>
             <p className='my-0 col-3'>{name}</p>
             <div className='d-flex col-5 justify-content-center'>
-                <button><i class="fas fa-minus-circle price"></i></button>
+                <button><i className="fas fa-minus-circle price"></i></button>
                 <span>{quantity}</span>
-                <button><i class="fas fa-plus-circle price"></i></button>
+                <button><i className="fas fa-plus-circle price"></i></button>
             </div>
             <p className='my-0 col-3'>${price}.00</p>
         </div>
