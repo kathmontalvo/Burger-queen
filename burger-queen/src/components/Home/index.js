@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Header from './Header';
 import Clientname from './Cliente';
 import Products from './Products';
@@ -10,20 +10,20 @@ const Home = () => {
 
 
   const [type, setType] = useState('Desayuno');
-  const [prodData, setProdData] = useState([])
+  const [prodData, setProdData] = useState([]);
 
-  fetch('http://localhost:5000/products', {
-    method: 'GET',
-    headers: {
-      'Content-Type': 'application/json',
-      'Authorization': 'Bearer' + localStorage.getItem('token')
-    },
-  }).then(resp => resp.json())
-    .then(data => {
-      setProdData(data)
-    })
-
-    
+  useEffect(() => {
+    fetch('http://localhost:5000/products', {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': 'Bearer' + localStorage.getItem('token')
+      },
+    }).then(resp => resp.json())
+      .then(data => {
+        setProdData(data)
+      })
+  }, [])
 
   return (
     <>

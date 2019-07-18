@@ -1,69 +1,60 @@
 import React from 'react';
 import Form from '../components/Login/Form';
-import { fireEvent, cleanup } from '@testing-library/react';
-import nock from 'nock';
-
+import { fireEvent, cleanup, act, waitForElement } from '@testing-library/react';
+// import nock from 'nock';
+import submit from '../controller/Login';
 import { renderWithRouter, history } from './utils';
 
 afterEach(cleanup);
 
-it('submit event ', () => {
-  const onSubmit = jest.fn()
-  const { getByTestId } = renderWithRouter(<Form onSubmit={onSubmit} />);
-  fireEvent.submit(getByTestId("form"));
-  expect(onSubmit).toHaveBeenCalled();
-})
-
-// it('changes state of inputs ', () => {
-//   const fakeUser = {email: 'emily@gmail.com', password: '1234AbcD'}
-//   const onSubmit = jest.fn(() => {})
-//   const { getByPlaceholderText, getByText } = renderWithRouter(<Form onSubmit={onSubmit}/>);
-
-//   const email = getByPlaceholderText('Email');
-//   const password = getByPlaceholderText('Password');
-//   const submitBtn = getByText('Ingresar')
-
-//   email.value = fakeUser.email
-//   password.value = fakeUser.password
-//   fireEvent.click(submitBtn)
-//   expect(onSubmit).toHaveBeenCalledWith({email: 'emily@gmail.com', password: '1234AbcD'});
+// it('submit event ', () => {
+//   const onSubmit = jest.fn()
+//   const { getByTestId } = renderWithRouter(<Form onSubmit={onSubmit} />);
+//   fireEvent.submit(getByTestId("form"));
+//   expect(onSubmit).toHaveBeenCalled();
 // })
 
-nock('http://localhost:6000')
-  .post('/auth', { email: 'user1@gmail.com', password: 'password000' })
-  .reply(200, { token: 'asldkjaskldmaslkd123123ssladñs' })
-  .persist()
+// nock('http://localhost:6000')
+//   .post('/auth', { email: 'user1@gmail.com', password: 'password000' })
+//   .reply(200, { token: 'asldkjaskldmaslkd123123ssladñs' })
+//   .persist()
 
-jest.spyOn(global, 'fetch').mockImplementation(require('node-fetch'))
+// jest.spyOn(global, 'fetch').mockImplementation(require('node-fetch'))
 
-const getToken = (done) => () => {  fetch('http://localhost:6000/auth', {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json'
-    },
-    body: JSON.stringify({ 'email': 'user1@gmail.com', 'password': 'password000' })
-  })
-    .then(resp => resp.json())
-    .then((res) => {
-      expect(res.token).toBe('asldkjaskldmaslkd123123ssladñs')
-      done();
 
-    })
-}
+jest.mock('../controller/Login')
 
-it('submit event ', (done) => {
-  const onSubmit = getToken(done)
-  const { getByText } = renderWithRouter(<Form onSubmit={onSubmit} />);
+it("router validation", async() => {
+  const { getByPlaceholderText, getByText } = renderWithRouter(<Form onSubmit={submit}/>);
   
-  // const fakeUser = { email: 'emily@gmail.com', password: '1234AbcD' }
-  // fakeUser.email = getByPlaceholderText('Email').value;
-  // fakeUser.password = getByPlaceholderText('Password').value;
+  const fakeUser = { email: 'emily@gmail.com', password: '1234AbcffffffffffD' }
+  getByPlaceholderText('Email').value = fakeUser.email;
+  getByPlaceholderText('Password').value = fakeUser.password;
   const submitBtn = getByText('Ingresar');
   
   expect(history.location.pathname).toBe("/");
+  act(() => {
+    fireEvent.submit(submitBtn)
+  })
 
-  fireEvent.submit(submitBtn)
-  setTimeout(()=>{
-    expect(history.location.pathname).toBe("/home");
-  }, 2000)
-})
+  expect(submit.mock.calls).toHaveLength(1)
+  expect(submit.mock.calls[0][0]).toBe(fakeUser.email)
+  expect(submit.mock.calls[0][1]).toBe(fakeUser.password)
+  expect(typeof submit.mock.calls[0][2]).toBe('function')
+});
+
+it("router validation", async() => {
+  const { getByText, getByTestId } = renderWithRouter(<Form onSubmit={submit}/>);
+  const submitBtn = getByText('Ingresar');
+  try {
+    getByTestId('errMsg')
+  } catch(e) {
+    expect(e.message.startsWith('Unable to find an element by: [data-testid=\"errMsg\"]')).toBe(true)
+  }
+
+  act(() => {
+    fireEvent.submit(submitBtn)
+  })
+  const errMsg = await waitForElement(() => getByTestId('errMsg'))
+  expect(errMsg.textContent).toBe('*Error desde mock')
+});
