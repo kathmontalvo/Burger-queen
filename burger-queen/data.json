@@ -1,0 +1,39 @@
+{
+  "auth": [
+    {
+      "email": "amy@gmail.com",
+      "password": "123ABC"
+    },
+    {
+      "email": "emily@gmail.com",
+      "password": "897EFGC"
+    },
+    {
+      "email": "kate@gmail.com",
+      "password": "156DRBC"
+    }
+  ],
+  "users": [
+    {
+      "_id": "1",
+      "email": "amy@gmail.com",
+      "roles": {
+        "admin": false
+      }
+    },
+    {
+      "_id": "2",
+      "email": "emily@gmail.com",
+      "roles": {
+        "admin": true
+      }
+    },
+    {
+      "_id": "3",
+      "email": "kate@gmail.com",
+      "roles": {
+        "admin": false
+      }
+    }
+  ]
+}
