@@ -8,11 +8,6 @@ import GetToken from '../../controller/Login'
 const Login = () => {
   return (
     <>
-      {/* <ImgLogin
-        imgSrc={logo}
-        cssClass='col-12 text-center align-self-start mb-4'
-        imgClass="img-fluid logo"
-      /> */}
       <main className='container d-flex fill-available justify-content-center align-items-center'>
         <ImgLogin
           imgSrc={img}

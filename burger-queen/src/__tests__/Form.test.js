@@ -1,6 +1,6 @@
 import React from 'react';
 import Form from '../components/Login/Form';
-import { fireEvent, cleanup, act } from '@testing-library/react';
+import { fireEvent, cleanup, act, waitForElement } from '@testing-library/react';
 // import nock from 'nock';
 import submit from '../controller/Login';
 import { renderWithRouter, history } from './utils';
@@ -44,29 +44,17 @@ it("router validation", async() => {
 });
 
 it("router validation", async() => {
-  const { getByPlaceholderText, getByText } = renderWithRouter(<Form onSubmit={submit}/>);
-  
-  // const fakeUser = { email: '', password: '' }
-  // getByPlaceholderText('Email').value = fakeUser.email;
-  // getByPlaceholderText('Password').value = fakeUser.password;
+  const { getByText, getByTestId } = renderWithRouter(<Form onSubmit={submit}/>);
   const submitBtn = getByText('Ingresar');
+  try {
+    getByTestId('errMsg')
+  } catch(e) {
+    expect(e.message.startsWith('Unable to find an element by: [data-testid=\"errMsg\"]')).toBe(true)
+  }
 
-
-  expect(history.location.pathname).toBe("/");
   act(() => {
-    try {
-    
-      fireEvent.submit(submitBtn)
-    } catch(e) {
-      console.log(submit.mock.results[1])
-      expect(submit).toThrow('Error')
-      expect(submit.mock.calls).toHaveLength(0)
-    
-      // expect(submit.mock.calls[0][0]).toBe(fakeUser.email)
-      // expect(submit.mock.calls[0][1]).toBe(fakeUser.password)
-      expect(typeof submit.mock.calls[0][2]).toBe('function')
-    }
+    fireEvent.submit(submitBtn)
   })
-  
-
+  const errMsg = await waitForElement(() => getByTestId('errMsg'))
+  expect(errMsg.textContent).toBe('*Error desde mock')
 });

@@ -25,10 +25,10 @@ const Form = ({ onSubmit }) => {
       const form = e.target.closest('form')
       const email = form.querySelector('.emailValue').value
       const password = form.querySelector('.passwordValue').value
-      onSubmit(email,password,() => {
+      onSubmit(email,password, () => {
           setErr('')
           return setReferrer(true)
-        },(err) => {
+        }, (err) => {
           if (err) {
             return setErr(err.message)
           }
@@ -60,7 +60,7 @@ const Form = ({ onSubmit }) => {
         visibility="input-group-append border-none radius-50"
       />
       <button data-testid='login' type="submit" className='btn btn-color'>Ingresar</button>
-      {err && <p className='pt-3 text-danger'> *{err} </p>}
+      {err && <p data-testid="errMsg" className='pt-3 text-danger'>*{err}</p>}
     </form>
   )
 }

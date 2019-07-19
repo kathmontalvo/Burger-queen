@@ -10,6 +10,7 @@ const Pedido = ({ name, price, quantity }) => {
         <p className='col-4 my-1'>Cantidad</p>
         <p className='col-4 my-1'>Precio</p>
       </div>
+
       <div className='d-flex width-100 text-align border-bottom my-2'>
         <button className='border-none transparent'><i className="fas fa-trash-alt text-gray"></i></button>
         <p className='my-0 col-3 text-gray'>{name}</p>
@@ -20,6 +21,7 @@ const Pedido = ({ name, price, quantity }) => {
         </div>
         <p className='my-0 col-3 text-gray'>${price}.00</p>
       </div>
+
       <div className='d-flex border-top width-100 mt-5'>
         <h4 className='col-2'>Total:</h4>
         <p className='my-0 col-6 blue-color'>${price}.00</p>

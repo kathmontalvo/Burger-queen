@@ -1,5 +1,5 @@
-export default jest.fn((email, password) => {
+export default jest.fn((email, password, cbOk, cbErr) => {
     if (!email || !password) {
-        throw new Error('Error')
+        cbErr({ message: 'Error desde mock' })
     }
 });

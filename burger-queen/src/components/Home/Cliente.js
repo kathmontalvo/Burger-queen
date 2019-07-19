@@ -37,6 +37,6 @@ const Clientname = () => {
         <div onClick={onSubmit} className="checkBtn ml-3 btn btn-color padding-10 mt-0"><i className="fas fa-check"></i></div>
     </form>
     )
-}
+};
 
-export default Clientname
+export default Clientname;
