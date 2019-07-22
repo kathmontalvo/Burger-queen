@@ -21,7 +21,7 @@ const Lista = ({ order, deleteProd}) => {
         <button onClick={updateCant} className='border-none transparent'><i className="fas fa-plus-circle blue-color"></i></button>
       </td>
       <td className="col-4">
-        <p className='my-0 text-gray'>${order.price}.00</p>
+        <p className='my-0 text-gray'>${order.price*cant}</p>
       </td>
     </tr>)
 

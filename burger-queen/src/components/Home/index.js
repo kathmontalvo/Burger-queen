@@ -4,8 +4,6 @@ import Clientname from './Cliente';
 import Products from './Products';
 import Pedido from './Pedido'
 import MenuOpts from './Options';
-import Lista from './Lista';
-
 
 const Home = () => {
 
@@ -51,7 +49,7 @@ const Home = () => {
         </div>
         
       </main>
-      <Pedido item={item}/>
+      <Pedido item={item} setItems={setItems}/>
     </>
   )
 };
