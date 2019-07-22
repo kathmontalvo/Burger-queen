@@ -12,18 +12,10 @@ const Home = () => {
 
   const [type, setType] = useState('Desayuno');
   const [prodData, setProdData] = useState([]);
-  const [cant, setCant] = useState(1)
+
   const [item, setItems] = useState([])
   console.log(item)
 
-
-  const updateCant = () => {
-    setCant(cant + 1)
-  }
-  const minusCant = () => {
-    setCant(cant - 1)
-  }
-  const quantityActions = {updateCant, cant, minusCant}
 
   useEffect(() => {
     fetch('http://localhost:5000/products', {
@@ -59,7 +51,7 @@ const Home = () => {
         </div>
         
       </main>
-      <Pedido item={item} qty={quantityActions}/>
+      <Pedido item={item}/>
     </>
   )
 };

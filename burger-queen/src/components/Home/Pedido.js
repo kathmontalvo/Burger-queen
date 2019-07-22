@@ -14,11 +14,8 @@ const Pedido = ({ item, qty}) => {
             </tr>
       </thead>
       <tbody className='width-100'>
-        { item.map((product) => {
-          return <Lista order={product}
-        cant={qty.cant}
-        cb={qty.updateCant}
-        menos={qty.minusCant} />
+        { item.map((product, index) => {
+          return <Lista order={product} key={product._id} deleteProd={()=>{item.splice(index,1) ; console.log(item)}}/>
         })}
       <tr className=' d-flex width-100 text-align background-gray align-items-center border-top'>
         <td className='col-4 my-1'>Total:</td>
