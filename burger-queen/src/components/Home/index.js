@@ -15,12 +15,16 @@ const Home = () => {
   const [cant, setCant] = useState(1)
   const [item, setItems] = useState([])
   console.log(item)
+
+
   const updateCant = () => {
     setCant(cant + 1)
   }
   const minusCant = () => {
     setCant(cant - 1)
   }
+  const quantityActions = {updateCant, cant, minusCant}
+
   useEffect(() => {
     fetch('http://localhost:5000/products', {
       method: 'GET',
@@ -55,14 +59,7 @@ const Home = () => {
         </div>
         
       </main>
-      <Pedido component={
-          item.map((product) => {
-              return <Lista order={product}
-          cant={cant}
-          cb={updateCant}
-          menos={minusCant} />
-          })
-      } />
+      <Pedido item={item} qty={quantityActions}/>
     </>
   )
 };
