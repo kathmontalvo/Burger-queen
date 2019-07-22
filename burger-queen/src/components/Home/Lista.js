@@ -9,6 +9,7 @@ const Lista = ({ order, deleteProd}) => {
     setCant(cant - 1)
   }
 
+
   return (
     <tr className='d-flex width-100 text-align border-bottom my-2'>
       <td className="d-flex col-4 text-align-left">
@@ -21,7 +22,7 @@ const Lista = ({ order, deleteProd}) => {
         <button onClick={updateCant} className='border-none transparent'><i className="fas fa-plus-circle blue-color"></i></button>
       </td>
       <td className="col-4">
-        <p className='my-0 text-gray'>${order.price*cant}</p>
+        <p className='my-0 text-gray'>{order.price*cant}</p>
       </td>
     </tr>)
 
