@@ -48,6 +48,9 @@
 .hidden{
   display: none;
 }
+.padding-3{
+  padding: 1px 7px 2px;
+}
 
 .padding-10 {
   padding: 2px 10px;
