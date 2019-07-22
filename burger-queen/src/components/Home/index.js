@@ -4,6 +4,7 @@ import Clientname from './Cliente';
 import Products from './Products';
 import Pedido from './Pedido'
 import MenuOpts from './Options';
+import Lista from './Lista';
 
 
 const Home = () => {
@@ -12,13 +13,14 @@ const Home = () => {
   const [type, setType] = useState('Desayuno');
   const [prodData, setProdData] = useState([]);
   const [cant, setCant] = useState(1)
-
-const updateCant= ()=>{
-  setCant(cant+1)
-}
-const minusCant= ()=>{
-  setCant(cant-1)
-}
+  const [item, setItems] = useState([])
+  console.log(item)
+  const updateCant = () => {
+    setCant(cant + 1)
+  }
+  const minusCant = () => {
+    setCant(cant - 1)
+  }
   useEffect(() => {
     fetch('http://localhost:5000/products', {
       method: 'GET',
@@ -44,15 +46,23 @@ const minusCant= ()=>{
 
         <div className="card-columns">
           {type === 'Desayuno' && (
-            < Products data={prodData} menu={"Desayuno"} />
+            < Products data={prodData} menu={"Desayuno"} cb={(data) => { setItems(item.concat(data)) }} />
           )}
           {type === 'Almuerzo' && (
-            < Products data={prodData} menu={"Almuerzo"} />
+            < Products data={prodData} menu={"Almuerzo"} cb={(data) => { setItems(item.concat(data)) }} />
           )}
         </div>
+        
       </main>
-      <Pedido data={prodData} cantidad={cant} update={updateCant} menos={minusCant}/>
-    </> 
+      <Pedido component={
+          item.map((product) => {
+              return <Lista order={product}
+          cant={cant}
+          cb={updateCant}
+          menos={minusCant} />
+          })
+      } />
+    </>
   )
 };
 
