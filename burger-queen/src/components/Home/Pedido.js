@@ -1,6 +1,6 @@
 import React from 'react'
 import Lista from './Lista'
-const Pedido = ({ item, qty}) => {
+const Pedido = ({ item}) => {
   return (
     <table className='d-flex align-items-center column main-box my-2'>
       <thead className='width-100 '>
@@ -15,7 +15,7 @@ const Pedido = ({ item, qty}) => {
       </thead>
       <tbody className='width-100'>
         { item.map((product, index) => {
-          return <Lista order={product} key={product._id} deleteProd={()=>{item.splice(index,1) ; console.log(item)}}/>
+          return <Lista order={product} key={product._id} deleteProd={(e)=>{ item.splice(index,1); e.target.closest('tr').remove(); console.log(item)}}/>
         })}
       <tr className=' d-flex width-100 text-align background-gray align-items-center border-top'>
         <td className='col-4 my-1'>Total:</td>
