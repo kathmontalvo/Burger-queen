@@ -1,20 +1,23 @@
 import React from 'react'
 
+const Lista = ({ order, cb, cant, menos }) => {
 
-const Lista = ({order, cb, cant}) =>{
+  return (
+    <tr className='d-flex width-100 text-align border-bottom my-2' key={order._id}>
+      <td className="d-flex col-4 text-align-left">
+        <button className='border-none transparent'><i className="fas fa-trash-alt text-gray"></i></button>
+        <p className='my-0 text-gray'>{order.name}</p>
+      </td>
+      <td className='d-flex col-4 justify-content-center'>
+        <button className='border-none transparent'><i className="fas fa-minus-circle blue-color"></i></button>
+        <span className='text-gray'>{cant}</span>
+        <button onClick={cb} className='border-none transparent'><i className="fas fa-plus-circle blue-color"></i></button>
+      </td>
+      <td className="col-4">
+        <p className='my-0 text-gray'>${order.price}.00</p>
+      </td>
+    </tr>)
 
-    return order.map( order =>(
-        <div className='d-flex width-100 text-align border-bottom my-2' key={order._id}>
-        <div className='border-none transparent padding-3'><i className="fas fa-trash-alt text-gray"></i></div>
-        <p className='my-0 col-3 text-gray'>{order.name}</p>
-        <div className='d-flex col-5 justify-content-center'>
-          <div  className='padding-3 border-none transparent'><i className="fas fa-minus-circle blue-color"></i></div>
-          <span className='text-gray' value={cant}>{cant}</span>
-          <div  onClick={cb} className='padding-3 border-none transparent'><i className="fas fa-plus-circle blue-color"></i></div>
-        </div>
-        <p className='my-0 col-3 text-gray'>${order.price}.00</p>
-      </div>
-    ))
 }
 
 export default Lista;
