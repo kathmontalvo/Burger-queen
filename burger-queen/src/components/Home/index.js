@@ -12,9 +12,9 @@ const Home = () => {
   const [type, setType] = useState('Desayuno');
   const [prodData, setProdData] = useState([]);
   const [cant, setCant] = useState(1)
-const updateCant= ()=>{
-  setCant(cant+1)
-}
+  const updateCant = () => {
+    setCant(cant + 1)
+  }
   useEffect(() => {
     fetch('http://localhost:5000/products', {
       method: 'GET',
@@ -40,15 +40,15 @@ const updateCant= ()=>{
 
         <div className="card-columns">
           {type === 'Desayuno' && (
-            < Products data={prodData} menu={"Desayuno"}  />
+            < Products data={prodData} menu={"Desayuno"} />
           )}
           {type === 'Almuerzo' && (
             < Products data={prodData} menu={"Almuerzo"} />
           )}
         </div>
       </main>
-      <Pedido data={prodData} cantidad={cant} update={updateCant}/>
-    </> 
+      <Pedido data={prodData} cantidad={cant} update={updateCant} />
+    </>
   )
 };
 
