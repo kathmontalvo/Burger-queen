@@ -1,6 +1,8 @@
 import React from 'react'
 import Lista from './Lista'
 const Pedido = ({data, cantidad, update, minus}) => {
+
+  
   return (
     <div className='d-flex align-items-center column main-box my-2'>
       <div className='width-100 text-align border-bottom'><h3>Pedido</h3></div>
