@@ -1,14 +1,14 @@
 import React from 'react';
 
-const Product = ({ data, menu}) => {
+const Product = ({ data, menu, newarr, arr}) => {
 
   const product = data.filter(prod => {
     return prod.type === menu
   })
 
   return product.map(product => ( 
-    <div className="card my-3" key={product._id}>
-      <img className="card-img-top" src={product.image} alt={product.name} />
+    <div className="card my-3" key={product._id} >
+      <img className="card-img-top" onClick={()=>{newarr([...arr, product]); console.log(arr)}} src={product.image} alt={product.name} />
       <div className="card-body">
         <h5 className="card-title">{product.name}</h5>
       </div>
