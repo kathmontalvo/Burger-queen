@@ -12,9 +12,13 @@ const Home = () => {
   const [type, setType] = useState('Desayuno');
   const [prodData, setProdData] = useState([]);
   const [cant, setCant] = useState(1)
-  const updateCant = () => {
-    setCant(cant + 1)
-  }
+
+const updateCant= ()=>{
+  setCant(cant+1)
+}
+const minusCant= ()=>{
+  setCant(cant-1)
+}
   useEffect(() => {
     fetch('http://localhost:5000/products', {
       method: 'GET',
@@ -47,8 +51,8 @@ const Home = () => {
           )}
         </div>
       </main>
-      <Pedido data={prodData} cantidad={cant} update={updateCant} />
-    </>
+      <Pedido data={prodData} cantidad={cant} update={updateCant} menos={minusCant}/>
+    </> 
   )
 };
 
