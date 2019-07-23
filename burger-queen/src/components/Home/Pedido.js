@@ -1,8 +1,12 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import Lista from './Lista'
 const Pedido = ({ item, setItems }) => {
   const [total, setTotal] = useState(0)
+  const [price, setPrice] = useState([0,0]);
 
+  useEffect(()=>{
+    setTotal(price.reduce((a, b)=>a+b))
+  })
   return (
     <table className='d-flex align-items-center column main-box my-2'>
       <thead className='width-100'>
@@ -26,7 +30,8 @@ const Pedido = ({ item, setItems }) => {
               newArr.splice(index, 1);
               setItems(newArr)
             }}
-            setTotal={setTotal} />
+            price={price}
+            setPrice={setPrice} />
         })}
         <tr className=' d-flex width-100 text-align background-gray align-items-center border-top'>
           <td className='col-4 my-1'>Total:</td>

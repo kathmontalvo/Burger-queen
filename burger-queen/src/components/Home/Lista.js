@@ -1,21 +1,20 @@
-import React, {useState} from 'react'
+import React, { useState, useEffect } from 'react'
 
-const Lista = ({ order, deleteProd, item, setTotal}) => {
+const Lista = ({ order, deleteProd, item, price, setPrice }) => {
   const [cant, setCant] = useState(1)
-  const total = item.reduce(
-    (total, order) => total + (parseInt(order.price) * cant),
-    0,
-  );
+
   const updateCant = () => {
     setCant(cant + 1)
-    setTotal(total)
+    setPrice(price.concat(order.price * cant))
   }
   const minusCant = () => {
     setCant(cant - 1)
-    setTotal(total)
+    setPrice(price.concat(order.price * cant))
   }
 
-  setTotal(total)
+  useEffect(()=>{
+    setPrice(price.concat(order.price * cant))
+  }, [])
 
   return (
     <tr className='d-flex width-100 text-align border-bottom my-2'>
@@ -29,7 +28,7 @@ const Lista = ({ order, deleteProd, item, setTotal}) => {
         <button onClick={updateCant} className='border-none transparent'><i className="fas fa-plus-circle blue-color"></i></button>
       </td>
       <td className="col-4">
-        <p className='my-0 text-gray'>S/. {order.price*cant}</p>
+        <p className='my-0 text-gray'>S/. {order.price * cant}</p>
       </td>
     </tr>)
 
