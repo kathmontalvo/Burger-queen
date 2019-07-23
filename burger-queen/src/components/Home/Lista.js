@@ -1,16 +1,18 @@
 import React, { useState, useEffect } from 'react'
 
-const Lista = ({ order, deleteProd, item, price, setPrice }) => {
+const Lista = ({ order, deleteProd, price, setPrice}) => {
   const [cant, setCant] = useState(1)
 
   const updateCant = () => {
     setCant(cant + 1)
-    // setPrice(price.concat(order.price * cant))
+    setPrice(price.concat(parseInt(order.price)))
   }
   const minusCant = () => {
     setCant(cant - 1)
-    // setPrice(price.concat(order.price * cant))
-
+    console.log(price.indexOf(parseInt(order.price)))
+    const newArrPrice = price.slice();
+    const index = price.indexOf(parseInt(order.price), 0)
+    setPrice(newArrPrice.splice(index, 1))
   }
 
   useEffect(()=>{

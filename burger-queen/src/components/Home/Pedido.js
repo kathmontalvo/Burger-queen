@@ -3,10 +3,14 @@ import Lista from './Lista'
 const Pedido = ({ item, setItems }) => {
   const [total, setTotal] = useState(0)
   const [price, setPrice] = useState([0,0]);
-
+console.log(price)
   useEffect(()=>{
     setTotal(price.reduce((a, b)=>a+b))
   })
+
+    const newArrPrice = price.slice();
+
+
   return (
     <table className='d-flex align-items-center column main-box my-2'>
       <thead className='width-100'>
@@ -20,15 +24,17 @@ const Pedido = ({ item, setItems }) => {
         </tr>
       </thead>
       <tbody className='width-100'>
-        {item.map((product, index) => {
+        {item.map((product, index) => { 
           const newArr = item.slice();
-          return <Lista
+          return  <Lista
             order={product}
             key={index}
             item={item}
             deleteProd={() => {
               newArr.splice(index, 1);
+              newArrPrice.splice(index+2, 1);
               setItems(newArr)
+              setPrice(newArrPrice)
             }}
             price={price}
             setPrice={setPrice} />
