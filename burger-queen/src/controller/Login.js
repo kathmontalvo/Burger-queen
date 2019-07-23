@@ -14,8 +14,11 @@ const GetToken = (email, password, cbSetRef, error) => {
       'Content-Type': 'application/json'
     },
     body: JSON.stringify({ 'email': email, 'password': password })
-  }).then(resp => resp.json())
-    .then((res) => {
+  }).then((resp)=> {
+    if(resp.status===200){
+      return resp.json()
+    }
+  }).then((res) => {
       if (res.token) {
         fakeAuth.authenticate(cbSetRef);
         localStorage.setItem('token', res.token)

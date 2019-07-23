@@ -1,18 +1,23 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 
-const Lista = ({ order, deleteProd, cant, setCant}) => {
+const Lista = ({ order, deleteProd, price, setPrice}) => {
+  const [cant, setCant] = useState(1)
 
+  const updateCant = () => {
+    setCant(cant + 1)
+    setPrice(price.concat(parseInt(order.price)))
+  }
+  const minusCant = () => {
+    setCant(cant - 1)
+    console.log(price.indexOf(parseInt(order.price)))
+    const newArrPrice = price.slice();
+    const index = price.indexOf(parseInt(order.price), 0)
+    setPrice(newArrPrice.splice(index, 1))
+  }
 
-  // const updateCant = () => {
-  //   setCant(cant + 1)
-  //   setTotal(total)
-  // }
-  // const minusCant = () => {
-  //   setCant(cant - 1)
-  //   setTotal(total)
-  // }
-
-
+  useEffect(()=>{
+    setPrice(price.concat(order.price * cant))
+  }, [])
 
   return (
     <tr className='d-flex width-100 text-align border-bottom my-2'>
@@ -21,12 +26,12 @@ const Lista = ({ order, deleteProd, cant, setCant}) => {
         <p className='my-0 text-gray'>{order.name}</p>
       </td>
       <td className='d-flex col-4 justify-content-center'>
-        <button onClick={() => setCant(prevCount => prevCount - 1)} className='border-none transparent'><i className="fas fa-minus-circle blue-color"></i></button>
+        <button onClick={minusCant} className='border-none transparent'><i className="fas fa-minus-circle blue-color"></i></button>
         <span className='text-gray'>{cant}</span>
-        <button onClick={() => setCant(prevCount => prevCount + 1)} className='border-none transparent'><i className="fas fa-plus-circle blue-color"></i></button>
+        <button onClick={updateCant} className='border-none transparent'><i className="fas fa-plus-circle blue-color"></i></button>
       </td>
       <td className="col-4">
-        <p className='my-0 text-gray'>S/. {order.price*cant}</p>
+        <p className='my-0 text-gray'>S/. {order.price * cant}</p>
       </td>
     </tr>)
 

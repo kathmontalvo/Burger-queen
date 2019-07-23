@@ -1,13 +1,16 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import Lista from './Lista'
 const Pedido = ({ item, setItems }) => {
   const [total, setTotal] = useState(0)
-  const [cant, setCant] = useState(1)
-setTotal(item.reduce(
-    (total, order) => total + (parseInt(order.price) * cant),
-    0,
-  ));
-// setTotal(calculateTotal)
+  const [price, setPrice] = useState([0,0]);
+console.log(price)
+  useEffect(()=>{
+    setTotal(price.reduce((a, b)=>a+b))
+  })
+
+    const newArrPrice = price.slice();
+
+
   return (
     <table className='d-flex align-items-center column main-box my-2'>
       <thead className='width-100'>
@@ -29,12 +32,12 @@ setTotal(item.reduce(
             item={item}
             deleteProd={() => {
               newArr.splice(index, 1);
+              newArrPrice.splice(index+2, 1);
               setItems(newArr)
+              setPrice(newArrPrice)
             }}
-  
-            cant={cant}
-            setCant={setCant} />
-
+            price={price}
+            setPrice={setPrice} />
         })}
         <tr className=' d-flex width-100 text-align background-gray align-items-center border-top'>
           <td className='col-4 my-1'>Total:</td>
