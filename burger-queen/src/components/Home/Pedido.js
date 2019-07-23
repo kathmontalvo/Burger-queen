@@ -2,7 +2,12 @@ import React, { useState } from 'react'
 import Lista from './Lista'
 const Pedido = ({ item, setItems }) => {
   const [total, setTotal] = useState(0)
-
+  const [cant, setCant] = useState(1)
+setTotal(item.reduce(
+    (total, order) => total + (parseInt(order.price) * cant),
+    0,
+  ));
+// setTotal(calculateTotal)
   return (
     <table className='d-flex align-items-center column main-box my-2'>
       <thead className='width-100'>
@@ -16,9 +21,9 @@ const Pedido = ({ item, setItems }) => {
         </tr>
       </thead>
       <tbody className='width-100'>
-        {item.map((product, index) => {
+        {item.map((product, index) => { 
           const newArr = item.slice();
-          return <Lista
+          return  <Lista
             order={product}
             key={index}
             item={item}
@@ -26,7 +31,10 @@ const Pedido = ({ item, setItems }) => {
               newArr.splice(index, 1);
               setItems(newArr)
             }}
-            setTotal={setTotal} />
+  
+            cant={cant}
+            setCant={setCant} />
+
         })}
         <tr className=' d-flex width-100 text-align background-gray align-items-center border-top'>
           <td className='col-4 my-1'>Total:</td>
