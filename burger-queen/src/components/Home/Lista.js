@@ -1,6 +1,6 @@
 import React, {useState} from 'react'
 
-const Lista = ({ order, deleteProd}) => {
+const Lista = ({ order, deleteProd, item, setTotal}) => {
   const [cant, setCant] = useState(1)
   const updateCant = () => {
     setCant(cant + 1)
@@ -8,8 +8,11 @@ const Lista = ({ order, deleteProd}) => {
   const minusCant = () => {
     setCant(cant - 1)
   }
-
-
+  const total = item.reduce(
+    (total, order) => total + (parseInt(order.price) * cant),
+    0,
+  );
+setTotal(total)
   return (
     <tr className='d-flex width-100 text-align border-bottom my-2'>
       <td className="d-flex col-4 text-align-left">

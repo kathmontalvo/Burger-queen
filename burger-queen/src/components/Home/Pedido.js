@@ -18,7 +18,7 @@ const Pedido = ({ item, setItems}) => {
       <tbody className='width-100'>
         { item.map((product, index) => {
           const newArr = item.slice();
-          return <Lista order={product} key={index} deleteProd={()=>{ newArr.splice(index,1);setItems(newArr)}} />
+          return <Lista order={product} key={index} item={item} deleteProd={()=>{ newArr.splice(index,1);setItems(newArr)}} setTotal={setTotal}/>
         })}
       <tr className=' d-flex width-100 text-align background-gray align-items-center border-top'>
         <td className='col-4 my-1'>Total:</td>
