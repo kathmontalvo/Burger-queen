@@ -5,11 +5,12 @@ const Lista = ({ order, deleteProd, item, price, setPrice }) => {
 
   const updateCant = () => {
     setCant(cant + 1)
-    setPrice(price.concat(order.price * cant))
+    // setPrice(price.concat(order.price * cant))
   }
   const minusCant = () => {
     setCant(cant - 1)
-    setPrice(price.concat(order.price * cant))
+    // setPrice(price.concat(order.price * cant))
+
   }
 
   useEffect(()=>{
