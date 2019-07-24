@@ -7,16 +7,13 @@ import MenuOpts from './Options';
 
 const Home = () => {
 
-
-  const [type, setType] = useState('Desayuno');
+  const [type, setType] = useState('Desayuno')
   const [prodData, setProdData] = useState([]);
 
-  const [item, setItems] = useState([])
-  const items = prodData.map((product) => {
-    return {prodId: product._id, qty: 0}
+  const items = prodData.map((prod)=> {
+    return {prodId: prod._id, qty: 0}
   })
-  console.log(items)
-
+  
   useEffect(() => {
     fetch('http://localhost:5000/products', {
       method: 'GET',
@@ -30,28 +27,27 @@ const Home = () => {
       })
   }, [])
 
-
   return (
     <>
       <Header />
       <main id="home-menu" className="container-fluid d-flex flex-wrap align-content-around">
         <Clientname />
         <ul className="nav nav-tabs w-100" role="tablist">
-          <MenuOpts click={() => setType('Desayuno')} menu="Desayuno" aClass="nav-link active" />
-          <MenuOpts click={() => setType('Almuerzo')} menu="Almuerzo" aClass="nav-link" />
+          <MenuOpts  click={() => setType('Desayuno')} menu="Desayuno" aClass="nav-link active" />
+          <MenuOpts  click={() => setType('Almuerzo')} menu="Almuerzo" aClass="nav-link" />
         </ul>
 
         <div className="card-columns">
           {type === 'Desayuno' && (
-            < Products data={prodData} menu="Desayuno" cb={(data) => { setItems(item.concat(data)) }} />
+            < Products data={prodData} menu="Desayuno"  />
           )}
           {type === 'Almuerzo' && (
-            < Products data={prodData} menu="Almuerzo" cb={(data) => { setItems(item.concat(data)) }} />
+            < Products data={prodData} menu="Almuerzo"/>
           )}
         </div>
 
       </main>
-      <Pedido item={item} setItems={setItems} />
+      <Pedido />
     </>
   )
 };
