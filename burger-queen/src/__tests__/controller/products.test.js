@@ -53,3 +53,59 @@ describe('testing delete function', () => {
     expect(prodControls.delete(products2, '2')).toEqual(productsRes2);
   });
 })
+
+describe('testing mix function', () => {
+  it('deberia combinar los elem de los arr ingresado', () => {
+    const arrData = [
+      {
+        "_id": "1",
+        "name": "Café americano",
+        "price": "5",
+        "image": "https://i.ibb.co/Yfbp5kY/cafe-americano.png",
+        "type": "Desayuno",
+        "dateEntry": "December 17, 1995 03:24:00"
+      },
+      {
+        "_id": "2",
+        "name": "Café con leche",
+        "price": "7",
+        "image": "https://i.ibb.co/rGMbTtB/cafe-leche.png",
+        "type": "Desayuno",
+        "dateEntry": "December 17, 1995 03:24:00"
+      }
+    ];
+    const arrCant = [
+      { "_id": "1", "qty": 1 },
+      { "_id": "2", "qty": 2 }
+    ]
+    const arrCant2=[
+      { "_id": "5", "qty": 1 },
+      { "_id": "8", "qty": 3 }
+    ];
+    const result = [
+      {
+        "_id": "1",
+        "name": "Café americano",
+        "price": "5",
+        "image": "https://i.ibb.co/Yfbp5kY/cafe-americano.png",
+        "type": "Desayuno",
+        "dateEntry": "December 17, 1995 03:24:00",
+        "qty": 1,
+        "total": 5
+      },
+      {
+        "_id": "2",
+        "name": "Café con leche",
+        "price": "7",
+        "image": "https://i.ibb.co/rGMbTtB/cafe-leche.png",
+        "type": "Desayuno",
+        "dateEntry": "December 17, 1995 03:24:00",
+        "qty": 2,
+        "total": 14
+      }
+    ];
+
+    expect(prodControls.mix(arrData, arrCant)).toEqual(result);
+    expect(prodControls.mix(arrData, arrCant2)).toEqual([]);
+  });
+})
