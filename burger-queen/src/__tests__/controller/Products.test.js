@@ -1,4 +1,4 @@
-import prodControls from '../../controller/Products.js';
+import prodControls from '../../controller/products.js';
 
 describe('testing increase function', () => {
   it('deberia retornar un incremento de 1 en la qty', () => {
@@ -42,14 +42,14 @@ describe('testing decrease function', () => {
   })
 })
 
-describe('testing deleteProd function', () => {
+describe('testing delete function', () => {
   it('deberia eliminar el elem con id ingresado', () => {
     const products = [{ _id: '1', qty: 1 }];
     const productsRes = [];
     const products2 = [{ _id: '1', qty: 1 }, { _id: '2', qty: 1 }, { _id: '3', qty: 1 }];
     const productsRes2 = [{ _id: '1', qty: 1 }, { _id: '3', qty: 1 }];
 
-    expect(prodControls.deleteProd(products, '1')).toEqual(productsRes);
-    expect(prodControls.deleteProd(products2, '2')).toEqual(productsRes2);
+    expect(prodControls.delete(products, '1')).toEqual(productsRes);
+    expect(prodControls.delete(products2, '2')).toEqual(productsRes2);
   });
 })

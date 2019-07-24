@@ -3,7 +3,7 @@ import Form from './Form';
 import ImgLogin from '../ImgLogin';
 import img from '../../images/bq.png'
 // import logo from '../images/hamburger.png'
-import GetToken from '../../controller/Login'
+import getToken from '../../controller/login'
 
 const Login = () => {
   return (
@@ -16,7 +16,7 @@ const Login = () => {
         />
         <div
           className="col-lg-6 py-3 d-flex align-items-center form-style flex-column">
-          <Form onSubmit={GetToken}/>
+          <Form onSubmit={getToken}/>
         </div>
       </main>
     </>

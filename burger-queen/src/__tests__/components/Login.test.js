@@ -5,7 +5,7 @@ import { fireEvent, act } from '@testing-library/react';
 
 import { renderWithRouter, history } from '../utils';
 
-import submit from '../../controller/Login';
+import submit from '../../controller/login';
 
 /*import nock from 'nock';
 nock('http://localhost:6000')
@@ -16,7 +16,7 @@ nock('http://localhost:6000')
 jest.spyOn(global, 'fetch').mockImplementation(require('node-fetch'))
 */
 
-jest.mock('../../controller/Login')
+jest.mock('../../controller/login')
 
 it("router validation", async() => {
   const { getByPlaceholderText, getByText } = renderWithRouter(<Login />);

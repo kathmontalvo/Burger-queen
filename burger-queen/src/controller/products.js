@@ -1,5 +1,5 @@
 const controllProds = {
-  deleteProd: (arr, id) => arr.filter(p => p._id !== id),
+  'delete': (arr, id) => arr.filter(p => p._id !== id),
   increase: (arr, id) => {
     if (arr.map(p => p._id).includes(id)) {
       return arr.map((el) => {
@@ -23,7 +23,18 @@ const controllProds = {
         return el
       })
     }
-    return controllProds.deleteProd(arr, id)
+    return controllProds.delete(arr, id)
+  },
+  mix: (arrData, arrCant) => {
+    const newArr = []
+    arrData.forEach((el1) => arrCant.forEach((el2) => {
+      if (el1._id === el2._id) {
+        newArr.push({ ...el1, qty: el2.qty, total: el2.qty*el1.price })
+      }
+    })
+    )
+    console.log(newArr)
+    return newArr;
   }
 }
 

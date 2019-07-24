@@ -2,7 +2,7 @@ import React from 'react';
 import Form from '../../components/Login/Form';
 import { fireEvent, cleanup, act, waitForElement } from '@testing-library/react';
 // import nock from 'nock';
-import submit from '../../controller/Login';
+import submit from '../../controller/login';
 import { renderWithRouter, history } from '../utils'
 
 afterEach(cleanup);
@@ -22,7 +22,7 @@ afterEach(cleanup);
 // jest.spyOn(global, 'fetch').mockImplementation(require('node-fetch'))
 
 
-jest.mock('../../controller/Login')
+jest.mock('../../controller/login')
 
 it("router validation", async() => {
   const { getByPlaceholderText, getByText } = renderWithRouter(<Form onSubmit={submit}/>);
