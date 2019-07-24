@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react'
 import Lista from './Lista'
 const Pedido = ({ items, remove, increase, decrease }) => {
-  const total = items.reduce((a, b) => a.total + b.total, 0 )
+  const total = items.reduce((a, b) => ({ total: a.total + b.total }), { total: 0 })
+
   return (
     <table className='d-flex align-items-center column main-box my-2'>
       <thead className='width-100'>
@@ -20,7 +21,7 @@ const Pedido = ({ items, remove, increase, decrease }) => {
         ))}
         <tr className=' d-flex width-100 text-align background-gray align-items-center border-top'>
           <td className='col-4 my-1'>Total:</td>
-          <td className='col-4 my-1 blue-color'>S/. {total}</td>
+          <td className='col-4 my-1 blue-color'>S/. {total.total}</td>
           <td className='col-4 my-1'>
             <button className=' btn btn-primary background-blue'>Enviar a cocina</button>
           </td>
