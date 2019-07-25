@@ -22,8 +22,8 @@ it("router validation", async() => {
   const { getByPlaceholderText, getByText } = renderWithRouter(<Login />);
   
   const fakeUser = { email: 'emily@gmail.com', password: '1234AbcffffffffffD' }
-  getByPlaceholderText('Email').value = fakeUser.email;
-  getByPlaceholderText('Password').value = fakeUser.password;
+  fakeUser.email = getByPlaceholderText('Email').value;
+  fakeUser.password = getByPlaceholderText('Password').value ;
   const submitBtn = getByText('Ingresar');
   
   expect(history.location.pathname).toBe("/");
