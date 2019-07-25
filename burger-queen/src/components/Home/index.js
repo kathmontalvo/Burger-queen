@@ -4,16 +4,21 @@ import Clientname from './Cliente';
 import Products from './Products';
 import Pedido from './Pedido'
 import MenuOpts from './Options';
+import ctrl from '../../controller/products';
 
 const Home = () => {
 
-
-  const [type, setType] = useState('Desayuno');
+  const [type, setType] = useState('Desayuno')
   const [prodData, setProdData] = useState([]);
+  const [items, setItems] = useState([]);
 
-  const [item, setItems] = useState([])
-  console.log(item)
+  const mapFunc = (fn) => (id) => {
+    setItems(fn(items, id))
+  }
 
+  const increase = mapFunc(ctrl.increase)
+  const decrease = mapFunc(ctrl.decrease)
+  const remove = mapFunc(ctrl.delete)
 
   useEffect(() => {
     fetch('http://localhost:5000/products', {
@@ -28,7 +33,6 @@ const Home = () => {
       })
   }, [])
 
-
   return (
     <>
       <Header />
@@ -41,15 +45,15 @@ const Home = () => {
 
         <div className="card-columns">
           {type === 'Desayuno' && (
-            < Products data={prodData} menu={"Desayuno"} cb={(data) => { setItems(item.concat(data)) }} />
+            <Products data={prodData} menu="Desayuno" add={increase} />
           )}
           {type === 'Almuerzo' && (
-            < Products data={prodData} menu={"Almuerzo"} cb={(data) => { setItems(item.concat(data)) }} />
+            <Products data={prodData} menu="Almuerzo" add={increase} />
           )}
         </div>
-        
+
+        <Pedido items={ctrl.mix(prodData, items)} remove={remove} decrease={decrease} increase={increase} />
       </main>
-      <Pedido item={item} setItems={setItems}/>
     </>
   )
 };
