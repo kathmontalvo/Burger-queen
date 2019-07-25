@@ -1,12 +1,6 @@
-const fakeAuth = {
-  isAuthenticated: false,
-  authenticate(cb) {
-    this.isAuthenticated = true;
-    cb()
-  },
-};
 
-const GetToken = async (email, password, cbSetRef, error) => {
+import auth from './routes/auth'
+const GetToken = async (email, password, error, logprop) => {
 
   await fetch('http://localhost:5000/auth', {
     method: 'POST',
@@ -20,7 +14,7 @@ const GetToken = async (email, password, cbSetRef, error) => {
     }
   }).then((res) => {
       if (res.token) {
-        fakeAuth.authenticate(cbSetRef);
+        auth.login(()=>{logprop.history.push("/home")})
         localStorage.setItem('token', res.token)
         console.log(localStorage.getItem('token'))
       }

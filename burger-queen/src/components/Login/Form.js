@@ -1,16 +1,11 @@
 import React, { useState } from 'react'
 // eslint-disable-next-line
-import { BrowserRouter as Router, Route, Link, Redirect, withRouter } from 'react-router-dom';
 import Inputs from '../Input'
-
-const Form = ({ onSubmit }) => {
+import GetToken from '../../controller/login';
+const Form = ({logprop}) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [err, setErr] = useState("")
-  const [referrer, setReferrer] = useState(false);
-
-  let { from } = { from: { pathname: "/home" } };
-  if (referrer) return <Redirect to={from} />;
 
   const updateEmail = (e) => {
     setEmail(e.target.value)
@@ -22,18 +17,13 @@ const Form = ({ onSubmit }) => {
   return (
     <form onSubmit={e => {
       e.preventDefault()
-      const form = e.target.closest('form')
-      const email = form.querySelector('.emailValue').value
-      const password = form.querySelector('.passwordValue').value
-      onSubmit(email,password, () => {
-          setErr('')
-          return setReferrer(true)
-        }, (err) => {
+
+      GetToken(email,password, (err) => {
           if (err) {
             return setErr(err.message)
           }
-        },
-      )
+        },logprop
+      );
     }
 
     } className="col-12 flex-column d-flex form-group" data-testid="form">

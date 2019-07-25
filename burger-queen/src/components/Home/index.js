@@ -7,7 +7,7 @@ import MenuOpts from './Options';
 import postOrders from '../../controller/orders'
 import ctrl from '../../controller/products';
 
-const Home = () => {
+const Home = (props) => {
   const [name, setName] = useState("");
   const [type, setType] = useState('Desayuno')
   const [prodData, setProdData] = useState([]);
@@ -40,7 +40,7 @@ const Home = () => {
 
   return (
     <>
-      <Header />
+      <Header logoutprop={props}/>
       <main id="home-menu" className="container-fluid d-flex flex-wrap align-content-around">
         <Clientname name={name} updateName={updateName}/>
         <ul className="nav nav-tabs w-100" role="tablist">
