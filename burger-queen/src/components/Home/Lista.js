@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React from 'react'
 
 const Lista = ({ item, remove, increase, decrease }) => {
 
@@ -7,10 +7,10 @@ const Lista = ({ item, remove, increase, decrease }) => {
       <td className="d-flex col-4 text-align-left">
         <button onClick={() => {
           remove(item._id)
-        }} className='border-none transparent'><i className="fas fa-trash-alt text-gray"></i></button>
+        }} className='border-none transparent padding-trash'><i className="fas fa-trash-alt text-gray"></i></button>
         <p className='my-0 text-gray'>{item.name}</p>
       </td>
-      <td className='d-flex col-4 justify-content-center'>
+      <td className='d-flex col-4 justify-content-center align-items-center'>
         <button onClick={() => decrease(item._id)} className='border-none transparent'><i className="fas fa-minus-circle blue-color"></i></button>
         <span className='text-gray'>{item.qty}</span>
         <button onClick={() => increase(item._id)} className='border-none transparent'><i className="fas fa-plus-circle blue-color"></i></button>

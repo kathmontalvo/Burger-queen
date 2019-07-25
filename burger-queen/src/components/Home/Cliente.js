@@ -1,40 +1,32 @@
 import React, {useState} from 'react'
-import Inputs from '../Input';
 
 
-const Clientname = () => {
-  const [name, setName] = useState("");
-
-  const updateName = (e) => {
-    setName(e.target.value)
-  }
+const Clientname = ({name, updateName}) => {
+const [show, setShow] = useState(true)
   const onSubmit = (e) => {
     e.preventDefault()
-    const div = e.target.closest('form')
-    const name = div.querySelector('.name-value')
-    const btn = div.querySelector('.checkBtn')
-    const width = div.querySelector('.input-group')
-    let staticName = div.querySelector('.pValue')
-    name.className="hidden"
-    btn.className="hidden"
-    width.className="hidden"
-    staticName.textContent = name.value
+    setShow(false)
   }
 
   return (
     <form className="d-flex align-items-center form-val my-4" data-test-id="div">
-        <p className="my-0 mr-2">Cliente: </p>
-        <Inputs 
-        divInput="input-group"
-        type='text'
-        value={name}
-        label='Nombre'
-        update={updateName}
-        placeholder='Nombre'
-        classValue='name-value form-control'
-        visibility='hidden'/>
-        <p className="pValue my-0"></p>
-        <div onClick={onSubmit} className="checkBtn ml-3 btn btn-color padding-10 mt-0"><i className="fas fa-check"></i></div>
+        <label className="my-0 mr-2">Cliente: </label>
+        {show === true && (
+          <>
+          <input 
+          type='text'
+          value={name}
+          onChange={updateName}
+          placeholder='Nombre'
+          className='name-value form-control'/>
+          <div onClick={onSubmit} className="checkBtn ml-3 btn btn-color padding-10 mt-0"><i className="fas fa-check"></i></div>
+          </>
+        )
+        }
+        {show === false && (
+          <p className="pValue my-0">{name}</p>
+        )}
+        
     </form>
     )
 };

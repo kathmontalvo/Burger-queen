@@ -6,9 +6,9 @@ const fakeAuth = {
   },
 };
 
-const GetToken = (email, password, cbSetRef, error) => {
+const GetToken = async (email, password, cbSetRef, error) => {
 
-  fetch('http://localhost:5000/auth', {
+  await fetch('http://localhost:5000/auth', {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json'
@@ -25,6 +25,22 @@ const GetToken = (email, password, cbSetRef, error) => {
         console.log(localStorage.getItem('token'))
       }
     }).catch(error)
+
+    fetch('http://localhost:5000/users/1', {
+    method: 'GET',
+    headers: {
+      'Content-Type': 'application/json',
+      'Authorization': 'Bearer' + localStorage.getItem('token')
+    }
+  }).then((resp)=> {
+      return resp.json()
+    }
+  ).then(async(data) => {
+       await localStorage.setItem('user', data[0])
+        console.log(localStorage.getItem('user'))
+      }
+  ).catch(error)
+
 };
 
 export default GetToken

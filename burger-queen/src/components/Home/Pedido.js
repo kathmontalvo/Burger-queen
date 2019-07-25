@@ -1,6 +1,6 @@
-import React, { useState, useEffect } from 'react'
+import React from 'react'
 import Lista from './Lista'
-const Pedido = ({ items, remove, increase, decrease }) => {
+const Pedido = ({ items, remove, increase, decrease, postOrder }) => {
   const total = items.reduce((a, b) => ({ total: a.total + b.total }), { total: 0 })
 
   return (
@@ -23,7 +23,7 @@ const Pedido = ({ items, remove, increase, decrease }) => {
           <td className='col-4 my-1'>Total:</td>
           <td className='col-4 my-1 blue-color'>S/. {total.total}</td>
           <td className='col-4 my-1'>
-            <button className=' btn btn-primary background-blue'>Enviar a cocina</button>
+            <button onClick={postOrder} className=' btn btn-primary background-blue white-space padding-10'>Enviar a cocina</button>
           </td>
         </tr>
       </tbody>

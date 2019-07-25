@@ -4,13 +4,18 @@ import Clientname from './Cliente';
 import Products from './Products';
 import Pedido from './Pedido'
 import MenuOpts from './Options';
+import postOrders from '../../controller/orders'
 import ctrl from '../../controller/products';
 
 const Home = () => {
-
+  const [name, setName] = useState("");
   const [type, setType] = useState('Desayuno')
   const [prodData, setProdData] = useState([]);
   const [items, setItems] = useState([]);
+
+  const updateName = (e) => {
+    setName(e.target.value)
+  }
 
   const mapFunc = (fn) => (id) => {
     setItems(fn(items, id))
@@ -37,7 +42,7 @@ const Home = () => {
     <>
       <Header />
       <main id="home-menu" className="container-fluid d-flex flex-wrap align-content-around">
-        <Clientname />
+        <Clientname name={name} updateName={updateName}/>
         <ul className="nav nav-tabs w-100" role="tablist">
           <MenuOpts click={() => setType('Desayuno')} menu="Desayuno" aClass="nav-link active" />
           <MenuOpts click={() => setType('Almuerzo')} menu="Almuerzo" aClass="nav-link" />
@@ -52,7 +57,7 @@ const Home = () => {
           )}
         </div>
 
-        <Pedido items={ctrl.mix(prodData, items)} remove={remove} decrease={decrease} increase={increase} />
+        <Pedido items={ctrl.mix(prodData, items)} remove={remove} decrease={decrease} increase={increase} postOrder={()=>postOrders(name, items)}/>
       </main>
     </>
   )
