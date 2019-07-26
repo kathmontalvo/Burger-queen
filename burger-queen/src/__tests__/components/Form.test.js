@@ -27,19 +27,24 @@ jest.mock('../../controller/login')
 it("router validation", async() => {
   const { getByPlaceholderText, getByText } = renderWithRouter(<Form onSubmit={submit}/>);
   
-  const fakeUser = { email: 'emily@gmail.com', password: '1234AbcffffffffffD' }
-  fakeUser.email = getByPlaceholderText('Email').value;
-  fakeUser.password = getByPlaceholderText('Password').value ;
+  expect(getByPlaceholderText('Email').value).toBe('')
+  expect(getByPlaceholderText('Password').value).toBe('');
+
+  fireEvent.change(getByPlaceholderText('Email'), { target: { value: 'emily@gmail.com' } })
+  fireEvent.change(getByPlaceholderText('Password'), { target: { value: '1234AbcffffffffffD' } })
+
+  expect(getByPlaceholderText('Email').value).toBe('emily@gmail.com')
+  expect(getByPlaceholderText('Password').value).toBe('1234AbcffffffffffD');
   const submitBtn = getByText('Ingresar');
-  
+
   expect(history.location.pathname).toBe("/");
   act(() => {
     fireEvent.submit(submitBtn)
   })
 
   expect(submit.mock.calls).toHaveLength(1)
-  expect(submit.mock.calls[0][0]).toBe(fakeUser.email)
-  expect(submit.mock.calls[0][1]).toBe(fakeUser.password)
+  expect(submit.mock.calls[0][0]).toBe('emily@gmail.com')
+  expect(submit.mock.calls[0][1]).toBe('1234AbcffffffffffD')
   expect(typeof submit.mock.calls[0][2]).toBe('function')
 });
 
