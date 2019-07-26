@@ -1,26 +1,10 @@
 import React from 'react';
 import Form from '../../components/Login/Form';
 import { fireEvent, cleanup, act, waitForElement } from '@testing-library/react';
-// import nock from 'nock';
 import submit from '../../controller/login';
 import { renderWithRouter, history } from '../utils'
 
 afterEach(cleanup);
-
-// it('submit event ', () => {
-//   const onSubmit = jest.fn()
-//   const { getByTestId } = renderWithRouter(<Form onSubmit={onSubmit} />);
-//   fireEvent.submit(getByTestId("form"));
-//   expect(onSubmit).toHaveBeenCalled();
-// })
-
-// nock('http://localhost:6000')
-//   .post('/auth', { email: 'user1@gmail.com', password: 'password000' })
-//   .reply(200, { token: 'asldkjaskldmaslkd123123ssladñs' })
-//   .persist()
-
-// jest.spyOn(global, 'fetch').mockImplementation(require('node-fetch'))
-
 
 jest.mock('../../controller/login')
 

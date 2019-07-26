@@ -33,7 +33,6 @@ const controllProds = {
       }
     })
     )
-    console.log(newArr)
     return newArr;
   }
 }

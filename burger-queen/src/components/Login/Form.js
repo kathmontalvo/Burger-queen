@@ -7,13 +7,6 @@ const Form = ({ logprop }) => {
   const [password, setPassword] = useState("");
   const [err, setErr] = useState("")
 
-  // const updateEmail = (e) => {
-  //   setEmail(e.target.value)
-  // }
-  // const updatePassword = (e) => {
-  //   setPassword(e.target.value)
-  // }
-
   return (
     <form onSubmit={e => {
       e.preventDefault()
@@ -31,9 +24,7 @@ const Form = ({ logprop }) => {
         type='email'
         value={email}
         label='Email'
-        update={(e) => {
-          setEmail(e.target.value)
-        }}
+        update={(e) => setEmail(e.target.value)}
         placeholder='Email'
         icon='fas fa-user'
         classValue='emailValue form-control border-none radius-50'
@@ -43,9 +34,7 @@ const Form = ({ logprop }) => {
         type='password'
         value={password}
         label='Password'
-        update={(e) => {
-          setPassword(e.target.value)
-        }}
+        update={(e) => setPassword(e.target.value)}
         placeholder='Password'
         icon='fas fa-lock'
         classValue='passwordValue form-control border-none radius-50'

@@ -57,7 +57,10 @@ const Home = (props) => {
           )}
         </div>
 
-        <Pedido items={ctrl.mix(prodData, items)} remove={remove} decrease={decrease} increase={increase} postOrder={()=>postOrders(name, items)}/>
+        <Pedido items={ctrl.mix(prodData, items)} remove={remove} decrease={decrease} increase={increase} postOrder={()=>postOrders(name, items, localStorage.getItem('token'), localStorage.getItem('user')._id, ).then((order) => {
+        localStorage.setItem('order', JSON.stringify(order))
+        console.log(JSON.parse(localStorage.getItem('order')))
+    })}/>
       </main>
     </>
   )
