@@ -1,8 +1,9 @@
 import React, { useState } from 'react'
 // eslint-disable-next-line
 import Inputs from '../Input'
-import GetToken from '../../controller/login';
-
+import getToken from '../../controller/login';
+import getUser from '../../controller/user'
+import auth from '../../controller/routes/auth'
 const Form = ({ logprop }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
