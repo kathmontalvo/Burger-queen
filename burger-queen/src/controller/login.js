@@ -11,6 +11,7 @@ const getToken = (email, password) => {
     if(resp.status===200){
       return resp.json()
     }
+    return Promise.reject({ message: resp.text })
   })
 };
 

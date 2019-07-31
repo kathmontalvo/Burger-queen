@@ -20,7 +20,7 @@ const Form = ({ logprop }) => {
           console.log(localStorage.getItem('token'))
         }
       }).catch((err) => {
-        return setErr(err.message)
+        setErr(err.message)
       });
 
       getUser().then(async(data) => {

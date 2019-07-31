@@ -13,6 +13,9 @@
   position: absolute;
   right:0;
 }
+.border-card-right{
+  border-right: 2px solid #9c9a9a54;
+}
 .height-60{
   max-height: 60px;
 }
@@ -50,6 +53,13 @@
 }
 .white{
   background-color: white
+}
+.card-header-box{
+  background-color: #b9cad4;
+}
+.card-footer-btn{
+  background-color: #758da5;
+  color: white;
 }
 .border-none{
   border:none
