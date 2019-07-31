@@ -6,7 +6,7 @@ import Pedido from './Pedido'
 import MenuOpts from './Options';
 import postOrders from '../../controller/orders'
 import ctrl from '../../controller/products';
-
+import auth from '../../controller/routes/auth'
 const Home = (props) => {
   const [name, setName] = useState("");
   const [type, setType] = useState('Desayuno')
@@ -60,6 +60,7 @@ const Home = (props) => {
         <Pedido items={ctrl.mix(prodData, items)} remove={remove} decrease={decrease} increase={increase} postOrder={()=>postOrders(name, items, localStorage.getItem('token'), localStorage.getItem('user')._id, ).then((order) => {
         localStorage.setItem('order', JSON.stringify(order))
         console.log(JSON.parse(localStorage.getItem('order')))
+        auth.login(()=>{props.history.push("/cocina")})
     })}/>
       </main>
     </>

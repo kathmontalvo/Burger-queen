@@ -1,5 +1,6 @@
 import React from 'react'
 import Lista from './Lista'
+
 const Pedido = ({ items, remove, increase, decrease, postOrder }) => {
   const total = items.reduce((a, b) => ({ total: a.total + b.total }), { total: 0 })
 
