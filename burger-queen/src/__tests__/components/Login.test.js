@@ -1,20 +1,8 @@
 import React from 'react';
 import Login from '../../components/Login';
-import Home from '../../components/Home';
 import { fireEvent, act } from '@testing-library/react';
-
 import { renderWithRouter, history } from '../utils';
-
 import submit from '../../controller/login';
-
-/*import nock from 'nock';
-nock('http://localhost:6000')
-  .post('/auth', { email: 'emily@gmail.com', password: '1234AbcD' })
-  .reply(200, { token: 'asldkjaskldmaslkd123123ssladñs' })
-  .persist()
-
-jest.spyOn(global, 'fetch').mockImplementation(require('node-fetch'))
-*/
 
 jest.mock('../../controller/login')
 

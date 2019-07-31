@@ -5,5 +5,9 @@ import {renderIntoDocument} from 'react-dom/test-utils';
 
 
 it.skip('renders without crashing', () => {
-renderIntoDocument(<App />)
+    const div = document.createElement('div');
+    ReactDOM.render(<App />, div);
+    ReactDOM.unmountComponentAtNode(div);
+
+// renderIntoDocument(<App />)
 });
