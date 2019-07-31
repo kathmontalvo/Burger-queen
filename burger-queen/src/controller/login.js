@@ -10,8 +10,10 @@ const getToken = (email, password) => {
   }).then((resp)=> {
     if(resp.status===200){
       return resp.json()
+    } else if(resp.status===400){
+    return Promise.reject({ message: 'Ingrese correctamente su usuario y/o contraseña' })
     }
-    return Promise.reject({ message: resp.text })
+    return Promise.reject({ message: resp.statusText })
   })
 };
 
