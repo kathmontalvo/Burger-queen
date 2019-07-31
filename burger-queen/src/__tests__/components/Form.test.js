@@ -29,7 +29,6 @@ it("router validation", async() => {
   expect(submit.mock.calls).toHaveLength(1)
   expect(submit.mock.calls[0][0]).toBe('emily@gmail.com')
   expect(submit.mock.calls[0][1]).toBe('1234AbcffffffffffD')
-  expect(typeof submit.mock.calls[0][2]).toBe('function')
 });
 
 it("router validation", async() => {

@@ -22,5 +22,4 @@ it("router validation", async() => {
   expect(submit.mock.calls).toHaveLength(1)
   expect(submit.mock.calls[0][0]).toBe(fakeUser.email)
   expect(submit.mock.calls[0][1]).toBe(fakeUser.password)
-  expect(typeof submit.mock.calls[0][2]).toBe('function')
 });

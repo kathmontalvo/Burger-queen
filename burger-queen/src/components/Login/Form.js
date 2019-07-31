@@ -9,13 +9,24 @@ const Form = ({ logprop }) => {
   const [err, setErr] = useState("")
 
   return (
-    <form onSubmit={e => {
+    <form onSubmit={async e => {
       e.preventDefault()
 
-      GetToken(email, password, (err) => {
+      await getToken(email, password).then((res) => {
+        if (res.token) {
+          auth.login(()=>{logprop.history.push("/home")})
+          localStorage.setItem('token', res.token)
+          console.log(localStorage.getItem('token'))
+        }
+      }).catch((err) => {
         return setErr(err.message)
-      }, logprop
-      );
+      });
+
+      getUser().then(async(data) => {
+        await localStorage.setItem('user', data[0])
+         console.log(localStorage.getItem('user'))
+       }
+   ).catch()
     }
 
     } className="col-12 flex-column d-flex form-group" data-testid="form">

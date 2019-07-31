@@ -19,7 +19,7 @@ const [show, setShow] = useState(true)
           onChange={updateName}
           placeholder='Nombre'
           className='name-value form-control'/>
-          <div onClick={onSubmit} className="checkBtn ml-3 btn btn-color padding-10 mt-0"><i className="fas fa-check"></i></div>
+          <div onClick={onSubmit} data-testid='submitName' className="checkBtn ml-3 btn btn-color padding-10 mt-0"><i className="fas fa-check"></i></div>
           </>
         )
         }
