@@ -12,7 +12,7 @@ const Home = (props) => {
       <Header logoutprop={props} />
       <section id="home-menu" className="container-fluid d-flex flex-wrap align-content-around">
         <Opts click={() => { return auth.login(() => { props.history.push("/orders") })}} name="ÓRDENES" imgMenu={breakfast} />
-        <Opts click={() => { return auth.login(() => { props.history.push("/orders") })}} name="COCINA" imgMenu={lunch} />
+        <Opts click={() => { return auth.login(() => { props.history.push("/cocina") })}} name="COCINA" imgMenu={lunch} />
       </section>
     </>
   )
