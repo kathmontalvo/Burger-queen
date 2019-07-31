@@ -5,7 +5,7 @@ const Pedido = ({ items, remove, increase, decrease, postOrder }) => {
   const total = items.reduce((a, b) => ({ total: a.total + b.total }), { total: 0 })
 
   return (
-    <table className='d-flex align-items-center column main-box my-2'>
+    <table className='d-flex align-items-center column main-box my-2 col-md-6'>
       <thead className='width-100'>
         <tr className='d-flex width-100 text-align align-items-center my-2'>
           <th className='col-12'><h3>Pedido</h3></th>

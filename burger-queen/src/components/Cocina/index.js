@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
+import Header from '../Header'
 
-const Cocina = () => {
+const Cocina = (props) => {
     const [orders, setOrders] = useState([]);
     useEffect(() => {
         fetch('http://localhost:5000/orders?page=1&limit=10', {
@@ -18,6 +19,7 @@ const Cocina = () => {
       }, [])
     return(
         <div>
+          <Header logoutprop={props}/>
             {orders.length !== 0 && 
             <div>{orders[0].client}</div>
             } 

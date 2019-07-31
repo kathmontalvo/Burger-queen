@@ -12,6 +12,8 @@ const Home = (props) => {
   const [type, setType] = useState('Desayuno')
   const [prodData, setProdData] = useState([]);
   const [items, setItems] = useState([]);
+  const [show, setShow] = useState(true)
+
 
   const updateName = (e) => {
     setName(e.target.value)
@@ -42,25 +44,38 @@ const Home = (props) => {
     <>
       <Header logoutprop={props} />
       <main id="home-menu" className="container-fluid d-flex flex-wrap align-content-around">
-        <Clientname name={name} updateName={updateName} />
-        <ul className="nav nav-tabs w-100" role="tablist">
-          <MenuOpts click={() => setType('Desayuno')} menu="Desayuno" aClass="nav-link active" />
-          <MenuOpts click={() => setType('Almuerzo')} menu="Almuerzo" aClass="nav-link" />
-        </ul>
+        <Clientname name={name} updateName={updateName} show={show} setShow={setShow} />
+        <section className="row">
+          <div className="col-md-6">
+            <ul className="nav nav-tabs w-100" role="tablist">
+              <MenuOpts click={() => setType('Desayuno')} menu="Desayuno" aClass="nav-link active" />
+              <MenuOpts click={() => setType('Almuerzo')} menu="Almuerzo" aClass="nav-link" />
+            </ul>
+            <div className="card-columns">
+              {type === 'Desayuno' && (
+                <Products data={prodData} menu="Desayuno" add={increase} />
+              )}
+              {type === 'Almuerzo' && (
+                <Products data={prodData} menu="Almuerzo" add={increase} />
+              )}
+            </div>
+          </div>
 
-        <div className="card-columns">
-          {type === 'Desayuno' && (
-            <Products data={prodData} menu="Desayuno" add={increase} />
-          )}
-          {type === 'Almuerzo' && (
-            <Products data={prodData} menu="Almuerzo" add={increase} />
-          )}
-        </div>
+          <Pedido
+            items={ctrl.mix(prodData, items)}
+            remove={remove} decrease={decrease}
+            increase={increase}
+            postOrder={() => {
+              postOrders(name, items, localStorage.getItem('token'), localStorage.getItem('user')._id).then((order) => {
+                localStorage.setItem('order', JSON.stringify(order));
+                console.log(JSON.parse(localStorage.getItem('order')));
+                setItems([]);
+                setName([]);
+                setShow(true)
+              })
+            }} />
+        </section>
 
-        <Pedido items={ctrl.mix(prodData, items)} remove={remove} decrease={decrease} increase={increase} postOrder={() => postOrders(name, items, localStorage.getItem('token'), localStorage.getItem('user')._id).then((order) => {
-          localStorage.setItem('order', JSON.stringify(order))
-          console.log(JSON.parse(localStorage.getItem('order')))
-        })} />
       </main>
     </>
   )
