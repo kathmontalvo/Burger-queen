@@ -1,19 +1,21 @@
 import React from 'react'
-import { BrowserRouter as Router, Route, Switch, Redirect } from 'react-router-dom';
+import { Route, Switch } from 'react-router-dom';
+import Orders from './Products'
 import Home from './Home'
 import Login from './Login'
 import ProtectedRoute from '../controller/routes/protected-route'
-const Routes = () => {
 
+const Routes = () => {
   return (
-    <Router>
+    // <Router>
       <Switch>
         <Route exact path='/' component={Login} />
+        <ProtectedRoute exact path='/orders' component={Orders} />
         <ProtectedRoute exact path='/home' component={Home} />
         <Route path = '*' component={()=> '404 NOT FOUND'} />
       </Switch>
-    </Router >
+    // </Router >x
   )
 }
 
-export default Routes
+export default Routes;

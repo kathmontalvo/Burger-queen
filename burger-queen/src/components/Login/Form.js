@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 // eslint-disable-next-line
 import Inputs from '../Input'
 import GetToken from '../../controller/login';
+
 const Form = ({ logprop }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");

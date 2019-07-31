@@ -1,8 +1,8 @@
 import React from 'react';
-import ImgLogin from '../ImgLogin'
-import burger from '../../images/hamburger.png'
+import ImgLogin from './ImgLogin'
+import burger from '../images/hamburger.png'
 // eslint-disable-next-line
-import auth from '../../controller/routes/auth'
+import auth from '../controller/routes/auth'
 const Header = ({logoutprop}) => {
   return (
     <header className="width-100 mt-2 d-flex height-60">
