@@ -27,9 +27,9 @@ const Cocina = (props) => {
           )).sort((a, b) => {
             const aValue= a.props.order.dateEntry;
             const bValue = b.props.order.dateEntry;
-            if(aValue > bValue){
+            if(new Date(aValue) > new Date(bValue)){
               return 1;
-            } else if ( aValue < bValue) {
+            } else if ( new Date(aValue) < new Date(bValue)) {
               return -1;
             } else {
               return 0;
