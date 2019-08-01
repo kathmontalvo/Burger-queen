@@ -1,5 +1,4 @@
 import React from 'react';
-import ImgLogin from './ImgLogin'
 import burger from '../images/hamburger.png'
 // eslint-disable-next-line
 import auth from '../controller/routes/auth'

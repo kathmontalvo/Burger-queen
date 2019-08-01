@@ -1,7 +1,7 @@
 import React, {useState, useEffect} from 'react'
 const OrderCard = ({ order }) => {
-  const productsArr = order.products;
-  const [timer, setTimer] = useState(0);
+  const productsArr = order.products
+  const [timer, setTimer] = useState(order.dateEntry);
   const [active, setActive] = useState(true);
 
   useEffect(()=>{
@@ -9,7 +9,7 @@ const OrderCard = ({ order }) => {
     if(active){
     interval = setInterval(()=>{
         setTimer(timer=>timer+1)
-      }, 1000)
+      }, 100)
     }else if (!active && timer !== 0) {
       clearInterval(interval);
     }

@@ -1,6 +1,6 @@
 import React from 'react';
 import Form from './Form';
-import ImgLogin from '../ImgLogin';
+import ImgLogin from './ImgLogin';
 import img from '../../images/bq.png'
 
 
