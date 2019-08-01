@@ -1,22 +1,11 @@
 import React, { useState, useEffect } from 'react'
 import Stopwatch from '../../controller/stopwatch'
+
 const OrderCard = ({ order }) => {
   const productsArr = order.products
-  // const [timer, setTimer] = useState(order.dateEntry);
-  // const [active, setActive] = useState(true);
-
-  // useEffect(() => {
-  //   let interval = null;
-  //   if (active) {
-  //     interval = setInterval(() => {
-  //       setTimer(timer => timer + 1)
-  //     }, 100)
-  //   } else if (!active && timer !== 0) {
-  //     clearInterval(interval);
-  //   }
-  //   return () => clearInterval(interval);
-  // }, [active, timer])
-
+  const [active, setActive] = useState("20:00:00")
+  const [line, setLine] = useState(true);
+  
   return (
     <div className="col-sm-6 mt-3">
       <div className="card" >
@@ -26,19 +15,23 @@ const OrderCard = ({ order }) => {
             <div className="pl-2">{order.client}</div>
           </div>
           {/* <div>{timer}</div> */}
-          <Stopwatch/>
+          <Stopwatch now={active} />
         </div>
         <div className="card-body">
           <ul className="list-group">
             {productsArr.map((el) => (
               <li className="list-group-item" key={el.product}>
-                <input type="checkbox" /> {el.qty} unid. {el.product}
+                <label style={{ textDecoration: !line ? "line-through" : "" }}>
+                  <input onChange={() => line ? setLine(false) : setLine(true)} id={el._id} type="checkbox" />
+                  {el.qty} unid. {el.product}
+                </label>
+
               </li>
             ))}
           </ul>
         </div>
         <div className="card-footer">
-          <button className="btn card-footer-btn w-100">Done</button>
+          <button onClick={() => setActive("00:00:00")} className="btn card-footer-btn w-100">Done</button>
         </div>
       </div>
     </div>
