@@ -5,54 +5,54 @@ jest.spyOn(global, 'fetch').mockImplementation(require('node-fetch'));
 
 it('get request1', (done) => {
   nock('http://localhost:5000')
-    .post('/users/1', {
-      'userId': '1',
-      'client': 'Laura',
-      'products': [
-        {
-          "product": "Café americano",
-          "qty": "5"
-        }
-      ]
-    })
-    .reply(200, [
-      {
-        "_id": "1",
-        "userId": "1",
-        "client": "Laura",
-        "products": [
-          {
-            "product": "Café americano",
-            "qty": "5"
-          }
-        ],
-        "status": "pending",
-        "dateEntry": "December 17, 1995 03:24:00",
-        "dateProcessed": "December 17, 1995 03:24:00"
+    .get('/users/1')
+    .reply(200, [{
+      "_id": 1,
+      "email": "amy@gmail.com",
+      "roles": {
+        "admin": false
       }
-    ])
-  return order('Laura', [
-    {
-      "product": "Café americano",
-      "qty": "5"
     }
-  ], 'asdfghjklWRET12', '1').then(order => {
-    expect(order).toEqual([
-      {
-        "_id": "1",
-        "userId": "1",
-        "client": "Laura",
-        "products": [
-          {
-            "product": "Café americano",
-            "qty": "5"
-          }
-        ],
-        "status": "pending",
-        "dateEntry": "December 17, 1995 03:24:00",
-        "dateProcessed": "December 17, 1995 03:24:00"
+    ])
+  return user(1).then(user => {
+    expect(user).toEqual([{
+      "_id": 1,
+      "email": "amy@gmail.com",
+      "roles": {
+        "admin": false
       }
+    }
     ]);
+    done()
+  });
+});
+
+it('get request2', (done) => {
+  nock('http://localhost:5000')
+    .get('/users/1')
+    .reply(401, { message: 'Unauthorized' })
+  return user(1).catch(user => {
+    expect(user).toEqual({ message: 'Unauthorized' });
+    done()
+  });
+});
+
+it('get request3', (done) => {
+  nock('http://localhost:5000')
+    .get('/users/1')
+    .reply(403, { message: 'Forbidden' })
+  return user(1).catch(user => {
+    expect(user).toEqual({ message: 'Forbidden' });
+    done()
+  });
+});
+
+it('get request4', (done) => {
+  nock('http://localhost:5000')
+    .get('/users/1')
+    .reply(404, { message: 'Not Found' })
+  return user(1).catch(user => {
+    expect(user).toEqual({ message: 'Not Found' });
     done()
   });
 });

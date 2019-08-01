@@ -10,7 +10,7 @@ const Form = ({ logprop }) => {
   const [err, setErr] = useState("")
 
   return (
-    <form onSubmit={async e => {
+    <form onSubmit={ async e => {
       e.preventDefault()
 
       await getToken(email, password).then((res) => {
