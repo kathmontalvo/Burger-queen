@@ -1,20 +1,35 @@
 import React, {useState, useEffect} from 'react'
 const OrderCard = ({ order }) => {
   const productsArr = order.products
-  const [timer, setTimer] = useState(order.dateEntry);
+  const [timer, setTimer] = useState(null);
+  const [seconds, setSeconds] = useState('00')
+  const [minutes, setMinutes] = useState('00')
   const [active, setActive] = useState(true);
 
   useEffect(()=>{
-    let interval = null;
+    // let interval = null;
     if(active){
-    interval = setInterval(()=>{
-        setTimer(timer=>timer+1)
-      }, 100)
+    let timer = setInterval(()=>{
+        let num = Number((seconds +1)).toString(),
+        count = minutes;
+      if(Number(seconds) === 59) {
+          count = (Number(minutes+ 1)).toString();
+          num = '00';
+        }
+        setMinutes(
+          count.length === 1 ? '0' + count : count
+        )
+        setSeconds(
+          num.length === 1 ? '0' + num : num
+        )
+        // setTimer(timer=>timer+1)
+      }, 1000)
+      setTimer(timer)
     }else if (!active && timer !== 0) {
-      clearInterval(interval);
+      clearInterval(timer);
     }
-    return () => clearInterval(interval);
-  }, [active, timer])
+    return () => clearInterval(timer);
+  }, [active, timer, seconds, minutes])
 
   return (
     <div className="col-sm-6 mt-3">
