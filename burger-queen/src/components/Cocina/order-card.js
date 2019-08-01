@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {useState} from 'react'
 import Stopwatch from '../../controller/stopwatch'
 const OrderCard = ({ order }) => {
   const productsArr = order.products
@@ -11,10 +11,10 @@ const OrderCard = ({ order }) => {
   //   // let interval = null;
   //   if(active){
   //   let timer = setInterval(()=>{
-  //       let num = Number((seconds +1)).toString(),
+  //       let num = (seconds +1).toString(),
   //       count = minutes;
-  //     if(Number(seconds) === 59) {
-  //         count = (Number(minutes+ 1)).toString();
+  //     if((seconds) === 59) {
+  //         count = (minutes+ 1).toString();
   //         num = '00';
   //       }
   //       setMinutes(
@@ -31,7 +31,7 @@ const OrderCard = ({ order }) => {
   //   }
   //   return () => clearInterval(timer);
   // }, [active, timer, seconds, minutes])
-
+const [limit, setLimit] = useState(true)
   return (
     <div className="col-sm-6 mt-3">
       <div className="card" >
@@ -40,8 +40,8 @@ const OrderCard = ({ order }) => {
             <div className="border-card-right pr-2">{order._id}</div>
             <div className="pl-2">{order.client}</div>
           </div>
-          {/* <div>{timer}</div> */}
-          <Stopwatch />
+          {/* <div>{seconds}:{minutes}</div> */}
+          <Stopwatch click={limit}/>
         </div>
         <div className="card-body">
           <ul className="list-group">
@@ -53,7 +53,7 @@ const OrderCard = ({ order }) => {
           </ul>
         </div>
         <div className="card-footer">
-          <button className="btn card-footer-btn w-100">Done</button>
+          <button onClick={()=>{setLimit(false)}} className="btn card-footer-btn w-100">Done</button>
         </div>
       </div>
     </div>
