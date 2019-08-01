@@ -24,7 +24,17 @@ const Cocina = (props) => {
         {orders.length !== 0 &&
           orders.map(el => (
             <OrderCard order={el} key={el._id} />
-          ))
+          )).sort((a, b) => {
+            const aValue= a.props.order.dateEntry;
+            const bValue = b.props.order.dateEntry;
+            if(aValue > bValue){
+              return 1;
+            } else if ( aValue < bValue) {
+              return -1;
+            } else {
+              return 0;
+            }
+          })
         }
       </div>
     </div>
