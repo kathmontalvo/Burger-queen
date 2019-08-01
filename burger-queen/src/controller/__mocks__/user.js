@@ -1,7 +1,15 @@
-export default jest.fn(() => new Promise((resolve, reject) => {
-    if (!email || !password) {
-        reject({ message: 'Error desde mock' });
+export default jest.fn((uid) => new Promise((resolve, reject) => {
+    if (!uid) {
+        reject({ message: 'Forbidden' });
     } else {
-        resolve({ token: '' });
+        resolve([{
+            "_id":"1",
+            "email": "amy@gmail.com",
+            "roles":{
+                        "admin": false
+                    }
+                    
+        }
+        ]);
     }
 }));
