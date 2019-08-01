@@ -1,10 +1,11 @@
-import React, { useState, useEffect } from 'react'
+import React, {useState} from 'react'
 import Stopwatch from '../../controller/stopwatch'
+import ProductList from './product-list';
 
 const OrderCard = ({ order }) => {
   const productsArr = order.products
   const [active, setActive] = useState("20:00:00")
-  const [line, setLine] = useState(true);
+
   
   return (
     <div className="col-sm-6 mt-3">
@@ -20,13 +21,7 @@ const OrderCard = ({ order }) => {
         <div className="card-body">
           <ul className="list-group">
             {productsArr.map((el) => (
-              <li className="list-group-item" key={el.product}>
-                <label style={{ textDecoration: !line ? "line-through" : "" }}>
-                  <input onChange={() => line ? setLine(false) : setLine(true)} id={el._id} type="checkbox" />
-                  {el.qty} unid. {el.product}
-                </label>
-
-              </li>
+              <ProductList el={el} key={el.product}/>
             ))}
           </ul>
         </div>
