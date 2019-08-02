@@ -5,7 +5,7 @@ import OrderCard from './order-card';
 const Cocina = (props) => {
   const [orders, setOrders] = useState([]);
   useEffect(() => {
-    fetch('http://165.22.166.131:8080/orders', {
+    fetch('http://165.22.166.131:8080/orders?page=36&limit=10', {
       method: 'GET',
       headers: {
         'Content-Type': 'application/json',

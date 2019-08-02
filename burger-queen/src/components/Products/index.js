@@ -75,11 +75,11 @@ const Home = (props) => {
                postOrders(name, items.map(el=> ({product: el._id, qty: el.qty})), localStorage.getItem('token'), '5d4203b7e96305001250ea9d')
                 .then((order) => {
                   console.log(order)
-                  localStorage.setItem('order', JSON.stringify(order));
-                  console.log(JSON.parse(localStorage.getItem('order')));
-                  // setItems([]);
-                  // setName("");
-                  // setShow(true)
+                  // localStorage.setItem('order', JSON.stringify(order));
+                  // console.log(JSON.parse(localStorage.getItem('order')));
+                  setItems([]);
+                  setName("");
+                  setShow(true)
                 })
                 .catch(console.error)
             }} />
