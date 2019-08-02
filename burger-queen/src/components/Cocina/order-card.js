@@ -1,13 +1,29 @@
 import React, {useState, useEffect} from 'react'
-// import Stopwatch from '../../controller/stopwatch'
 import ProductList from './product-list';
+import putOrders from '../../controller/orders/status'
+import deleteOrder from '../../controller/orders/delete';
 
 const OrderCard = ({ order }) => {
   const productsArr = order.products
   const [active, setActive] = useState(true)
   const [timer, setTimer] = useState(0)
 
-  useEffect(()=>{
+  const changeStatus = (e) =>{
+    if(e.target.value === "delivering" || e.target.value === "delivered"){
+      setActive(false);
+      putOrders(order.client, order.products, localStorage.getItem('token'), order.userId, e.target.value, order._id)
+      .then(console.log)
+    }else if(e.target.value === "canceled"){
+      deleteOrder(localStorage.getItem('token'), order._id)
+      .then(console.log)
+    }else if(e.target.value === "pending"){
+      setActive(true);
+      putOrders(order.client, order.products, localStorage.getItem('token'), order.userId, e.target.value, order._id)
+      .then(console.log)
+    }
+  }
+
+   useEffect(()=>{
     let interval = null;
     if(active){
       interval = setInterval(()=>{
@@ -26,7 +42,6 @@ const OrderCard = ({ order }) => {
             <div className="pl-2">{order.client}</div>
           </div>
           <div>{Math.floor(timer/60)}:{timer%60}</div>
-          {/* <Stopwatch now={active} /> */}
         </div>
         <div className="card-body">
           <ul className="list-group">
@@ -36,16 +51,15 @@ const OrderCard = ({ order }) => {
           </ul>
         </div>
         <div className="input-group card-footer">
-          <select class="custom-select" id="inputGroupSelect02">
-            <option selected value="pending">Pending</option>
+          <select onChange={changeStatus} className="custom-select" id="inputGroupSelect02">
+            <option defaultValue value="pending">Pending</option>
             <option value="canceled">Canceled</option>
             <option value="delivering">Delivering</option>
             <option value="delivered">Delivered</option>
           </select>
-          <div class="input-group-append">
-            <label class="input-group-text" for="inputGroupSelect02">Status</label>
+          <div className="input-group-append">
+            <label className="input-group-text" htmlFor="inputGroupSelect02">Status</label>
           </div>
-          {/* <button onClick={() => setActive(false)} className="btn card-footer-btn w-100">Done</button> */}
         </div>
       </div>
     </div>

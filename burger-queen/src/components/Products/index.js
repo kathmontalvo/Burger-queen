@@ -4,7 +4,7 @@ import Clientname from './Cliente';
 import Products from './Products';
 import Pedido from './Pedido'
 import MenuOpts from './Options';
-import postOrders from '../../controller/orders'
+import postOrders from '../../controller/orders/orders'
 import ctrl from '../../controller/products';
 
 const Home = (props) => {

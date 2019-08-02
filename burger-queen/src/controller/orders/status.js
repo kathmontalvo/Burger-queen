@@ -1,5 +1,5 @@
-const editStatus = (client, products, token, userId, status) => {
-  return fetch('http://165.22.166.131:8080/orders', {
+const editStatus = (client, products, token, userId, status, id) => {
+  return fetch(`http://165.22.166.131:8080/orders/${id}`,{
     method: 'PUT',
     headers: {
       'Content-Type': 'application/json',

@@ -5,17 +5,19 @@ import OrderCard from './order-card';
 const Cocina = (props) => {
   const [orders, setOrders] = useState([]);
   useEffect(() => {
-    fetch('http://165.22.166.131:8080/orders?page=36&limit=10', {
-      method: 'GET',
-      headers: {
-        'Content-Type': 'application/json',
-        'Authorization': 'Bearer ' + localStorage.getItem('token')
-      },
-    }).then(resp => resp.json())
-      .then((data) => {
-        console.log(data)
-        setOrders(data)
-      })
+    setInterval(()=>{
+      fetch('http://165.22.166.131:8080/orders?page=1&limit=10', {
+        method: 'GET',
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': 'Bearer ' + localStorage.getItem('token')
+        },
+      }).then(resp => resp.json())
+        .then((data) => {
+          console.log(data)
+          setOrders(data)
+        })
+    }, 10000)
   }, [])
   return (
     <div className="container-fluid">
