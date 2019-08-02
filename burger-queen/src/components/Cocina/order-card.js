@@ -36,7 +36,8 @@ const OrderCard = ({ order }) => {
           </ul>
         </div>
         <div className="card-footer">
-          <button onClick={() => setActive(false)} className="btn card-footer-btn w-100">Done</button>
+          <select name="" id=""></select>
+          <button onClick={() => {setActive(false)}} className="btn card-footer-btn w-100">Done</button>
         </div>
       </div>
     </div>
