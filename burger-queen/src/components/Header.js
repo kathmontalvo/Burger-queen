@@ -14,7 +14,10 @@ const Header = ({ logoutprop }) => {
         <li className="nav-item dropdown bars">
           <div className="nav-link dropdown-toggle dropdown-color" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i className='fas fa-bars'></i></div>
           <div className="dropdown-menu dropdown-menu-right" >
-            <a onClick={() => { auth.logout(() => { logoutprop.history.push("/") }) }} >Cerrar Sesión</a>
+            <a onClick={() => {
+              auth.logout(() => { logoutprop.history.push("/") });
+              localStorage.setItem('token', '')
+              }} >Cerrar Sesión</a>
           </div>
         </li>
       </ul>

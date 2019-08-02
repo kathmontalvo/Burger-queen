@@ -6,7 +6,7 @@ const ProductList = ({el}) => {
         <li className="list-group-item">
             <label style={{ textDecoration: !line ? "line-through" : "" }}>
             <input onChange={() => line ? setLine(false) : setLine(true)} id={el._id} type="checkbox" />
-            {el.qty} unid. {el.product}
+            {el.qty} unid. {el.product.name}
             </label>
       </li>
     )
