@@ -25,6 +25,9 @@ const Home = (props) => {
     setItems(fn(items, id))
   }
 
+  console.log(items.map(el=> ({product: el._id, qty: el.qty})));
+
+
   const increase = mapFunc(ctrl.increase)
   const decrease = mapFunc(ctrl.decrease)
   const remove = mapFunc(ctrl.delete)
@@ -68,16 +71,17 @@ const Home = (props) => {
             items={ctrl.mix(prodData, items)}
             remove={remove} decrease={decrease}
             increase={increase}
-            postOrder={() => {
-              postOrders(name, items, localStorage.getItem('token'), '5d4203b7e96305001250ea9d')
+            postOrder={() => { 
+               postOrders(name, items.map(el=> ({product: el._id, qty: el.qty})), localStorage.getItem('token'), '5d4203b7e96305001250ea9d')
                 .then((order) => {
                   console.log(order)
                   localStorage.setItem('order', JSON.stringify(order));
                   console.log(JSON.parse(localStorage.getItem('order')));
-                  setItems([]);
-                  setName([]);
-                  setShow(true)
+                  // setItems([]);
+                  // setName("");
+                  // setShow(true)
                 })
+                .catch(console.error)
             }} />
         </section>
 
