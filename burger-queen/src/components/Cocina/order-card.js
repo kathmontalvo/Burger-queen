@@ -31,7 +31,7 @@ const OrderCard = ({ order }) => {
         <div className="card-body">
           <ul className="list-group">
             {productsArr.map((el) => (
-              <ProductList el={el} key={el.product}/>
+              <ProductList el={el} key={el.product.productId}/>
             ))}
           </ul>
         </div>

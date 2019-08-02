@@ -76,6 +76,7 @@ const Home = (props) => {
                 .then((order) => {
                   console.log(order)
                   // localStorage.setItem('order', JSON.stringify(order));
+                  // console.log(JSON.parse(localStorage.getItem('order')));
                   setItems([]);
                   setName("");
                   setShow(true)
