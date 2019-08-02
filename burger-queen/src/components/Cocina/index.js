@@ -25,9 +25,9 @@ const Cocina = (props) => {
               }
             }))
           }
-          console.log(orders)
+          console.log(data)
         })
-    }, 0)
+    }, 10000)
   }, [])
   return (
     <div className="container-fluid">
