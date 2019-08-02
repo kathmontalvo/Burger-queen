@@ -1,9 +1,9 @@
 const getUser = (uid) => {
-  return fetch(`http://localhost:5000/users/${uid}`, {
+  return fetch(`http://165.22.166.131:8080/users/${uid}`, {
     method: 'GET',
     headers: {
       'Content-Type': 'application/json',
-      'Authorization': 'Bearer' + localStorage.getItem('token')
+      'Authorization': 'Bearer ' + localStorage.getItem('token')
     }
   }).then((resp) => {
     if (resp.status === 200) {

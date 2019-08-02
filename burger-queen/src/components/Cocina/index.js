@@ -5,11 +5,11 @@ import OrderCard from './order-card';
 const Cocina = (props) => {
   const [orders, setOrders] = useState([]);
   useEffect(() => {
-    fetch('http://localhost:5000/orders', {
+    fetch('http://165.22.166.131:8080/orders', {
       method: 'GET',
       headers: {
         'Content-Type': 'application/json',
-        'Authorization': 'Bearer' + localStorage.getItem('token')
+        'Authorization': 'Bearer ' + localStorage.getItem('token')
       },
     }).then(resp => resp.json())
       .then((data) => {

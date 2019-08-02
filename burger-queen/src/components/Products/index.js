@@ -14,6 +14,8 @@ const Home = (props) => {
   const [items, setItems] = useState([]);
   const [show, setShow] = useState(true)
 
+  const usuario = JSON.parse(localStorage.getItem('user'))
+  console.log(usuario._id)
 
   const updateName = (e) => {
     setName(e.target.value)
@@ -28,14 +30,15 @@ const Home = (props) => {
   const remove = mapFunc(ctrl.delete)
 
   useEffect(() => {
-    fetch('http://localhost:5000/products', {
+    fetch('http://165.22.166.131:8080/products', {
       method: 'GET',
       headers: {
         'Content-Type': 'application/json',
-        'Authorization': 'Bearer' + localStorage.getItem('token')
+        'Authorization': 'Bearer ' + localStorage.getItem('token')
       },
     }).then(resp => resp.json())
       .then(data => {
+        console.log(data)
         setProdData(data)
       })
   }, [])
@@ -66,13 +69,15 @@ const Home = (props) => {
             remove={remove} decrease={decrease}
             increase={increase}
             postOrder={() => {
-              postOrders(name, items, localStorage.getItem('token'), localStorage.getItem('user')._id).then((order) => {
-                localStorage.setItem('order', JSON.stringify(order));
-                console.log(JSON.parse(localStorage.getItem('order')));
-                setItems([]);
-                setName([]);
-                setShow(true)
-              })
+              postOrders(name, items, localStorage.getItem('token'), '5d4203b7e96305001250ea9d')
+                .then((order) => {
+                  console.log(order)
+                  localStorage.setItem('order', JSON.stringify(order));
+                  console.log(JSON.parse(localStorage.getItem('order')));
+                  setItems([]);
+                  setName([]);
+                  setShow(true)
+                })
             }} />
         </section>
 

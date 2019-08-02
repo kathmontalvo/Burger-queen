@@ -17,13 +17,15 @@ const Form = ({ logprop }) => {
         if (res.token) {
           auth.login(() => { logprop.history.push("/home") })
           localStorage.setItem('token', res.token)
+          console.log(localStorage.getItem('token'))
         }
       }).catch((err) => {
         setErr(err.message)
       });
 
-      getUser(1).then((data) => {
-        localStorage.setItem('user', data[0])
+      getUser(email).then((data) => {
+        console.log(data)
+        localStorage.setItem('user', JSON.stringify(data))
       }).catch(console.error)
     }
 
