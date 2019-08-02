@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import Header from '../Header'
 import OrderCard from './order-card';
-
 const Cocina = (props) => {
   const [orders, setOrders] = useState([]);
   useEffect(() => {
@@ -42,4 +41,4 @@ const Cocina = (props) => {
     </div>
   )
 }
-export default Cocina;
+export default Cocina
