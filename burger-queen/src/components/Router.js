@@ -10,8 +10,8 @@ const Routes = () => {
   return (
     // <Router>
       <Switch>
-        <Route exact path='/' component={Login} />
-        <ProtectedRoute exact path='/orders' component={Orders} />
+        <Route exact path={process.env.PUBLIC_URL + '/' } component={Login} />
+        <ProtectedRoute exact path={process.env.PUBLIC_URL + '/orders' } component={Orders} />
         <ProtectedRoute exact path='/home' component={Home} />
         <ProtectedRoute exact path='/cocina' component={cocina} />
         <Route path = '*' component={()=> '404 NOT FOUND'} />
