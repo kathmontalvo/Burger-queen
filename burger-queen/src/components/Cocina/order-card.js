@@ -34,7 +34,7 @@ const OrderCard = ({ order }) => {
   }, [active, timer])
   
   return (
-    <div className="col-sm-6 mt-3">
+    <div className=" mt-3">
       <div className="card" >
         <div className="card-header d-flex justify-content-between align-items-center">
           <div className="d-flex">
@@ -51,8 +51,8 @@ const OrderCard = ({ order }) => {
           </ul>
         </div>
         <div className="input-group card-footer">
-          <select onChange={changeStatus} className="custom-select" id="inputGroupSelect02">
-            <option defaultValue value="pending">Pending</option>
+          <select onChange={changeStatus} value={order.status} className="custom-select" id="inputGroupSelect02">
+            <option value="pending">Pending</option>
             <option value="canceled">Canceled</option>
             <option value="delivering">Delivering</option>
             <option value="delivered">Delivered</option>

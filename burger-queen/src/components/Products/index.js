@@ -54,8 +54,8 @@ const Home = (props) => {
         <section className="row">
           <div className="col-md-6">
             <ul className="nav nav-tabs w-100" role="tablist">
-              <MenuOpts click={() => setType('Desayuno')} option="Desayuno" aClass="nav-link active" />
-              <MenuOpts click={() => setType('Almuerzo')} option="Almuerzo" aClass="nav-link" />
+              <MenuOpts click={() => setType('Desayuno')} options="Desayuno" aClass="nav-link active" />
+              <MenuOpts click={() => setType('Almuerzo')} options="Almuerzo" aClass="nav-link" />
             </ul>
             <div className="card-columns">
               {type === 'Desayuno' && (

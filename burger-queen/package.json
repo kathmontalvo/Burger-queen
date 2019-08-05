@@ -2,7 +2,9 @@
   "name": "burger-queen",
   "version": "0.1.0",
   "private": true,
+  "homepage": "https://kathmontalvo.github.io/LIM009-FE-burger-queen-api-client/",
   "dependencies": {
+    "gh-pages": "^2.1.0",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
     "react-router": "^5.0.1",
@@ -13,7 +15,9 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test --testPathIgnorePatterns utils.js",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build --git git"
   },
   "eslintConfig": {
     "extends": "react-app"
