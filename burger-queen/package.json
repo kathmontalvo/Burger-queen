@@ -2,7 +2,7 @@
   "name": "burger-queen",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://kathmontalvo.github.io/LIM009-FE-burger-queen-api-client/",
+  "homepage": "https://ValeriaBE.github.io/LIM009-FE-burger-queen-api-client/",
   "dependencies": {
     "gh-pages": "^2.1.0",
     "react": "^16.8.6",
