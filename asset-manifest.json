@@ -1,19 +1,19 @@
 {
   "files": {
-    "main.css": "/static/css/main.847e338f.chunk.css",
-    "main.js": "/static/js/main.4e0348c4.chunk.js",
-    "main.js.map": "/static/js/main.4e0348c4.chunk.js.map",
-    "runtime~main.js": "/static/js/runtime~main.a8a9905a.js",
-    "runtime~main.js.map": "/static/js/runtime~main.a8a9905a.js.map",
-    "static/js/2.88ece3ad.chunk.js": "/static/js/2.88ece3ad.chunk.js",
-    "static/js/2.88ece3ad.chunk.js.map": "/static/js/2.88ece3ad.chunk.js.map",
-    "index.html": "/index.html",
-    "precache-manifest.48d7b4c344ef034d6058b4cb353325f4.js": "/precache-manifest.48d7b4c344ef034d6058b4cb353325f4.js",
-    "service-worker.js": "/service-worker.js",
-    "static/css/main.847e338f.chunk.css.map": "/static/css/main.847e338f.chunk.css.map",
-    "static/media/bq.png": "/static/media/bq.ca5340c0.png",
-    "static/media/breakfast-menu.jpg": "/static/media/breakfast-menu.8a0caf5d.jpg",
-    "static/media/hamburger.png": "/static/media/hamburger.b072de2a.png",
-    "static/media/lunch-menu.png": "/static/media/lunch-menu.35c633a8.png"
+    "main.css": "/LIM009-FE-burger-queen-api-client/static/css/main.847e338f.chunk.css",
+    "main.js": "/LIM009-FE-burger-queen-api-client/static/js/main.192ee2ef.chunk.js",
+    "main.js.map": "/LIM009-FE-burger-queen-api-client/static/js/main.192ee2ef.chunk.js.map",
+    "runtime~main.js": "/LIM009-FE-burger-queen-api-client/static/js/runtime~main.0e20135b.js",
+    "runtime~main.js.map": "/LIM009-FE-burger-queen-api-client/static/js/runtime~main.0e20135b.js.map",
+    "static/js/2.88ece3ad.chunk.js": "/LIM009-FE-burger-queen-api-client/static/js/2.88ece3ad.chunk.js",
+    "static/js/2.88ece3ad.chunk.js.map": "/LIM009-FE-burger-queen-api-client/static/js/2.88ece3ad.chunk.js.map",
+    "index.html": "/LIM009-FE-burger-queen-api-client/index.html",
+    "precache-manifest.03c8b12e42f7e96081db92eefdec9835.js": "/LIM009-FE-burger-queen-api-client/precache-manifest.03c8b12e42f7e96081db92eefdec9835.js",
+    "service-worker.js": "/LIM009-FE-burger-queen-api-client/service-worker.js",
+    "static/css/main.847e338f.chunk.css.map": "/LIM009-FE-burger-queen-api-client/static/css/main.847e338f.chunk.css.map",
+    "static/media/bq.png": "/LIM009-FE-burger-queen-api-client/static/media/bq.ca5340c0.png",
+    "static/media/breakfast-menu.jpg": "/LIM009-FE-burger-queen-api-client/static/media/breakfast-menu.8a0caf5d.jpg",
+    "static/media/hamburger.png": "/LIM009-FE-burger-queen-api-client/static/media/hamburger.b072de2a.png",
+    "static/media/lunch-menu.png": "/LIM009-FE-burger-queen-api-client/static/media/lunch-menu.35c633a8.png"
   }
 }
