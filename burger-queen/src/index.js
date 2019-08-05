@@ -9,6 +9,5 @@ ReactDOM.render(
   <HashRouter>
     <App />
   </HashRouter>
-
   , document.getElementById('root'));
 serviceWorker.unregister();
