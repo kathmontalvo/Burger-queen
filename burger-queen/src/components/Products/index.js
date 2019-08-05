@@ -3,7 +3,7 @@ import Header from '../Header';
 import Clientname from './Cliente';
 import Products from './Products';
 import Pedido from './Pedido'
-import MenuOpts from './Options';
+import MenuOpts from '../Options';
 import postOrders from '../../controller/orders/orders'
 import ctrl from '../../controller/products';
 
@@ -54,8 +54,8 @@ const Home = (props) => {
         <section className="row">
           <div className="col-md-6">
             <ul className="nav nav-tabs w-100" role="tablist">
-              <MenuOpts click={() => setType('Desayuno')} menu="Desayuno" aClass="nav-link active" />
-              <MenuOpts click={() => setType('Almuerzo')} menu="Almuerzo" aClass="nav-link" />
+              <MenuOpts click={() => setType('Desayuno')} options="Desayuno" aClass="nav-link active" />
+              <MenuOpts click={() => setType('Almuerzo')} options="Almuerzo" aClass="nav-link" />
             </ul>
             <div className="card-columns">
               {type === 'Desayuno' && (
