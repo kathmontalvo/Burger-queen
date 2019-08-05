@@ -26,7 +26,7 @@ const Cocina = (props) => {
               }
             }))
           }
-          console.log(data)
+          console.log(orders)
         })
     }, 10000)
   }, [])
@@ -41,10 +41,12 @@ const Cocina = (props) => {
           </ul>
           <div>
             {orders.length !== 0 &&
-              orders.map(el => (
-                el.status==='pending' &&
-                <OrderCard order={el} key={el._id} />
-              )).sort((a, b) => {
+              orders.map(el => {
+                if(el.status==='pending'){
+                  return <OrderCard order={el} key={el._id} />
+                }
+            })
+              .sort((a, b) => {
                 const aValue = a.props.order.dateEntry;
                 const bValue = b.props.order.dateEntry;
                 if (new Date(aValue) > new Date(bValue)) {
