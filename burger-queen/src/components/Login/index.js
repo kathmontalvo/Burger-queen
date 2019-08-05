@@ -5,6 +5,8 @@ import img from '../../images/bq.png'
 
 
 const Login = (props) => {
+  console.log(process.env.PUBLIC_URL)
+
   return (
     <>
       <main className='container d-flex fill-available justify-content-center align-items-center'>
