@@ -3,7 +3,7 @@ import Header from '../Header';
 import Clientname from './Cliente';
 import Products from './Products';
 import Pedido from './Pedido'
-import MenuOpts from './Options';
+import MenuOpts from '../Options';
 import postOrders from '../../controller/orders/orders'
 import ctrl from '../../controller/products';
 
@@ -25,7 +25,7 @@ const Home = (props) => {
     setItems(fn(items, id))
   }
 
-  console.log(items.map(el=> ({product: el._id, qty: el.qty})));
+  console.log(items.map(el => ({ product: el._id, qty: el.qty })));
 
 
   const increase = mapFunc(ctrl.increase)
@@ -54,8 +54,8 @@ const Home = (props) => {
         <section className="row">
           <div className="col-md-6">
             <ul className="nav nav-tabs w-100" role="tablist">
-              <MenuOpts click={() => setType('Desayuno')} menu="Desayuno" aClass="nav-link active" />
-              <MenuOpts click={() => setType('Almuerzo')} menu="Almuerzo" aClass="nav-link" />
+              <MenuOpts click={() => setType('Desayuno')} option="Desayuno" aClass="nav-link active" />
+              <MenuOpts click={() => setType('Almuerzo')} option="Almuerzo" aClass="nav-link" />
             </ul>
             <div className="card-columns">
               {type === 'Desayuno' && (
@@ -71,8 +71,8 @@ const Home = (props) => {
             items={ctrl.mix(prodData, items)}
             remove={remove} decrease={decrease}
             increase={increase}
-            postOrder={() => { 
-               postOrders(name, items.map(el=> ({product: el._id, qty: el.qty})), localStorage.getItem('token'), '5d4203b7e96305001250ea9d')
+            postOrder={() => {
+              postOrders(name, items.map(el => ({ product: el._id, qty: el.qty })), localStorage.getItem('token'), '5d4203b7e96305001250ea9d')
                 .then((order) => {
                   console.log(order)
                   // localStorage.setItem('order', JSON.stringify(order));
