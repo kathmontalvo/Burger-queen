@@ -26,7 +26,7 @@ const Cocina = (props) => {
               }
             }))
           }
-          console.log(orders)
+          console.log(data)
         })
     }, 10000)
   }, [])

@@ -1,10 +1,10 @@
-import order from '../../controller/orders'
+import order from '../../controller/orders/orders'
 import nock from 'nock';
 
 jest.spyOn(global, 'fetch').mockImplementation(require('node-fetch'));
 
 it('get request1', (done) => {
-  nock('http://localhost:5000')
+  nock('http://165.22.166.131:8080')
     .post('/orders', {
       'userId': '1',
       'client': 'Laura',
@@ -58,7 +58,7 @@ it('get request1', (done) => {
 });
 
 it('get request2', (done) => {
-  nock('http://localhost:5000')
+  nock('http://165.22.166.131:8080')
     .post('/orders', {
       'userId': '1',
       'client': 'Laura',
@@ -73,7 +73,7 @@ it('get request2', (done) => {
 
 
 it('get request3', (done) => {
-  nock('http://localhost:5000')
+  nock('http://165.22.166.131:8080')
     .post('/orders', {
       'userId': '1',
       'client': 'Laura',
@@ -88,7 +88,7 @@ it('get request3', (done) => {
 });
 
 it('get request3', (done) => {
-  nock('http://localhost:5000')
+  nock('http://165.22.166.131:8080')
     .post('/orders', {
       'userId': '1',
       'client': 'Laura',

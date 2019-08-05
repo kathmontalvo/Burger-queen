@@ -4,7 +4,7 @@ import nock from 'nock';
 jest.spyOn(global, 'fetch').mockImplementation(require('node-fetch'))
 
 it('get token', async (done) => {
-  nock('http://localhost:5000')
+  nock('http://165.22.166.131:8080')
   .post('/auth', { email: 'user1@gmail.com', password: 'password000' })
   .reply(200, { token: 'asldkjaskldmaslkd123123ssladñs' })
     return login('user1@gmail.com', 'password000').then(res=>{
@@ -14,7 +14,7 @@ it('get token', async (done) => {
 })
 
 it('get error', async (done) => {
-  nock('http://localhost:5000')
+  nock('http://165.22.166.131:8080')
   .post('/auth', { email: 'user2@gmail.com', password: 'password123' })
   .reply(400, { message: 'Ingrese correctamente su usuario y/o contraseña' })
     return login('user2@gmail.com', 'password123').catch(res=>{
@@ -24,7 +24,7 @@ it('get error', async (done) => {
 })
 
 it('get error', async (done) => {
-  nock('http://localhost:5000')
+  nock('http://165.22.166.131:8080')
   .post('/auth', { email: 'user2@gmail.com', password: 'password123' })
   .reply(404, { message: 'Not Found' })
     return login('user2@gmail.com', 'password123').catch(res=>{

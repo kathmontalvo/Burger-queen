@@ -4,7 +4,7 @@ import nock from 'nock';
 jest.spyOn(global, 'fetch').mockImplementation(require('node-fetch'));
 
 it('get request1', (done) => {
-  nock('http://localhost:5000')
+  nock('http://165.22.166.131:8080')
     .get('/users/1')
     .reply(200, [{
       "_id": 1,
@@ -28,7 +28,7 @@ it('get request1', (done) => {
 });
 
 it('get request2', (done) => {
-  nock('http://localhost:5000')
+  nock('http://165.22.166.131:8080')
     .get('/users/1')
     .reply(401, { message: 'Unauthorized' })
   return user(1).catch(user => {
@@ -38,7 +38,7 @@ it('get request2', (done) => {
 });
 
 it('get request3', (done) => {
-  nock('http://localhost:5000')
+  nock('http://165.22.166.131:8080')
     .get('/users/1')
     .reply(403, { message: 'Forbidden' })
   return user(1).catch(user => {
@@ -48,7 +48,7 @@ it('get request3', (done) => {
 });
 
 it('get request4', (done) => {
-  nock('http://localhost:5000')
+  nock('http://165.22.166.131:8080')
     .get('/users/1')
     .reply(404, { message: 'Not Found' })
   return user(1).catch(user => {
