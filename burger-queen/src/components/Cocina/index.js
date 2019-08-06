@@ -9,15 +9,17 @@ const Cocina = (props) => {
   const [type, setType] = useState('pending');
 
   useEffect(() => {
+const interval = () => {
 
-    setInterval(() => {
+  getOrders(localStorage.getItem('token')).then((data) => {
+    console.log(data)
+    setOrders(data)
+  })
 
-      getOrders(localStorage.getItem('token')).then((data) => {
-        console.log(data)
-        setOrders(data)
-      })
-
-    }, 10000)
+}
+    interval();
+    const processId = setInterval( interval, 500)
+    return () => clearInterval(processId)
 
   }, []);
 
