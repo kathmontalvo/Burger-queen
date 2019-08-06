@@ -2,35 +2,25 @@ import React, { useState, useEffect } from 'react';
 import Header from '../Header'
 import OrderCard from './order-card';
 import Options from '../Options'
+import getOrders from '../../controller/orders/getOrder'
 
 const Cocina = (props) => {
   const [orders, setOrders] = useState([]);
   const [type, setType] = useState('pending');
+
   useEffect(() => {
+
     setInterval(() => {
-      fetch('http://165.22.166.131:8080/orders?page=1&limit=10', {
-        method: 'GET',
-        headers: {
-          'Content-Type': 'application/json',
-          'Authorization': 'Bearer ' + localStorage.getItem('token')
-        },
-      }).then(resp => resp.json())
-        .then((data) => {
-          // if (data.length > 0) {
-            setOrders(data)
-          // } else {
-            // const newArr = [];
-            // orders.forEach((el1) => data.forEach((el2) => {
-            //   if (el1._id !== el2._id) {
-            //     newArr.push(el2)
-            //     setOrders(newArr)
-            //   }
-            // }))
-          // }
-          console.log(orders)
-        })
+
+      getOrders(localStorage.getItem('token')).then((data) => {
+        console.log(data)
+        setOrders(data)
+      })
+
     }, 10000)
-  }, [])
+
+  }, []);
+
   return (
     <div className="container-fluid">
       <Header logoutprop={props} />
@@ -39,7 +29,11 @@ const Cocina = (props) => {
           <Options click={() => setType('pending')} options="Pending" aClass="nav-link active" />
           <Options click={() => setType('delivered')} options="Delivered" aClass="nav-link" />
         </ul>
-        <section className="row w-100">
+        <section className="row w-100 justify-content-center">
+          {orders.length === 0 &&
+            <div className="mt-5">
+              No hay órdenes pendientes.
+            </div>}
           {orders.length !== 0 &&
             orders.map(el => {
               if ((el.status === 'pending' || el.status === 'delivering') && type === 'pending') {
@@ -48,7 +42,6 @@ const Cocina = (props) => {
                 return <OrderCard order={el} key={el._id} />
               }
             }).sort((a, b) => {
-              console.log(a, b)
               const aValue = a.props.order.dateEntry;
               const bValue = b.props.order.dateEntry;
               if (new Date(aValue) > new Date(bValue)) {

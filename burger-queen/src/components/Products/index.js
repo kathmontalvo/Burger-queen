@@ -15,7 +15,6 @@ const Home = (props) => {
   const [show, setShow] = useState(true)
 
   const usuario = JSON.parse(localStorage.getItem('user'))
-  console.log(usuario._id)
 
   const updateName = (e) => {
     setName(e.target.value)
@@ -24,9 +23,6 @@ const Home = (props) => {
   const mapFunc = (fn) => (id) => {
     setItems(fn(items, id))
   }
-
-  console.log(items.map(el => ({ product: el._id, qty: el.qty })));
-
 
   const increase = mapFunc(ctrl.increase)
   const decrease = mapFunc(ctrl.decrease)
@@ -49,7 +45,7 @@ const Home = (props) => {
   return (
     <>
       <Header logoutprop={props} />
-      <main id="home-menu" className="container-fluid d-flex flex-wrap align-content-around">
+      <main id="menu" className="container-fluid d-flex flex-wrap align-content-around">
         <Clientname name={name} updateName={updateName} show={show} setShow={setShow} />
         <section className="row">
           <div className="col-md-6">
@@ -75,8 +71,6 @@ const Home = (props) => {
               postOrders(name, items.map(el => ({ product: el._id, qty: el.qty })), localStorage.getItem('token'), '5d4203b7e96305001250ea9d')
                 .then((order) => {
                   console.log(order)
-                  // localStorage.setItem('order', JSON.stringify(order));
-                  // console.log(JSON.parse(localStorage.getItem('order')));
                   setItems([]);
                   setName("");
                   setShow(true)
