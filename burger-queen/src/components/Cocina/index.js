@@ -16,17 +16,17 @@ const Cocina = (props) => {
         },
       }).then(resp => resp.json())
         .then((data) => {
-          if (data.length > 0) {
+          // if (data.length > 0) {
             setOrders(data)
-          } else {
-            const newArr = [];
-            orders.forEach((el1) => data.forEach((el2) => {
-              if (el1._id !== el2._id) {
-                newArr.push(el2)
-                setOrders(newArr)
-              }
-            }))
-          }
+          // } else {
+            // const newArr = [];
+            // orders.forEach((el1) => data.forEach((el2) => {
+            //   if (el1._id !== el2._id) {
+            //     newArr.push(el2)
+            //     setOrders(newArr)
+            //   }
+            // }))
+          // }
           console.log(orders)
         })
     }, 10000)
