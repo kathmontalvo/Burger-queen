@@ -4,7 +4,7 @@ import burger from '../images/hamburger.png'
 import auth from '../controller/routes/auth'
 const Header = ({ logoutprop }) => {
   return (
-    <header className="width-100 mt-2 d-flex height-60">
+    <header className="width-100 mt-2 mb-4 d-flex height-60">
       <ul className="width-100 nav nav-tabs justify-content-center">
         <li className="nav-item">
           <button onClick={() => { auth.login(() => { logoutprop.history.push("/home") }) }} className="text-center align-self-start mb-4 border-none transparent cursor">

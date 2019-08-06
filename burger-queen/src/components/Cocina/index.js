@@ -34,17 +34,17 @@ const Cocina = (props) => {
   return (
     <div className="container-fluid">
       <Header logoutprop={props} />
-      <div className="row w-100">
+      <div className="w-100">
         <ul className="nav nav-tabs w-100" role="tablist">
           <Options click={() => setType('pending')} options="Pending" aClass="nav-link active" />
           <Options click={() => setType('delivered')} options="Delivered" aClass="nav-link" />
         </ul>
-        <section>
+        <section className="row w-100">
           {orders.length !== 0 &&
             orders.map(el => {
-              if(el.status === 'pending' && type === 'pending'){
+              if ((el.status === 'pending' || el.status === 'delivering') && type === 'pending') {
                 return <OrderCard order={el} key={el._id} />
-              } else if(el.status !== 'pending' && type === 'delivered' ) {
+              } else if (el.status === 'delivered' && type === 'delivered') {
                 return <OrderCard order={el} key={el._id} />
               }
             }).sort((a, b) => {

@@ -5,7 +5,6 @@ import img from '../../images/bq.png'
 
 
 const Login = (props) => {
-  console.log(process.env.PUBLIC_URL)
 
   return (
     <>
