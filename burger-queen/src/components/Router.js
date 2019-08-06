@@ -3,7 +3,7 @@ import { Route, Switch } from 'react-router-dom';
 import Orders from './Products'
 import Home from './Home'
 import Login from './Login'
-import cocina from './Cocina/index'
+import Cocina from './Cocina/index'
 import ProtectedRoute from '../controller/routes/protected-route'
 
 const Routes = () => {
@@ -13,7 +13,7 @@ const Routes = () => {
         <Route exact path='/' component={Login} />
         <ProtectedRoute exact path='/orders' component={Orders} />
         <ProtectedRoute exact path='/home' component={Home} />
-        <ProtectedRoute exact path='/cocina' component={cocina} />
+        <ProtectedRoute exact path='/cocina' component={Cocina} />
         <Route path='*' component={() => '404 NOT FOUND'} />
       </Switch>
 

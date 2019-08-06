@@ -10,26 +10,23 @@ const Form = ({ logprop }) => {
   const [err, setErr] = useState("")
 
   return (
-    <form onSubmit={ async e => {
+    <form onSubmit={async e => {
       e.preventDefault()
 
       await getToken(email, password).then((res) => {
         if (res.token) {
           auth.login(() => { logprop.history.push("/home") })
           localStorage.setItem('token', res.token)
-          console.log(localStorage.getItem('token'))
         }
       }).catch((err) => {
         setErr(err.message)
       });
 
       getUser(email).then((data) => {
-        console.log(data)
         localStorage.setItem('user', JSON.stringify(data))
       }).catch(console.error)
-    }
-
-    } className="col-12 flex-column d-flex form-group" data-testid="form">
+    }}
+      className="col-12 flex-column d-flex form-group" data-testid="form">
 
       <Inputs
         divInput="input-group form-group radius-50 white"
