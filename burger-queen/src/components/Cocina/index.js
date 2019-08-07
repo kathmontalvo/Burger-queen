@@ -18,7 +18,7 @@ const interval = () => {
 
 }
     interval();
-    const processId = setInterval( interval, 500)
+    const processId = setInterval( interval, 10000)
     return () => clearInterval(processId)
 
   }, []);

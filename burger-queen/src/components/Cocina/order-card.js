@@ -4,10 +4,11 @@ import putOrders from '../../controller/orders/status'
 import deleteOrder from '../../controller/orders/delete';
 
 const OrderCard = ({ order }) => {
+  const fecha = new Date (order.dateEntry)
   const productsArr = order.products
   const [active, setActive] = useState(true)
-  const [timer, setTimer] = useState(0)
-
+  const [timer, setTimer] = useState((Date.now() - fecha.getTime()) / 1000)
+console.log(timer)
   const changeStatus = (e) => {
     if (e.target.value === "delivering" || e.target.value === "delivered") {
       setActive(false);
@@ -45,7 +46,7 @@ const OrderCard = ({ order }) => {
             <div data-testid="client-name" className="border-card-right pr-2">Cliente: {order.client}</div>
             {/* <div className="pl-2"></div> */}
           </div>
-          <div>{Math.floor(timer / 60) + ':' + timer % 60}</div>
+          <div>{Math.floor((timer).toFixed() / 60)} : {(timer).toFixed() % 60}</div>
         </div>
         <div className="card-body">
           <ul className="list-group">
