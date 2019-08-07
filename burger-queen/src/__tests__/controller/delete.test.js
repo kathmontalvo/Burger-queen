@@ -14,7 +14,7 @@ it('get request1', (done) => {
         "products": [
           {
             "product": "Café americano",
-            "qty": "5"
+            "qty": 5
           }
         ],
         "status": "pending",
@@ -31,7 +31,7 @@ it('get request1', (done) => {
         "products": [
           {
             "product": "Café americano",
-            "qty": "5"
+            "qty": 5
           }
         ],
         "status": "pending",

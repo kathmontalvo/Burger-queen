@@ -13,7 +13,7 @@ export default jest.fn((client, products, token, userId) => new Promise((resolve
           "products": [
             {
               "product": "Café americano",
-              "qty": "5"
+              "qty": 5
             }
           ],
           "status": "pending",

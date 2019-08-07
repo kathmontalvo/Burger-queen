@@ -20,7 +20,6 @@ it("router validation", async() => {
   expect(getByPlaceholderText('Email').value).toBe('emily@gmail.com')
   expect(getByPlaceholderText('Password').value).toBe('1234AbcffffffffffD');
   const submitBtn = getByText('Ingresar');
-
   expect(history.location.pathname).toBe("/");
   act(() => {
     fireEvent.submit(submitBtn)

@@ -11,7 +11,7 @@ it('get request1', (done) => {
       'products': [
         {
           "product": "Café americano",
-          "qty": "5"
+          "qty": 5
         }
       ]
     })
@@ -23,7 +23,7 @@ it('get request1', (done) => {
         "products": [
           {
             "product": "Café americano",
-            "qty": "5"
+            "qty": 5
           }
         ],
         "status": "pending",
@@ -34,7 +34,7 @@ it('get request1', (done) => {
   return order('Laura', [
     {
       "product": "Café americano",
-      "qty": "5"
+      "qty": 5
     }
   ], 'asdfghjklWRET12', '1').then(order => {
     expect(order).toEqual([
@@ -45,7 +45,7 @@ it('get request1', (done) => {
         "products": [
           {
             "product": "Café americano",
-            "qty": "5"
+            "qty": 5
           }
         ],
         "status": "pending",

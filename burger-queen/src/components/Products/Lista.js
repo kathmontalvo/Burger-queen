@@ -12,7 +12,7 @@ const Lista = ({ item, remove, increase, decrease }) => {
       </td>
       <td className='d-flex col-4 justify-content-center align-items-center'>
         <button data-testid='takeQty' onClick={() => decrease(item._id)} className='border-none transparent'><i className="fas fa-minus-circle blue-color"></i></button>
-        <span data-testId='qty' className='text-gray'>{item.qty}</span>
+        <span data-testId='qty' className='text-gray' >{item.qty}</span>
         <button data-testid='addQty' onClick={() => increase(item._id)} className='border-none transparent'><i className="fas fa-plus-circle blue-color"></i></button>
       </td>
       <td className="col-4">

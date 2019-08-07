@@ -11,7 +11,7 @@ it('get request1', (done) => {
         'products': [
           {
             "product": "Café americano",
-            "qty": "5"
+            "qty": 5
           }
         ],
         'status': 'pending'
@@ -24,7 +24,7 @@ it('get request1', (done) => {
         "products": [
           {
             "product": "Café americano",
-            "qty": "5"
+            "qty": 5
           }
         ],
         "status": "delivered",
@@ -35,7 +35,7 @@ it('get request1', (done) => {
   return editStatus('Laura', [
     {
       "product": "Café americano",
-      "qty": "5"
+      "qty": 5
     }
   ], 'asdfghjklWRET12', '1', 'pending', '1').then(order => {
     expect(order).toEqual([
@@ -46,7 +46,7 @@ it('get request1', (done) => {
         "products": [
           {
             "product": "Café americano",
-            "qty": "5"
+            "qty": 5
           }
         ],
         "status": "delivered",
@@ -66,7 +66,7 @@ it('get request2', (done) => {
       'products': [
         {
           "product": "Café americano",
-          "qty": "5"
+          "qty": 5
         }
       ], 
       'status': 'incorrect'
@@ -75,7 +75,7 @@ it('get request2', (done) => {
   return editStatus('Laura', [
     {
       "product": "Café americano",
-      "qty": "5"
+      "qty": 5
     }
   ], 'asdfghjklWRET12', '1', 'incorrect', '1').catch(res => {
     expect(res.message).toBe('Propiedad inválida a modificar');
