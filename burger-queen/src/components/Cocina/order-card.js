@@ -39,11 +39,11 @@ const OrderCard = ({ order }) => {
   }, [active, timer])
 
   return (
-    <div className="col-sm-6 mt-3">
+    <div data-testid={order._id} className="col-sm-6 mt-3">
       <div className="card" >
         <div className="card-header d-flex justify-content-between align-items-center">
           <div className="d-flex">
-            <div data-testid="client-name" className="border-card-right pr-2">Cliente: {order.client}</div>
+            <div data-testid={order.client} className="border-card-right pr-2">Cliente: {order.client}</div>
             {/* <div className="pl-2"></div> */}
           </div>
           <div>{(Math.floor((timer).toFixed() / 60))%(12)}:{(Math.floor((timer).toFixed() / 60))%60}:{(timer).toFixed() % 60}</div>

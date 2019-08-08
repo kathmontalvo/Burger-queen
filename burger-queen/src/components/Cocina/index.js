@@ -12,7 +12,7 @@ const Cocina = (props) => {
 const interval = () => {
 
   getOrders(localStorage.getItem('token')).then((data) => {
-    console.log(data)
+    // console.log(data)
     setOrders(data)
   })
 
