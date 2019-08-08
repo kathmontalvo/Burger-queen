@@ -4,7 +4,7 @@ import React from 'react'
 const Clientname = ({name, updateName, show, setShow}) => {
   const onSubmit = (e) => {
     e.preventDefault()
-    setShow(false)
+    setShow(show===true?false:true)
   }
 
   return (
@@ -18,14 +18,14 @@ const Clientname = ({name, updateName, show, setShow}) => {
           onChange={updateName}
           placeholder='Nombre'
           className='name-value form-control'/>
-          <button data-testid='submitName' className="checkBtn ml-3 btn btn-color padding-10 mt-0"><i className="fas fa-check"></i></button>
+          <button data-testid='submit' className="checkBtn ml-3 btn btn-color padding-10 mt-0"><i className="fas fa-check"></i></button>
           </>
         )
         }
         {show === false && (
           <>
-          <p className="pValue my-0">{name}</p>
-          <button onClick={()=> setShow(true)} className="checkBtn ml-3 btn btn-color padding-10 mt-0">Edit</button>
+          <p data-testid="change-name" className="pValue my-0">{name}</p>
+          <button data-testid="edit" className="checkBtn ml-3 btn btn-color padding-10 mt-0">Edit</button>
           </>
         )}
         

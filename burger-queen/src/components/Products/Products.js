@@ -7,10 +7,10 @@ const Product = ({ data, menu, add }) => {
   })
 
   return product.map(product => (
-    <div className="card my-3" key={product._id} >
-      <img className="card-img-top" src={product.image} alt={product.name} onClick={() => { add(product._id) }} />
+    <div data-testid={product._id} className="card my-3" key={product._id} onClick={() => { add(product._id) }}>
+      <img className="card-img-top" src={product.image} alt={product.name} />
       <div className="card-body">
-        <h5 className="card-title">{product.name}</h5>
+        <h5 data-testid={product.name} className="card-title">{product.name}</h5>
       </div>
       <div className="card-footer justify-content-center">
         S/. {product.price}

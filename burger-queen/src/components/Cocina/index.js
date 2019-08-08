@@ -31,7 +31,7 @@ const interval = () => {
           <Options click={() => setType('pending')} options="Pending" aClass="nav-link active" />
           <Options click={() => setType('delivered')} options="Delivered" aClass="nav-link" />
         </ul>
-        <section className="row w-100 justify-content-between">
+        <section data-testid="opt" className="row w-100 justify-content-between">
           {orders.length === 0 &&
             <div className="mt-5 w-100 text-align">
               No hay órdenes pendientes.

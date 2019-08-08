@@ -24,7 +24,7 @@ const Pedido = ({ items, remove, increase, decrease, postOrder }) => {
           <td className='col-4 my-1'>Total:</td>
           <td className='col-4 my-1 blue-color'>S/. {total.total}</td>
           <td className='col-4 my-1'>
-            <button onClick={postOrder} className=' btn btn-primary background-blue white-space padding-10'>Enviar a cocina</button>
+            <button data-testid="post-order" onClick={postOrder} className=' btn btn-primary background-blue white-space padding-10'>Enviar a cocina</button>
           </td>
         </tr>
       </tbody>
