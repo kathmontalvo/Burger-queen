@@ -46,7 +46,7 @@ const OrderCard = ({ order }) => {
             <div data-testid="client-name" className="border-card-right pr-2">Cliente: {order.client}</div>
             {/* <div className="pl-2"></div> */}
           </div>
-          <div>{Math.floor((timer).toFixed() / 60)}:{(timer).toFixed() % 60}</div>
+          <div>{(Math.floor((timer).toFixed() / 60))%(12)}:{(Math.floor((timer).toFixed() / 60))%60}:{(timer).toFixed() % 60}</div>
         </div>
         <div className="card-body">
           <ul className="list-group">

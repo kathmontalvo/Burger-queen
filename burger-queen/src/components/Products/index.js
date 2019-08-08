@@ -14,8 +14,6 @@ const Home = (props) => {
   const [items, setItems] = useState([]);
   const [show, setShow] = useState(true)
 
-  const usuario = JSON.parse(localStorage.getItem('user'))
-
   const updateName = (e) => {
     setName(e.target.value)
   }
@@ -37,7 +35,7 @@ const Home = (props) => {
       },
     }).then(resp => resp.json())
       .then(data => {
-        console.log(data)
+        // console.log(data)
         setProdData(data)
       })
   }, [])
@@ -53,7 +51,7 @@ const Home = (props) => {
               <MenuOpts click={() => setType('Desayuno')} options="Desayuno" aClass="nav-link active" />
               <MenuOpts click={() => setType('Almuerzo')} options="Almuerzo" aClass="nav-link" />
             </ul>
-            <div className="card-columns">
+            <div  data-testid='opt' className="card-columns">
               {type === 'Desayuno' && (
                 <Products data={prodData} menu="Desayuno" add={increase} />
               )}
@@ -70,7 +68,6 @@ const Home = (props) => {
             postOrder={() => {
               postOrders(name, items.map(el => ({ product: el._id, qty: el.qty })), localStorage.getItem('token'), '5d4203b7e96305001250ea9d')
                 .then((order) => {
-                  console.log(order)
                   setItems([]);
                   setName("");
                   setShow(true)
