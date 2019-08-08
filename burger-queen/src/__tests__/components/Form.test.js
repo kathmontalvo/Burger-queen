@@ -13,9 +13,10 @@ it("router validation", async() => {
   
   expect(getByPlaceholderText('Email').value).toBe('')
   expect(getByPlaceholderText('Password').value).toBe('');
-
+act(()=>{
   fireEvent.change(getByPlaceholderText('Email'), { target: { value: 'emily@gmail.com' } })
   fireEvent.change(getByPlaceholderText('Password'), { target: { value: '1234AbcffffffffffD' } })
+})
 
   expect(getByPlaceholderText('Email').value).toBe('emily@gmail.com')
   expect(getByPlaceholderText('Password').value).toBe('1234AbcffffffffffD');

@@ -43,7 +43,7 @@ const OrderCard = ({ order }) => {
       <div className="card" >
         <div className="card-header d-flex justify-content-between align-items-center">
           <div className="d-flex">
-            <div data-testid="client-name" className="border-card-right pr-2">Cliente: {order.client}</div>
+            <div data-testid={order.client} className="border-card-right pr-2">Cliente: {order.client}</div>
             {/* <div className="pl-2"></div> */}
           </div>
           <div>{(Math.floor((timer).toFixed() / 60))%(12)}:{(Math.floor((timer).toFixed() / 60))%60}:{(timer).toFixed() % 60}</div>
@@ -56,7 +56,7 @@ const OrderCard = ({ order }) => {
           </ul>
         </div>
         <div className="input-group card-footer">
-          <select onChange={changeStatus} value={order.status} className="custom-select" id="inputGroupSelect02">
+          <select data-testid={`name-${order.client}`} onChange={changeStatus} value={order.status} className="custom-select" id="inputGroupSelect02">
             <option value="pending">Pending</option>
             <option value="canceled">Canceled</option>
             <option value="delivering">Delivering</option>
