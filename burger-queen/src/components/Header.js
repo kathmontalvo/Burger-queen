@@ -7,7 +7,7 @@ const Header = ({ logoutprop }) => {
     <header className="width-100 mt-2 mb-4 d-flex height-60">
       <ul className="width-100 nav nav-tabs justify-content-center">
         <li className="nav-item">
-          <button onClick={() => { auth.login(() => { logoutprop.history.push("/home") }) }} className="text-center align-self-start mb-4 border-none transparent cursor">
+          <button data-testid='burger' onClick={() => { auth.login(() => { logoutprop.history.push("/home") }) }} className="text-center align-self-start mb-4 border-none transparent cursor">
             <img src={burger} alt="img" className="img-fluid max-50" />
           </button>
         </li>

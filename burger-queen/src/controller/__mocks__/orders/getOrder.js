@@ -1,6 +1,6 @@
 export default jest.fn((token) => new Promise((resolve, reject) => {
   if (!token) {
-    reject({ message: 'Propiedad inválidad a modificar' });
+    reject({ message: 'Propiedad inválida a modificar' });
   } else {
     resolve(
       [
