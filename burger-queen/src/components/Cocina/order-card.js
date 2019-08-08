@@ -50,9 +50,9 @@ const OrderCard = ({ order }) => {
         </div>
         <div className="card-body">
           <ul className="list-group">
-            {productsArr.map((el) => (
-              <ProductList el={el} key={el.product.productId} />
-            ))}
+            {productsArr.map((el) => {
+              console.log(el)
+              return (<ProductList el={el} key={el.product.productId} />)})}
           </ul>
         </div>
         <div className="input-group card-footer">
