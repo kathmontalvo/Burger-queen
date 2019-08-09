@@ -27,7 +27,7 @@ const Home = (props) => {
   const remove = mapFunc(ctrl.delete)
 
   useEffect(() => {
-    fetch('http://165.22.166.131:8080/products', {
+    fetch(`http://165.22.166.131:8080/products`, {
       method: 'GET',
       headers: {
         'Content-Type': 'application/json',
