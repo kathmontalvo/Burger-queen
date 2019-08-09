@@ -35,6 +35,11 @@
 .width-100{
   width:100%;
 }
+.home-images{
+  border-radius: 50%;
+  height: 400px;
+  width: 400px !important;
+}
 .icon-color {
   border: solid 1px #ced4da;
   color:  #9ea3a8;
