@@ -4,11 +4,12 @@ import putOrders from '../../controller/orders/status'
 import deleteOrder from '../../controller/orders/delete';
 
 const OrderCard = ({ order }) => {
-  const fecha = new Date (order.dateEntry)
+  const fecha = new Date(order.dateEntry)
+  const fechaFinal = new Date(order.dateProcessed)
   const productsArr = order.products
   const [active, setActive] = useState(true)
   const [timer, setTimer] = useState((Date.now() - fecha.getTime()) / 1000)
-
+  const finalTime = (fechaFinal.getTime() - fecha.getTime()) / 1000;
   const changeStatus = (e) => {
     if (e.target.value === "delivering" || e.target.value === "delivered") {
       setActive(false);
@@ -46,13 +47,22 @@ const OrderCard = ({ order }) => {
             <div data-testid={order.client} className="border-card-right pr-2">Cliente: {order.client}</div>
             {/* <div className="pl-2"></div> */}
           </div>
-          <div>{(Math.floor((timer).toFixed() / 60))%(12)}:{(Math.floor((timer).toFixed() / 60))%60}:{(timer).toFixed() % 60}</div>
+          {active === true &&
+            <div>
+              {(Math.floor((timer).toFixed() / 60)) % 60}:
+            {(timer).toFixed() % 60}
+            </div>}
+          {active === false &&
+            <div>
+              {(Math.floor((finalTime).toFixed() / 60)) % 60}:
+            {(finalTime).toFixed() % 60}
+            </div>}
         </div>
         <div className="card-body">
           <ul className="list-group">
-            {productsArr.map((el) => {
-              console.log(el)
-              return (<ProductList el={el} key={el.product.productId} />)})}
+            {productsArr && productsArr.map((el) => {
+              return (<ProductList el={el} key={el.product.productId} />)
+            })}
           </ul>
         </div>
         <div className="input-group card-footer">
@@ -67,7 +77,7 @@ const OrderCard = ({ order }) => {
           </div>
         </div>
       </div>
-    </div>
+    </div >
   )
 }
 
