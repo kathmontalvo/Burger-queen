@@ -10,16 +10,15 @@ const OrderCard = ({ order }) => {
   const [active, setActive] = useState(true)
   const [timer, setTimer] = useState((Date.now() - fecha.getTime()) / 1000)
   const finalTime = (fechaFinal.getTime() - fecha.getTime()) / 1000;
+
   const changeStatus = (e) => {
-    if (e.target.value === "delivering" || e.target.value === "delivered") {
-      setActive(false);
+    if (e.target.value === "delivered") {
       putOrders(order.client, order.products, localStorage.getItem('token'), order.userId, e.target.value, order._id)
         .then(console.log)
     } else if (e.target.value === "canceled") {
       deleteOrder(localStorage.getItem('token'), order._id)
         .then(console.log)
-    } else if (e.target.value === "pending") {
-      setActive(true);
+    } else if (e.target.value === "delivering" || e.target.value === "pending") {
       putOrders(order.client, order.products, localStorage.getItem('token'), order.userId, e.target.value, order._id)
         .then(console.log)
     }
@@ -28,7 +27,7 @@ const OrderCard = ({ order }) => {
   useEffect(() => {
     let interval = null;
 
-    if (order.status !== 'pending') {
+    if (order.status === 'delivered') {
       setActive(false)
     }
     if (active) {
