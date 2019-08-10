@@ -12,13 +12,13 @@ const Cocina = (props) => {
     const interval = () => {
 
       getOrders(localStorage.getItem('token')).then((data) => {
-        // console.log(data)
+        console.log(data)
         setOrders(data)
       })
 
     }
     interval();
-    const processId = setInterval(interval, 10000)
+    const processId = setInterval(interval, 2000)
     return () => clearInterval(processId)
 
   }, []);
