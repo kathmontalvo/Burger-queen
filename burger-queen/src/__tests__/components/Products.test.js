@@ -25,12 +25,13 @@ nock('http://165.22.166.131:8080')
     "dateEntry": "December 17, 1995 03:24:00"
   }
   ]).persist();
+
 afterEach(cleanup);
 
 
 it('testing prods', async () => {
 
-const { getByTestId, getByPlaceholderText } = renderWithRouter(<Products />);
+  const { getByTestId, getByPlaceholderText } = renderWithRouter(<Products />);
 
   await waitForElement(() => getByTestId('1'))
   act(() => {
@@ -43,12 +44,13 @@ const { getByTestId, getByPlaceholderText } = renderWithRouter(<Products />);
 
 it('testing prods', async () => {
 
-const { getByTestId, getByPlaceholderText } = renderWithRouter(<Products />);
-
+  const { getByTestId, getByPlaceholderText } = renderWithRouter(<Products />);
 
   const clientName = await getByPlaceholderText('Nombre')
   expect(clientName.value).toBe('');
-  fireEvent.change(clientName, { target: { value: 'Mariano' } });
+  act(() => {
+    fireEvent.change(clientName, { target: { value: 'Mariano' } });
+  })
   expect(clientName.value).toBe('Mariano');
 
   try {
@@ -73,6 +75,38 @@ const { getByTestId, getByPlaceholderText } = renderWithRouter(<Products />);
 
 it('testing post prods', async () => {
 
+  nock('http://165.22.166.131:8080')
+    .post('/orders', {
+      'userId': '1',
+      'client': 'Mariano',
+      'products': [
+        {
+          "product": "Café americano",
+          "qty": 5
+        }
+      ]
+    })
+    .reply(200, [
+      {
+        "_id": "1",
+        "userId": "1",
+        "client": "Laura",
+        "products": [
+          {
+            "product": {
+              "name": "Café americano",
+              "price": 5,
+              "productId": "1"
+            },
+          "qty": 5
+          }
+        ],
+        "status": "pending",
+        "dateEntry": "December 17, 1995 03:24:00",
+        "dateProcessed": "December 17, 1995 03:24:00"
+      }
+    ])
+
   const { getByTestId, getByPlaceholderText } = renderWithRouter(<Products />);
 
   await waitForElement(() => getByTestId('1'))
@@ -86,7 +120,9 @@ it('testing post prods', async () => {
   const clientName = getByPlaceholderText('Nombre')
 
   expect(clientName.value).toBe('');
-  fireEvent.change(clientName, { target: { value: 'Mariano' } });
+  act(() => {
+    fireEvent.change(clientName, { target: { value: 'Mariano' } });
+  })
   expect(clientName.value).toBe('Mariano');
   act(() => {
     fireEvent.click(getByTestId('submit'))
@@ -95,12 +131,13 @@ it('testing post prods', async () => {
 
   act(() => {
     fireEvent.click(getByTestId('post-order'))
+    // fireEvent.change(clientName, { target: { value: '' } });
   })
   await waitForElement(() => clientName)
   expect(clientName.value).toBe('');
 })
 
-it('add qty of prods', async() => {
+it('add qty of prods', async () => {
   const { getByTestId } = renderWithRouter(<Products />);
 
   await waitForElement(() => getByTestId('1'))
@@ -119,7 +156,7 @@ it('add qty of prods', async() => {
 
 })
 
-it('take qty of prods', async() => {
+it('take qty of prods', async () => {
   const { getByTestId } = renderWithRouter(<Products />);
 
   await waitForElement(() => getByTestId('1'))
@@ -143,7 +180,7 @@ it('take qty of prods', async() => {
 
 })
 
-it(' del prods', async() => {
+it(' del prods', async () => {
   const { getByTestId } = renderWithRouter(<Products />);
 
   await waitForElement(() => getByTestId('1'))

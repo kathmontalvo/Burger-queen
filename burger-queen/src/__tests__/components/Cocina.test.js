@@ -53,43 +53,42 @@ nock('http://165.22.166.131:8080')
 
 it('testing cocina comp', async () => {
   nock('http://165.22.166.131:8080')
-  .put('/orders/1',{
+    .put('/orders/1', {
       'userId': '1',
       'client': 'John',
       'products': [
         {
-          "product":{
-            "name":"Café americano",
+          "product": {
+            "name": "Café americano",
             "price": 5,
             "productId": "ABC12"
           },
           "qty": "5"
         }
       ],
-      'status': 'delivered'
+      'status': 'delivering'
     })
-  .reply(200, [
-    {
-      "_id": "1",
-      "userId": "1",
-      "client": "John",
-      "products": [
-        {
-          "product":{
-            "name":"Café americano",
-            "price": 5,
-            "productId": "ABC12"
-          },
-          "qty": "5"
-        }
-      ],
-      "status": "delivered",
-      "dateEntry": "December 17, 1995 03:24:00",
-      "dateProcessed": "December 17, 1995 03:24:00"
-    }
-  ])
-  const { getByTestId } = renderWithRouter(<Cocina />);
+    .reply(200, [
+      {
+        "_id": "1",
+        "userId": "1",
+        "client": "John",
+        "products": [
+          {
+            "product": {
+              "name": "Café americano",
+              "price": 5,
+              "productId": "ABC12"
+            },
+            "qty": "5"
+          }
+        ],
+        "status": "delivering",
+        "dateEntry": "December 17, 1995 03:24:00",
+      }
+    ])
 
+  const { getByTestId } = renderWithRouter(<Cocina />);
   await waitForElement(() => getByTestId('1'))
 
   expect(getByTestId('John').textContent).toBe('Cliente: John')
@@ -103,7 +102,7 @@ it('testing cocina comp', async () => {
   // expect(getByTestId('Café americano')).toHaveAttribute('text-decoration: line-through')
   expect(getByTestId('name-John').value).toBe('pending')
   await act(() => {
-     fireEvent.change(getByTestId('name-John'), { target: { value: 'delivered' } })
+     fireEvent.change(getByTestId('name-John'), { target: { value: 'delivering' } })
   })
-  expect(getByTestId('name-John').value).toBe('delivered')
+  expect(getByTestId('name-John').value).toBe('delivering')
 })

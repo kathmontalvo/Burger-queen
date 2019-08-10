@@ -68,7 +68,7 @@ const OrderCard = ({ order }) => {
           <select data-testid={`name-${order.client}`} onChange={changeStatus} value={order.status} className="custom-select" id="inputGroupSelect02">
             <option value="pending">Pending</option>
             <option value="canceled">Canceled</option>
-            <option value="delivering">Delivering</option>
+            <option data-testid="delivering" value="delivering">Delivering</option>
             <option value="delivered">Delivered</option>
           </select>
           <div className="input-group-append">
