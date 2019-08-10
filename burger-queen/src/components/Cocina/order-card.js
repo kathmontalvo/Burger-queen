@@ -13,6 +13,7 @@ const OrderCard = ({ order }) => {
 
   const changeStatus = (e) => {
     if (e.target.value === "delivered") {
+      
       putOrders(order.client, order.products, localStorage.getItem('token'), order.userId, e.target.value, order._id)
         .then(console.log)
     } else if (e.target.value === "canceled") {
@@ -69,7 +70,7 @@ const OrderCard = ({ order }) => {
             <option value="pending">Pending</option>
             <option value="canceled">Canceled</option>
             <option value="delivering">Delivering</option>
-            <option value="delivered">Delivered</option>
+            <option data-testid={`delivered-${order.client}`} value="delivered">Delivered</option>
           </select>
           <div className="input-group-append">
             <label className="input-group-text" htmlFor="inputGroupSelect02">Status</label>

@@ -86,7 +86,9 @@ it('testing post prods', async () => {
   const clientName = getByPlaceholderText('Nombre')
 
   expect(clientName.value).toBe('');
+  act(() => {
   fireEvent.change(clientName, { target: { value: 'Mariano' } });
+  })
   expect(clientName.value).toBe('Mariano');
   act(() => {
     fireEvent.click(getByTestId('submit'))
