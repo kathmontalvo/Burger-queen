@@ -28,8 +28,8 @@ const Cocina = (props) => {
       <Header logoutprop={props} />
       <div className="w-100">
         <ul className="nav nav-tabs w-100" role="tablist">
-          <Options click={() => setType('pending')} options="Pending" aClass="nav-link active" />
-          <Options click={() => setType('delivered')} options="Delivered" aClass="nav-link" />
+          <Options click={() => setType('pending')} options="Pendientes" aClass="nav-link active" />
+          <Options click={() => setType('delivered')} options="Entregados" aClass="nav-link" />
         </ul>
         <section data-testid="opt" className="row w-100 justify-content-between">
           {orders.length === 0 &&
