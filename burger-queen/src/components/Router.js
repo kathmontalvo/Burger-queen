@@ -8,7 +8,6 @@ import ProtectedRoute from '../controller/routes/protected-route'
 
 const Routes = () => {
   return (
-    // <Router>
       <Switch>
         <Route exact path='/' component={Login} />
         <ProtectedRoute exact path='/orders' component={Orders} />
@@ -16,8 +15,6 @@ const Routes = () => {
         <ProtectedRoute exact path='/cocina' component={Cocina} />
         <Route path='*' component={() => '404 NOT FOUND'} />
       </Switch>
-
-    // </Router >x
   )
 }
 
