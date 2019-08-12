@@ -24,6 +24,35 @@ nock('http://165.22.166.131:8080')
     "type": "Desayuno",
     "dateEntry": "December 17, 1995 03:24:00"
   }
+  ])
+  .post('/orders', {
+    'userId': '1',
+    'client': 'Mariano',
+    'products': [
+      {
+        "product": "1",
+        "qty": 1
+      }
+    ]
+  })
+  .reply(200, [
+    {
+      "_id": "1",
+      "userId": "1",
+      "client": "Mariano",
+      "products": [
+        {
+          "product": {
+            "name": "Café americano",
+            "price": 5,
+            "productId": "1"
+          },
+          "qty": 5
+        }
+      ],
+      "status": "pending",
+      "dateEntry": "December 17, 1995 03:24:00",
+    }
   ]).persist();
 
 afterEach(cleanup);
@@ -73,39 +102,11 @@ it('testing prods', async () => {
   expect(clientName.value).toBe('Mariano');
 })
 
-it('testing post prods', async () => {
-
-  nock('http://165.22.166.131:8080')
-    .post('/orders', {
-      'userId': '1',
-      'client': 'Mariano',
-      'products': [
-        {
-          "product": "Café americano",
-          "qty": 5
-        }
-      ]
-    })
-    .reply(200, [
-      {
-        "_id": "1",
-        "userId": "1",
-        "client": "Laura",
-        "products": [
-          {
-            "product": {
-              "name": "Café americano",
-              "price": 5,
-              "productId": "1"
-            },
-          "qty": 5
-          }
-        ],
-        "status": "pending",
-        "dateEntry": "December 17, 1995 03:24:00",
-        "dateProcessed": "December 17, 1995 03:24:00"
-      }
-    ])
+it.only('testing post prods', async (done) => {
+  const spy = jest.spyOn(Storage.prototype, 'setItem');
+  localStorage.setItem = spy;
+  localStorage.setItem('user', JSON.stringify({ admin: false, _id: "1" }));
+  console.log(typeof JSON.parse(localStorage.getItem('user')))
 
   const { getByTestId, getByPlaceholderText } = renderWithRouter(<Products />);
 
@@ -128,13 +129,14 @@ it('testing post prods', async () => {
     fireEvent.click(getByTestId('submit'))
   })
   await waitForElement(() => getByTestId('edit'))
-
   act(() => {
     fireEvent.click(getByTestId('post-order'))
-    // fireEvent.change(clientName, { target: { value: '' } });
   })
+
   await waitForElement(() => clientName)
   expect(clientName.value).toBe('');
+  done();
+
 })
 
 it('add qty of prods', async () => {

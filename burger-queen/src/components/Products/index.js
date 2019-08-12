@@ -25,6 +25,8 @@ const Home = (props) => {
   const increase = mapFunc(ctrl.increase)
   const decrease = mapFunc(ctrl.decrease)
   const remove = mapFunc(ctrl.delete)
+  const userId = JSON.parse(localStorage.getItem('user'))._id;
+  const token = localStorage.getItem('token')
 
   useEffect(() => {
     fetch(`http://165.22.166.131:8080/products`, {
@@ -51,7 +53,7 @@ const Home = (props) => {
               <MenuOpts click={() => setType('Desayuno')} options="Desayuno" aClass="nav-link active" />
               <MenuOpts click={() => setType('Almuerzo')} options="Almuerzo" aClass="nav-link" />
             </ul>
-            <div  data-testid='opt' className="card-columns">
+            <div data-testid='opt' className="card-columns">
               {type === 'Desayuno' && (
                 <Products data={prodData} menu="Desayuno" add={increase} />
               )}
@@ -66,8 +68,12 @@ const Home = (props) => {
             remove={remove} decrease={decrease}
             increase={increase}
             postOrder={() => {
-              postOrders(name, items.map(el => ({ product: el._id, qty: el.qty })), localStorage.getItem('token'), '5d4203b7e96305001250ea9d')
+              postOrders(name,
+                items.map(el => ({ product: el._id, qty: el.qty })),
+                token,
+                userId)
                 .then((order) => {
+                  console.log(order)
                   setItems([]);
                   setName("");
                   setShow(true)
