@@ -23,7 +23,8 @@ const Form = ({ logprop }) => {
       });
 
       getUser(email).then((data) => {
-        localStorage.setItem('user', JSON.stringify(data))
+        localStorage.setItem('user', JSON.stringify(data));
+        console.log(JSON.parse(localStorage.getItem('user'))._id)
       }).catch(console.error)
     }}
       className="col-12 flex-column d-flex form-group" data-testid="form">

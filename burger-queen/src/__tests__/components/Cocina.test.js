@@ -10,7 +10,7 @@ import nock from 'nock';
 jest.spyOn(global, 'fetch').mockImplementation(require('node-fetch'))
 afterEach(cleanup)
 
-it.only('testing cocina comp', async (done) => {
+it('testing cocina comp', async (done) => {
   nock('http://165.22.166.131:8080')
     .get('/orders')
     .reply(200, [{
@@ -110,7 +110,7 @@ it.only('testing cocina comp', async (done) => {
 
 })
 
-it.only('testing cocina comp', async (done) => {
+it('testing cocina comp', async (done) => {
   nock('http://165.22.166.131:8080')
     .get('/orders')
     .reply(200, [{
