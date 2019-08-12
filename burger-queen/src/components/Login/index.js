@@ -8,7 +8,7 @@ const Login = (props) => {
 
   return (
     <>
-      <main className='container d-flex fill-available justify-content-center align-items-center'>
+      <main data-testid="login" className='container d-flex fill-available justify-content-center align-items-center'>
         <ImgLogin
           imgSrc={img}
           cssClass="col-lg-6 justify-content-center text-align"

@@ -9,6 +9,7 @@ afterEach(cleanup);
 jest.mock('../../controller/login')
 
 it("router validation", async() => {
+
   const { getByPlaceholderText, getByText } = renderWithRouter(<Form onSubmit={submit}/>);
   
   expect(getByPlaceholderText('Email').value).toBe('')
@@ -29,6 +30,7 @@ act(()=>{
   expect(submit.mock.calls).toHaveLength(1)
   expect(submit.mock.calls[0][0]).toBe('emily@gmail.com')
   expect(submit.mock.calls[0][1]).toBe('1234AbcffffffffffD')
+
 });
 
 it("router validation", async() => {
