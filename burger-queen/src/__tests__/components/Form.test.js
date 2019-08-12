@@ -8,16 +8,16 @@ afterEach(cleanup);
 
 jest.mock('../../controller/login')
 
-it("router validation", async() => {
+it("router validation", async () => {
 
-  const { getByPlaceholderText, getByText } = renderWithRouter(<Form onSubmit={submit}/>);
-  
+  const { getByPlaceholderText, getByText } = renderWithRouter(<Form onSubmit={submit} />);
+
   expect(getByPlaceholderText('Email').value).toBe('')
   expect(getByPlaceholderText('Password').value).toBe('');
-act(()=>{
-  fireEvent.change(getByPlaceholderText('Email'), { target: { value: 'emily@gmail.com' } })
-  fireEvent.change(getByPlaceholderText('Password'), { target: { value: '1234AbcffffffffffD' } })
-})
+  act(() => {
+    fireEvent.change(getByPlaceholderText('Email'), { target: { value: 'emily@gmail.com' } })
+    fireEvent.change(getByPlaceholderText('Password'), { target: { value: '1234AbcffffffffffD' } })
+  })
 
   expect(getByPlaceholderText('Email').value).toBe('emily@gmail.com')
   expect(getByPlaceholderText('Password').value).toBe('1234AbcffffffffffD');
@@ -33,12 +33,12 @@ act(()=>{
 
 });
 
-it("router validation", async() => {
-  const { getByText, getByTestId } = renderWithRouter(<Form onSubmit={submit}/>);
+it("router validation", async () => {
+  const { getByText, getByTestId } = renderWithRouter(<Form onSubmit={submit} />);
   const submitBtn = getByText('Ingresar');
   try {
     getByTestId('errMsg')
-  } catch(e) {
+  } catch (e) {
     expect(e.message.startsWith('Unable to find an element by: [data-testid=\"errMsg\"]')).toBe(true)
   }
 
