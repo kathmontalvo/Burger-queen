@@ -57,6 +57,9 @@ nock('http://165.22.166.131:8080')
 
 afterEach(cleanup);
 
+const spy = jest.spyOn(Storage.prototype, 'setItem');
+localStorage.setItem = spy;
+localStorage.setItem('user', JSON.stringify({ admin: false, _id: "1" }));
 
 it('testing prods', async () => {
 
@@ -103,11 +106,6 @@ it('testing prods', async () => {
 })
 
 it('testing post prods', async (done) => {
-  const spy = jest.spyOn(Storage.prototype, 'setItem');
-  localStorage.setItem = spy;
-  localStorage.setItem('user', JSON.stringify({ admin: false, _id: "1" }));
-  console.log(typeof JSON.parse(localStorage.getItem('user')))
-
   const { getByTestId, getByPlaceholderText } = renderWithRouter(<Products />);
 
   await waitForElement(() => getByTestId('1'))
@@ -129,13 +127,16 @@ it('testing post prods', async (done) => {
     fireEvent.click(getByTestId('submit'))
   })
   await waitForElement(() => getByTestId('edit'))
+
   act(() => {
     fireEvent.click(getByTestId('post-order'))
   })
 
   await waitForElement(() => clientName)
-  expect(clientName.value).toBe('');
-  done();
+  setTimeout(() => {
+    expect(clientName.value).toBe('');
+    done();
+  }, 1000)
 
 })
 
