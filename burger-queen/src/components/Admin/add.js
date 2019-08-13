@@ -1,28 +1,46 @@
-import React from 'react';
+import React, { useState } from 'react';
+import createUser from '../../controller/users/add'
 
 const Add = () => {
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [selected, setSelected] = useState('option1');
+
+  const submit = (e) => {
+    e.preventDefault();
+    createUser(
+      localStorage.getItem('token'),
+      email,
+      password,
+      selected === 'option1' ? true : false
+    );
+    setEmail('');
+    setPassword('');
+    setSelected('option1')
+  };
+
   return (
-    <form action="">
+    <form onSubmit={(e) => submit(e)} >
       <div className="form-group">
         <label htmlFor="email">Email:</label>
-        <input id="email" type="email" />
+        <input value={email} onChange={(e) => setEmail(e.target.value)} id="email" type="email" />
       </div>
       <div className="form-group">
         <label htmlFor="password">Contraseña:</label>
-        <input id="password" type="text" />
+        <input value={password} onChange={(e) => setPassword(e.target.value)} id="password" type="text" />
       </div>
       <label>Admin:</label> <br />
       <div className="form-check form-check-inline">
-        <input className="form-check-input" id="true" type="radio" name="admin" value="true" />
-        <label className="form-check-label" htmlFor="true">
-          Sí
-      </label>
+        <input onChange={(e) => setSelected(e.target.value)} className="form-check-input" id="true" type="radio" name="admin" value="option1" checked={selected === 'option1'} />
+        <label className="form-check-label" htmlFor="true"> Sí </label>
       </div>
       <div className="form-check form-check-inline">
-        <input className="form-check-input" id="false" type="radio" name="admin" value="false" />
-        <label className="form-check-label" id="false" htmlFor="false">
-          No
-      </label>
+        <input onChange={(e) => setSelected(e.target.value)} className="form-check-input" id="false" type="radio" name="admin" value="option2" checked={selected === 'option2'} />
+        <label className="form-check-label" id="false" htmlFor="false"> No </label>
+      </div>
+      <div className="form-group row">
+        <button type="submit" className="btn btn-primary">Submit</button>
+        <button type="button" className="btn btn-primary">Cancel</button>
       </div>
     </form>
   )
