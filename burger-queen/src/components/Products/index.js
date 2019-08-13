@@ -25,7 +25,6 @@ const Home = (props) => {
   const increase = mapFunc(ctrl.increase)
   const decrease = mapFunc(ctrl.decrease)
   const remove = mapFunc(ctrl.delete)
-  console.log(JSON.parse(localStorage.getItem('user'))._id)
   const userId = JSON.parse(localStorage.getItem('user'))._id;
   const token = localStorage.getItem('token')
 
