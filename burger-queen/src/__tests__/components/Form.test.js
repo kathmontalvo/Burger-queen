@@ -9,8 +9,8 @@ jest.spyOn(global, 'fetch').mockImplementation(require('node-fetch'))
 
 afterEach(cleanup);
 
-it.skip("router validation", async () => {
-  jest.mock('../../controller/login')
+it("router validation", async (done) => {
+  // jest.mock('../../controller/login')
 
   nock('http://165.22.166.131:8080')
     .post('/auth', { email: 'emily@gmail.com', password: '1234AbcffffffffffD' })
@@ -35,9 +35,17 @@ it.skip("router validation", async () => {
     fireEvent.submit(submitBtn)
   })
 
-  expect(submit.mock.calls).toHaveLength(1)
-  expect(submit.mock.calls[0][0]).toBe('emily@gmail.com');
-  expect(submit.mock.calls[0][1]).toBe('1234AbcffffffffffD')
+  try {
+    getByTestId('Email')
+  } catch (e) {
+    expect(e.message.startsWith('Unable to find an element by: [data-testid=\"Email\"]')).toBe(true)
+    done()
+  }
+
+  
+  // expect(submit.mock.calls).toHaveLength(1)
+  // expect(submit.mock.calls[0][0]).toBe('emily@gmail.com');
+  // expect(submit.mock.calls[0][1]).toBe('1234AbcffffffffffD')
 
 });
 
