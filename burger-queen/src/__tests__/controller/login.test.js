@@ -32,3 +32,13 @@ it('get error', async (done) => {
         done()
     })
 })
+
+it('get error', async (done) => {
+  nock('http://165.22.166.131:8080')
+  .post('/auth', { email: 'user2@gmail.com', password: 'password123' })
+  .reply(401, { message: 'Ingrese correctamente su usuario y/o contraseña' })
+    return login('user2@gmail.com', 'password123').catch(res=>{
+        expect(res.message).toBe('Ingrese correctamente su usuario y/o contraseña');
+        done()
+    })
+})
