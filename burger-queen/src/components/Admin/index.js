@@ -11,6 +11,7 @@ const Admin = (props) => {
     getUsers(localStorage.getItem('token'))
       .then(data => setUser(data))
   })
+
   return (
     <main className='w-100'>
       <Header logoutprop={props} />
@@ -18,8 +19,8 @@ const Admin = (props) => {
       <div>
         {user !== 0 && user.map((el) =>
           <div key={el._id} >
-            <input id="list" type="checkbox" />
-            <label htmlFor="list">
+            <input id={el._id} type="checkbox" />
+            <label htmlFor={el._id}>
               <List user={el} />
             </label>
           </div>
