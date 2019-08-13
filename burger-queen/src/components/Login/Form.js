@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import Inputs from '../Input'
 import getToken from '../../controller/login';
-import getUser from '../../controller/user';
+import getUser from '../../controller/users/get-user-id';
 import auth from '../../controller/routes/auth';
 
 const Form = ({ logprop }) => {
