@@ -32,7 +32,7 @@ it('get request2', (done) => {
     .get('/users/1')
     .reply(401, { message: 'Unauthorized' })
   return user(1).catch(user => {
-    expect(user).toEqual({ message: 'Unauthorized' });
+    expect(user).toEqual({ message: 'No hay cabecera de autenticación' });
     done()
   });
 });

@@ -16,9 +16,9 @@ it('get token', async (done) => {
 it('get error', async (done) => {
   nock('http://165.22.166.131:8080')
   .post('/auth', { email: 'user2@gmail.com', password: 'password123' })
-  .reply(400, { message: 'Ingrese correctamente su usuario y/o contraseña' })
+  .reply(400, { message: 'Ingrese su usuario y/o contraseña' })
     return login('user2@gmail.com', 'password123').catch(res=>{
-        expect(res.message).toBe('Ingrese correctamente su usuario y/o contraseña');
+        expect(res.message).toBe('Ingrese su usuario y/o contraseña');
         done()
     })
 })

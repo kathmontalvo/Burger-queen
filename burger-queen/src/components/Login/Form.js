@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import Inputs from '../Input'
 import getToken from '../../controller/login';
-import getUser from '../../controller/user';
+import getUser from '../../controller/users/get-user-id';
 import auth from '../../controller/routes/auth';
 
 const Form = ({ logprop }) => {
@@ -17,6 +17,7 @@ const Form = ({ logprop }) => {
         if (res.token) {
           auth.login(() => { logprop.history.push("/home") })
           localStorage.setItem('token', res.token)
+          console.log(res.token)
         }
       }).catch((err) => {
         setErr(err.message)
@@ -24,7 +25,6 @@ const Form = ({ logprop }) => {
 
       getUser(email).then((data) => {
         localStorage.setItem('user', JSON.stringify(data));
-        console.log(JSON.parse(localStorage.getItem('user'))._id)
       }).catch(console.error)
     }}
       className="col-12 flex-column d-flex form-group" data-testid="form">

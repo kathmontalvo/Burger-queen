@@ -1,7 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import Cocina from '../../components/Cocina';
-import getOrder from '../../controller/orders/getOrder'
 import { fireEvent, cleanup, act, waitForElement, getByText } from '@testing-library/react';
 import '@testing-library/jest-dom/extend-expect'
 import { renderWithRouter, history } from '../utils'

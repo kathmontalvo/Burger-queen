@@ -8,7 +8,10 @@ const getUser = (uid) => {
   }).then((resp) => {
     if (resp.status === 200) {
       return resp.json()
-    } else {
+    } else if (resp.status === 401) {
+      return Promise.reject({ message: 'No hay cabecera de autenticación'})
+    }
+     else {
       return Promise.reject({ message: resp.statusText })
     }
   }
