@@ -14,11 +14,11 @@ const Form = ({ logprop }) => {
       e.preventDefault()
 
       await getToken(email, password).then((res) => {
-        if (res.token) {
+        // if (res.token) {
           auth.login(() => { logprop.history.push("/home") })
           localStorage.setItem('token', res.token)
-          console.log(res.token)
-        }
+          // console.log(res.token)
+        // }
       }).catch((err) => {
         setErr(err.message)
       });

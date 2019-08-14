@@ -1,6 +1,6 @@
 import React from 'react';
 import Products from '../../components/Products/';
-import { fireEvent, cleanup, act, waitForDomChange, waitForElement } from '@testing-library/react';
+import { fireEvent, cleanup, act, waitForElement } from '@testing-library/react';
 import { renderWithRouter } from '../utils';
 import nock from 'nock';
 
@@ -22,6 +22,14 @@ nock('http://165.22.166.131:8080')
     "price": 7,
     "image": "https://i.ibb.co/rGMbTtB/cafe-leche.png",
     "type": "Desayuno",
+    "dateEntry": "December 17, 1995 03:24:00"
+  },
+  {
+    "_id": "8",
+    "name": "Hamburguesa Simple",
+    "price": 10,
+    "image": "https://i.ibb.co/rGMbTtB/cafe-leche.png",
+    "type": "Almuerzo",
     "dateEntry": "December 17, 1995 03:24:00"
   }
   ])
@@ -61,46 +69,28 @@ const spy = jest.spyOn(Storage.prototype, 'setItem');
 localStorage.setItem = spy;
 localStorage.setItem('user', JSON.stringify({ admin: false, _id: "1" }));
 
-it('testing prods', async (done) => {
-  // nock('http://165.22.166.131:8080')
-  // .get('/products')
-  // .reply(200, [{
-  //   "_id": "1",
-  //   "name": "Café americano",
-  //   "price": 5,
-  //   "image": "https://i.ibb.co/Yfbp5kY/cafe-americano.png",
-  //   "type": "Desayuno",
-  //   "dateEntry": "December 17, 1995 03:24:00"
-  // },
-  // {
-  //   "_id": "2",
-  //   "name": "Bebida/gaseosa 750ml",
-  //   "price": 10,
-  //   "image": "https://i.ibb.co/rGMbTtB/cafe-leche.png",
-  //   "type": "Almuerzo",
-  //   "dateEntry": "December 17, 1995 03:24:00"
-  // }
-  // ])
-  const { getByTestId, getByPlaceholderText } = renderWithRouter(<Products />);
+it('testing prods', async () => {
 
-  await waitForElement(() => getByTestId('opt'))
-    act(()=>{
-      fireEvent.click(getByTestId('Almuerzo'))
-    })
+  const { getByTestId } = renderWithRouter(<Products />);
 
   await waitForElement(() => getByTestId('2'))
-  // expect(getByTestId('opt')).toBe(getByTestId('AlmuerzoProd'))
-  // await waitForElement(() => getByTestId('AlmuerzoProd'))
-setTimeout(()=>{
-  expect(getByTestId('2').textContent).toBe('Bebida/gaseosa 750ml');
-  done()
-}, 2000)
+  expect(getByTestId('2').textContent).toBe('Café con lecheS/. 7')
+  act(() => {
+    fireEvent.click(getByTestId('Almuerzo'))
+  })
 
+    await waitForElement(() => getByTestId('8'))
+    expect(getByTestId('8').textContent).toBe('Hamburguesa SimpleS/. 10');
+    act(() => {
+      fireEvent.click(getByTestId('Desayuno'))
+    })
+    await waitForElement(() => getByTestId('2'))
+    expect(getByTestId('2').textContent).toBe('Café con lecheS/. 7')
 })
 
 it('testing prods', async () => {
 
-  const { getByTestId, getByPlaceholderText } = renderWithRouter(<Products />);
+  const { getByTestId } = renderWithRouter(<Products />);
 
   await waitForElement(() => getByTestId('1'))
   act(() => {

@@ -8,7 +8,9 @@ import nock from 'nock';
 jest.spyOn(global, 'fetch').mockImplementation(require('node-fetch'))
 
 afterEach(cleanup);
-
+const spy = jest.spyOn(Storage.prototype, 'setItem');
+localStorage.setItem = spy;
+localStorage.setItem('token', 'asdasdasdsad');
 it("router validation", async (done) => {
   // jest.mock('../../controller/login')
 
