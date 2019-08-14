@@ -61,6 +61,43 @@ const spy = jest.spyOn(Storage.prototype, 'setItem');
 localStorage.setItem = spy;
 localStorage.setItem('user', JSON.stringify({ admin: false, _id: "1" }));
 
+it('testing prods', async (done) => {
+  // nock('http://165.22.166.131:8080')
+  // .get('/products')
+  // .reply(200, [{
+  //   "_id": "1",
+  //   "name": "Café americano",
+  //   "price": 5,
+  //   "image": "https://i.ibb.co/Yfbp5kY/cafe-americano.png",
+  //   "type": "Desayuno",
+  //   "dateEntry": "December 17, 1995 03:24:00"
+  // },
+  // {
+  //   "_id": "2",
+  //   "name": "Bebida/gaseosa 750ml",
+  //   "price": 10,
+  //   "image": "https://i.ibb.co/rGMbTtB/cafe-leche.png",
+  //   "type": "Almuerzo",
+  //   "dateEntry": "December 17, 1995 03:24:00"
+  // }
+  // ])
+  const { getByTestId, getByPlaceholderText } = renderWithRouter(<Products />);
+
+  await waitForElement(() => getByTestId('opt'))
+    act(()=>{
+      fireEvent.click(getByTestId('Almuerzo'))
+    })
+
+  await waitForElement(() => getByTestId('2'))
+  // expect(getByTestId('opt')).toBe(getByTestId('AlmuerzoProd'))
+  // await waitForElement(() => getByTestId('AlmuerzoProd'))
+setTimeout(()=>{
+  expect(getByTestId('2').textContent).toBe('Bebida/gaseosa 750ml');
+  done()
+}, 2000)
+
+})
+
 it('testing prods', async () => {
 
   const { getByTestId, getByPlaceholderText } = renderWithRouter(<Products />);

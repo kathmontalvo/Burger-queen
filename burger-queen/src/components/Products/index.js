@@ -55,10 +55,10 @@ const Home = (props) => {
             </ul>
             <div data-testid='opt' className="card-columns">
               {type === 'Desayuno' && (
-                <Products data={prodData} menu="Desayuno" add={increase} />
+                <Products  data={prodData} menu="Desayuno" add={increase} />
               )}
               {type === 'Almuerzo' && (
-                <Products data={prodData} menu="Almuerzo" add={increase} />
+                <Products  data={prodData} menu="Almuerzo" add={increase} />
               )}
             </div>
           </div>
