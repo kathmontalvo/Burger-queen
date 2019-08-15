@@ -12,7 +12,7 @@ const Cocina = (props) => {
     const interval = () => {
 
       getOrders(localStorage.getItem('token')).then((data) => {
-        console.log(data)
+        // console.log(data)
         setOrders(data)
       })
 
@@ -38,7 +38,7 @@ const Cocina = (props) => {
             </div>}
           {orders.length !== 0 &&
             orders.map(el => {
-              if ((el.status === 'pending' || el.status === 'delivering') && type === 'pending') {
+              if ((el.status === 'pending' || el.status === 'delivering'|| el.status === 'canceled') && type === 'pending') {
                 return <OrderCard order={el} key={el._id} />
               } else if (el.status === 'delivered' && type === 'delivered') {
                 return <OrderCard order={el} key={el._id} />

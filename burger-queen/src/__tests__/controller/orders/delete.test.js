@@ -1,4 +1,4 @@
-import deleteOrder from '../../controller/orders/delete'
+import deleteOrder from '../../../controller/orders/delete'
 import nock from 'nock';
 
 jest.spyOn(global, 'fetch').mockImplementation(require('node-fetch'));

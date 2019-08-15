@@ -1,4 +1,4 @@
-import user from '../../controller/users/get-total'
+import user from '../../../controller/users/get-total'
 import nock from 'nock';
 
 jest.spyOn(global, 'fetch').mockImplementation(require('node-fetch'));

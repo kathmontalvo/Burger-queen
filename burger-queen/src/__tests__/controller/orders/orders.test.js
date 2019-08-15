@@ -1,4 +1,4 @@
-import order from '../../controller/orders/orders'
+import order from '../../../controller/orders/orders'
 import nock from 'nock';
 
 jest.spyOn(global, 'fetch').mockImplementation(require('node-fetch'));

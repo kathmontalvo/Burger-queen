@@ -1,4 +1,4 @@
-import editStatus from '../../controller/orders/status'
+import editStatus from '../../../controller/orders/status'
 import nock from 'nock';
 
 jest.spyOn(global, 'fetch').mockImplementation(require('node-fetch'));
