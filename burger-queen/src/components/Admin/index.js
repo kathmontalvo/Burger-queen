@@ -16,7 +16,7 @@ const Admin = (props) => {
     <main className='w-100'>
       <Header logoutprop={props} />
       <h3>Lista de trabajadores</h3>
-      <div>
+      <div >
         {user !== 0 && user.map((el) =>
           <div key={el._id} >
             <input id={el._id} type="checkbox" />
@@ -27,7 +27,7 @@ const Admin = (props) => {
         )}
       </div>
       <button>Eliminar</button>
-      <button onClick={() => setShow(true)}>Agregar</button>
+      <button data-testid="Agregar" onClick={() => setShow(true)}>Agregar</button>
       <section>
         {show && <Add/>}
       </section>
