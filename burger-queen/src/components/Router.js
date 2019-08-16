@@ -6,6 +6,7 @@ import Login from './Login'
 import Cocina from './Cocina/'
 import Admin from './Admin/'
 import ProtectedRoute from '../controller/routes/protected-route'
+import AdminRoute from '../controller/routes/admin-route'
 
 const Routes = () => {
   return (
@@ -14,7 +15,7 @@ const Routes = () => {
         <ProtectedRoute exact path='/orders' component={Orders} />
         <ProtectedRoute exact path='/home' component={Home} />
         <ProtectedRoute exact path='/cocina' component={Cocina} />
-        <ProtectedRoute exact path='/admin' component={Admin} />
+        <AdminRoute exact path='/admin' component={Admin} />
         <Route path='*' component={() => '404 NOT FOUND'} />
       </Switch>
   )

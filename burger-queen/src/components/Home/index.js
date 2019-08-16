@@ -12,6 +12,7 @@ const Home = (props) => {
       <section id="home-menu" className="fill-available mb-4 container-fluid d-flex flex-wrap align-content-around justify-content-center">
         <Opts click={() => { return auth.login(() => { props.history.push("/orders") })}} name="ÓRDENES" imgMenu={waitress} />
         <Opts click={() => { return auth.login(() => { props.history.push("/cocina") })}} name="COCINA" imgMenu={chef} />
+        <Opts click={() => { return auth.login(() => { props.history.push("/admin") })}} name="ADMIN" imgMenu={chef} />
       </section>
     </>
   )
