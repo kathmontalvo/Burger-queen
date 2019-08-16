@@ -10,13 +10,13 @@ const ProtectedRoute = ({
     <Route
       {...rest}
       render={props => {
-        if (auth.isAuthenticated() || localStorage.getItem('token') !== '') {
+        if (auth.isAuthenticated() || localStorage.getItem('token') !== null) {
           return <Component {...props} />;
         } else {
           return (
             <Redirect
               to={{
-                pathname: "/",
+                pathname: "/home",
                 state: {
                   from: props.location
                 }

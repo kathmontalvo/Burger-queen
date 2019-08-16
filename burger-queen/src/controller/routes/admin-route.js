@@ -12,7 +12,7 @@ const ProtectedRoute = ({
     <Route
       {...rest}
       render={props => {
-        if (auth.isAuthenticated() && localStorage.getItem('token') !== null && user.roles.admin) {
+        if ((auth.isAuthenticated() || localStorage.getItem('token')) !== null && user.roles.admin) {
           return <Component {...props} />;
         } else {
           return (

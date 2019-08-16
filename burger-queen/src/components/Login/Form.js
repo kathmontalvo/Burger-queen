@@ -15,9 +15,8 @@ const Form = ({ logprop }) => {
 
       await getToken(email, password).then((res) => {
         // if (res.token) {
-          auth.login(() => { logprop.history.push("/home") })
-          localStorage.setItem('token', res.token)
-          // console.log(res.token)
+        localStorage.setItem('token', res.token)
+        // console.log(res.token)
         // }
       }).catch((err) => {
         setErr(err.message)
@@ -25,6 +24,7 @@ const Form = ({ logprop }) => {
 
       getUser(email).then((data) => {
         localStorage.setItem('user', JSON.stringify(data));
+        auth.login(() => { logprop.history.push("/home") })
       }).catch(console.error)
     }}
       className="col-12 flex-column d-flex form-group" data-testid="form">
