@@ -6,7 +6,7 @@ const UserList = ({ user }) => {
       <tbody>
         <tr>
           <th>Email:</th>
-          <td>{user.email}</td>
+          <td data-testid={user.email}>{user.email}</td>
         </tr>
         <tr>
           <th>ID:</th>
